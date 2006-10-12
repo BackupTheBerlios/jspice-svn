@@ -25,7 +25,9 @@ import org.openspice.tools.IntegerTools;
 
 
 public final class ComplexNum extends Num {
-
+	
+	private static final long serialVersionUID = 4714949670458535996L;
+	
 	private final RealNum real_part;
 	private final RealNum imag_part;
 
