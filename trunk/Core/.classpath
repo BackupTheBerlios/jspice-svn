@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Tools"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JLine"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Office"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BFI"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/TADS2"/>
+	<classpathentry kind="lib" path="jarfiles/org.mortbay.jmx.jar"/>
+	<classpathentry kind="lib" path="jarfiles/org.mortbay.jetty.jar"/>
+	<classpathentry kind="lib" path="jarfiles/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="jarfiles/commons-net-1.2.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

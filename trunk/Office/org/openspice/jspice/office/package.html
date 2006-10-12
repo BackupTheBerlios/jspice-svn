@@ -1,0 +1,40 @@
+<body>
+<p>
+This package is an initial draft for a messaging service which might be made obsolete by
+other industry efforts such as JMS.
+
+<p>The metaphor used by the package is that of a busy office.  The office is staffed by many workers who
+coordinate their work by sending and receiving letters from both the outside world and each other.  Workers
+have names and roles.  The office will find a worker by name or role when asked.
+</p>
+
+<p>A letter has only three mandatory fields: the subject, the from field and the to field.  The contents of
+the letter are built up either by appending values (like a list) or associating values with keys.  A worker
+is free to interpret these fields as they will.
+</p>
+
+<p>Each worker has an in-tray for receiving letters and some (zero or more) out-trays for sending letters.
+The workers always process their incoming letters in the sequence they arrived.  This processing typically
+causes further letters to be written and inserted into the out-trays.  When a letter is put into an out-tray
+it is immediately copied to all the connected in-trays.  Out-trays are named in the same way as workers.
+</p>
+
+<p>For example, if a worker Bob should always be notified about a worker Alice's work, then Alice's out-tray
+should be connected to Bob's in-tray.  Many workers' in-trays may be connected to a single out-tray.  Every
+time a letter is put in the out-tray, the connected in-trays automatically receive a copy.
+</p>
+
+<p>Alternatively, if Alice dynamically decides who the out-going letter should be sent to, then she will explicitly
+address the letter to a particular worker.  That way it will bypass the out-tray system completely.  A common
+example of this is a simple reply; replying means addressing a letter to the sender of the letter being processed.
+</p>
+
+<p>When the last message has been sent to a worker they should be told to finish-off.  The worker will immediately
+close its in-tray, refusing further messages, process all outstanding letters and then close all out-trays.
+</p>
+
+<p>Workers such as Alice and Bob can be implemented in several different ways.  They could be lightweight objects,
+middleweight threads, or heavyweight processes.  It doesn't matter as the classes are thread safe.
+</p>
+
+</body>

@@ -1,0 +1,57 @@
+/**
+ *	JSpice, an Open Spice interpreter and library.
+ *	Copyright (C) 2003, Stephen F. K. Leach
+ *
+ * 	This program is free software; you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ * 	the Free Software Foundation; either version 2 of the License, or
+ * 	(at your option) any later version.
+ *
+ * 	This program is distributed in the hope that it will be useful,
+ * 	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+ *
+ *	You should have received a copy of the GNU General Public License
+ * 	along with this program; if not, write to the Free Software
+ *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+package org.openspice.jspice.built_in.regexs;
+
+import org.openspice.jspice.datatypes.proc.Binary1InvokeProc;
+import org.openspice.jspice.datatypes.regexs.BindingList;
+import org.openspice.jspice.datatypes.EmptyImmutableList;
+import org.openspice.jspice.lib.CastLib;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class AllMatchesProc extends Binary1InvokeProc {
+
+	{
+		setDescription( "allMatches", "regex.%p( string ) -> {bindings}", "Finds all matches for a regular expression" );
+	}
+
+	public Object invoke( final Object regex, final Object str ) {
+		final CharSequence c = CastLib.toCharSequence( str );
+		final Pattern r = CastLib.toPattern( regex );
+		final Matcher x = r.matcher( c );
+
+		int n = 0;
+		while ( x.find() ) {
+			n +=1 ;
+		}
+
+		System.err.println( "N matches = " + n );
+		x.reset();
+
+		if ( x.find() ) {
+			return new BindingList( c, x );
+		} else {
+			return EmptyImmutableList.exemplar;
+		}
+	}
+
+	public static final AllMatchesProc ALL_MATCHES_PROC = new AllMatchesProc();
+
+}
