@@ -7,8 +7,9 @@ import java.math.BigInteger;
 
 public class BigIntegerNum extends IntegralNum {
 
-	final private BigInteger bigInteger;
 
+	private static final long serialVersionUID = 3173959050725126887L;
+	final private BigInteger bigInteger;
 
 	public BigIntegerNum( BigInteger bigInteger ) {
 		this.bigInteger = bigInteger;
