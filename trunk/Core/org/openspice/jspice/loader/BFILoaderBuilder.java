@@ -23,16 +23,18 @@ import org.openspice.jspice.datatypes.proc.Nullary0FastProc;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.tools.ReaderWriterTools;
 import org.openspice.vfs.VFile;
-import java.lang.ref.SoftReference;
 
 import BFI.BFI;
+
+import java.lang.ref.SoftReference;
+
 
 public class BFILoaderBuilder extends ValueLoaderBuilder {
 
 	static final class StringRef {
 
 		final VFile file;
-		SoftReference ref = null;
+		SoftReference< String > ref = null;
 
 		public StringRef( final VFile _file ) {
 			this.file = _file;
@@ -40,7 +42,7 @@ public class BFILoaderBuilder extends ValueLoaderBuilder {
 
 		public String fetch() {
 			final String s = ReaderWriterTools.readerToString( this.file.readContents() );
-			ref = new SoftReference( s );
+			ref = new SoftReference< String >( s );
 			return s;
 		}
 
