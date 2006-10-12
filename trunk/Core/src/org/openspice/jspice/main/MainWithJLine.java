@@ -18,10 +18,15 @@
  */
 package org.openspice.jspice.main;
 
-import jline.*;
 
 import java.io.File;
 import java.io.IOException;
+
+import jline.Completor;
+import jline.ConsoleReader;
+import jline.ConsoleReaderInputStream;
+import jline.History;
+import jline.MultiCompletor;
 
 import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.main.jline_stuff.PragmaCompletor;
