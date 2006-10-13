@@ -27,7 +27,7 @@ import org.openspice.jspice.main.jline_stuff.PrefixFilterAccumulator;
 import org.openspice.jspice.main.pragmas.*;
 import org.openspice.jspice.namespace.NameSpaceManager;
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.jspice.tools.Print;
+import org.openspice.tools.Print;
 
 import java.util.*;
 

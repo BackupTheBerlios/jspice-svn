@@ -19,7 +19,7 @@
 package org.openspice.jspice.main;
 
 import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.tools.Print;
+import org.openspice.tools.Print;
 
 import java.net.URL;
 import java.net.MalformedURLException;

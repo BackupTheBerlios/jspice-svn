@@ -26,15 +26,14 @@ import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.conf.InventoryConf;
 import org.openspice.jspice.conf.LoaderBuilderRecord;
 import org.openspice.jspice.conf.StaticConf;
-import org.openspice.jspice.tools.Print;
 import org.openspice.jspice.main.jline_stuff.PrefixFilterAccumulator;
 import org.openspice.jspice.main.manual.FileManual;
 import org.openspice.jspice.main.manual.Manual;
 import org.openspice.jspice.main.pragmas.StylePragma;
 import org.openspice.tools.ImmutableSetOfBoolean;
+import org.openspice.tools.Print;
 import org.openspice.vfs.VFile;
 import org.openspice.vfs.VFolder;
-import org.openspice.vfs.VVolume;
 import org.openspice.vfs.file.FileVVolume;
 
 import java.io.File;
@@ -153,7 +152,7 @@ public final class AppDynamicConf implements DynamicConf {
 	}
 
 	public final VFolder lookupInventoryNickname( final String nickname ) {
-		final VVolume root = new FileVVolume( new File( "/" )  );
+		final FileVVolume root = new FileVVolume( new File( "/" )  );
 		if ( "standard".equals( nickname ) ) {
 			return root.getVFolderFromPath( "usr/local/jspice/inventory" );
 		} else if ( "local".equals( nickname ) ) {
