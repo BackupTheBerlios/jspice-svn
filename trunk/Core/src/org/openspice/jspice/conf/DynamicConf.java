@@ -21,7 +21,7 @@ package org.openspice.jspice.conf;
 
 import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.class_builder.JSpiceClassLoader;
-import org.openspice.jspice.main.Print;
+import org.openspice.jspice.tools.Print;
 import org.openspice.jspice.main.jline_stuff.PrefixFilterAccumulator;
 import org.openspice.jspice.main.manual.FileManual;
 import org.openspice.jspice.main.manual.Manual;
