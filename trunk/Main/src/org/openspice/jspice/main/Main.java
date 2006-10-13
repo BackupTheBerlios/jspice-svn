@@ -20,8 +20,9 @@
 package org.openspice.jspice.main;
 
 import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.conf.DynamicConf;
+import org.openspice.jspice.conf.StaticConf;
+import org.openspice.jspice.main.conf.AppDynamicConf;
 import org.openspice.jspice.tools.Print;
 import org.openspice.tools.ImmutableSetOfBoolean;
 import org.openspice.vfs.VFolder;
@@ -39,7 +40,7 @@ public class Main extends AbsMain {
 	}
 
 	protected void init( final CmdLineOptions cmd ) {
-		this.jspice_conf = new DynamicConf();
+		this.jspice_conf = new AppDynamicConf();
 		if ( cmd.personal ) {
 			//todo: substitute standard strings.
 			final VFolderRef personal_inv = this.jspice_conf.getUserHome().getVFolderRef().getVFolderRefFromPath( ".jspice/inventory/" );

@@ -19,6 +19,7 @@
 package org.openspice.jspice.main;
 
 import org.openspice.jspice.conf.DynamicConf;
+import org.openspice.jspice.main.conf.AppDynamicConf;
 import org.openspice.jspice.vm_and_compiler.VM;
 
 import java.io.StringReader;
@@ -29,7 +30,7 @@ public class StringInterpreter {
 	DynamicConf jspice_conf;
 
 	public StringInterpreter() {
-		this.jspice_conf = new DynamicConf();
+		this.jspice_conf = new AppDynamicConf();
 	}
 
 	public List interpret( final String s ) {

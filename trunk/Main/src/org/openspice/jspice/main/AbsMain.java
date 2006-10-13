@@ -19,7 +19,7 @@
 package org.openspice.jspice.main;
 
 import org.openspice.jspice.conf.StaticConf;
-import org.openspice.jspice.conf.DynamicConf;
+import org.openspice.jspice.main.conf.AppDynamicConf;
 
 import java.util.logging.Logger;
 
@@ -35,7 +35,7 @@ public abstract class AbsMain {
 		if ( cmd.version ) {
 			StartVersion.printVersion( "JSpice Version %p.%p.%p" );
 		} else if ( cmd.help ) {
-			new Pragma( new DynamicConf(), "help jspice" ).perform();
+			new Pragma( new AppDynamicConf(), "help jspice" ).perform();
 		} else {
 			this.startUp( cmd );
 		}
