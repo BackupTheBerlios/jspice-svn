@@ -148,11 +148,11 @@ public final class AppDynamicConf implements DynamicConf {
 	}
 
 
-	final String getInventoryConfNam() {
+	public final String getInventoryConfNam() {
 		return StaticConf.INVENTORY_NAM;
 	}
 
-	final VFolder lookupInventoryNickname( final String nickname ) {
+	public final VFolder lookupInventoryNickname( final String nickname ) {
 		final VVolume root = new FileVVolume( new File( "/" )  );
 		if ( "standard".equals( nickname ) ) {
 			return root.getVFolderFromPath( "usr/local/jspice/inventory" );

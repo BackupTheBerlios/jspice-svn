@@ -24,6 +24,7 @@ import org.mortbay.http.handler.*;
 import org.mortbay.util.MultiException;
 import org.openspice.jspice.boxes.CommandLineBoxServlet;
 import org.openspice.jspice.conf.DynamicConf;
+import org.openspice.jspice.tools.Hooks;
 import org.openspice.vfs.file.FileVFolder;
 
 import java.io.File;

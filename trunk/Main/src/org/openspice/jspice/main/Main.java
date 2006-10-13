@@ -23,6 +23,7 @@ import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.main.conf.AppDynamicConf;
+import org.openspice.jspice.tools.Hooks;
 import org.openspice.jspice.tools.Print;
 import org.openspice.tools.ImmutableSetOfBoolean;
 import org.openspice.vfs.VFolder;

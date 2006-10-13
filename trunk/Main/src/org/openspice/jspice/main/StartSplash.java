@@ -25,6 +25,8 @@ import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.openspice.jspice.tools.Hooks;
+
 /**
  * Code based on article in http://www.randelshofer.ch/oop/javasplash/javasplash.html
  * Title: How to do a fast Splash screen in Java
