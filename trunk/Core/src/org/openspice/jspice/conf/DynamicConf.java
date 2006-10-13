@@ -61,4 +61,8 @@ public interface DynamicConf {
 
 	public abstract JSpiceClassLoader getClassLoader();
 
+	public abstract String getInventoryConfNam();
+
+	public abstract VFolder lookupInventoryNickname(String value);
+
 }

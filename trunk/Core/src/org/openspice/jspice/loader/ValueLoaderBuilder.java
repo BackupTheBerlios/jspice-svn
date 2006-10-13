@@ -18,14 +18,11 @@
  */
 package org.openspice.jspice.loader;
 
-import org.openspice.jspice.main.conf.AppDynamicConf;
 import org.openspice.jspice.namespace.NameSpace;
 import org.openspice.jspice.alert.Alert;
 import org.openspice.vfs.VItem;
 import org.openspice.vfs.VFile;
 import org.openspice.vfs.VFolder;
-
-import java.io.File;
 import java.io.IOException;
 
 public abstract class ValueLoaderBuilder extends LoaderBuilder {

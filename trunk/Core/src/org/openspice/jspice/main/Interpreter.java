@@ -19,6 +19,7 @@
 package org.openspice.jspice.main;
 
 import org.openspice.jspice.expr.Expr;
+import org.openspice.jspice.tools.Hooks;
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.resolve.Resolver;
 import org.openspice.jspice.alert.Alert;

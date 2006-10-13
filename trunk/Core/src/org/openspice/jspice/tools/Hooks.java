@@ -16,20 +16,21 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.loader;
+package org.openspice.jspice.tools;
 
-import org.openspice.jspice.namespace.NameSpace;
+import java.util.Observable;
 
-public abstract class ObjectLoaderBuilder extends LoaderBuilder {
+public class Hooks {
 
-//	protected ObjectLoaderBuilder( final JSpiceConf jconf ) {
-//		super( jconf );
-//	}
-
-	public final Loader newLoader( final NameSpace current_ns ) {
-		return this.newObjectLoader( current_ns );
+	public static class SimpleObservable extends Observable {
+		public void ping() {
+			this.setChanged();
+			this.notifyObservers();
+		}
 	}
 
-	public abstract ObjectLoader newObjectLoader( final NameSpace current_ns );
+	public static final SimpleObservable READY = new SimpleObservable();
+
+	public static final SimpleObservable SHUTDOWN = new SimpleObservable();
 
 }

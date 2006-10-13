@@ -17,6 +17,7 @@
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 package org.openspice.jspice.vm_and_compiler;
+
 import org.openspice.jspice.lib.AbsentLib;
 import org.openspice.jspice.lib.CastLib;
 import org.openspice.tools.BooleanTools;
@@ -30,7 +31,7 @@ import org.openspice.jspice.datatypes.elements.XmlElement;
 import org.openspice.jspice.namespace.Var;
 import org.openspice.jspice.namespace.Location;
 import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.main.FailException;
+import org.openspice.jspice.tools.FailException;
 import org.openspice.jspice.built_in.ShortCuts;
 
 import java.util.*;

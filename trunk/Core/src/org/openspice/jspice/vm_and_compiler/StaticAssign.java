@@ -23,9 +23,8 @@ import org.openspice.jspice.expr.cases.*;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.main.FailException;
+import org.openspice.jspice.tools.FailException;
 
 final class StaticAssign extends ExprVisitor.DefaultUnreachable implements Cloneable {
 	final Petrifier petrifier;
