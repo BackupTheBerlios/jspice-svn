@@ -1,7 +1,5 @@
 package org.openspice.jspice.alert;
 
-import org.openspice.jspice.tools.PrintTools;
-
 /**
  *	JSpice, an Open Spice interpreter and library.
  *	Copyright (C) 2003, Stephen F. K. Leach
@@ -26,30 +24,30 @@ class Culprit {
 	final String desc;
 	final Object arg;
 	final boolean typed;
-	final boolean print;
+	final ShowCulprit showCulprit;
 
-	Culprit( final String desc1, final Object arg1, final boolean typed1, final boolean _print ) {
+	Culprit( final String desc1, final Object arg1, final boolean typed1, final ShowCulprit showCulprit ) {
 		this.desc = desc1;
 		this.arg = arg1;
 		this.typed = typed1;
-		this.print = _print;
+		this.showCulprit = showCulprit;
 	}
 
-	Culprit( final String desc1, final Object arg1 ) {
-		this( desc1, arg1, false, false );
+	Culprit( final String desc1, final Object arg1, final ShowCulprit s ) {
+		this( desc1, arg1, false, s );
 	}
 
-	static Culprit hint( final String hint_text ) {
-		return new Culprit( "hint", hint_text, false, true );
+	static Culprit hint( final String hint_text, final ShowCulprit s ) {
+		return new Culprit( "hint", hint_text, false, s );
 	}
 
-	static Culprit typedCulprit( final String desc, final Object arg ) {
-		return new Culprit( desc, arg, true, false );
+	static Culprit typedCulprit( final String desc, final Object arg, final ShowCulprit s ) {
+		return new Culprit( desc, arg, true, s );
 	}
 
 	String keepShort( final Object x, final int mx_len, final int filemxlen ) {
 		final int mxlen = mx_len > 5 ? mx_len : 5;
-		final String s = this.print ? ( "" + x ) : PrintTools.showToString( x );
+		final String s = this.showCulprit.showToString( x );
 		if ( s.length() > mxlen ) {
 			if ( s.charAt( 0 ) == '/' && s.length() < filemxlen ) {
 				return s;
@@ -64,8 +62,8 @@ class Culprit {
 	static final int maxlen = 60;
 	static final int filemaxlen = 256;
 
-	String keepShort( Object x ) {
-		return keepShort( x, maxlen, filemaxlen );
+	String keepShort( final Object x ) {
+		return this.keepShort( x, maxlen, filemaxlen );
 	}
 
 	static final int min_pad_width = 8;

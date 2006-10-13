@@ -21,26 +21,6 @@ package org.openspice.jspice.alert;
 
 import java.util.List;
 import java.util.Iterator;
-import java.util.LinkedList;
-
-class AlertBase {
-
-	private int index = 0;								//	index into list of culprits.
-	private LinkedList< Culprit > culprits = new LinkedList< Culprit >();
-
-	protected void add( final Culprit culprit ) {
-		this.culprits.add( this.index++, culprit );
-	}
-
-	protected Iterator culprit_iterator() {
-		return this.culprits.iterator();
-	}
-
-	public void resetIndex() {
-		this.index = 0;
-	}
-
-}
 
 public final class Alert extends AlertBase {
 
@@ -105,12 +85,12 @@ public final class Alert extends AlertBase {
 			null
 		);
 		if ( p != null ) {
-			this.add( new Culprit( "Phase", p, false, true ) );
+			this.add( new Culprit( "Phase", p, false, this.getPrintCulprit() ) );
 		}
 	}
 
 	public Alert culprit( final String desc, final Object arg ) {
-		this.add( new Culprit( desc, arg ) );
+		this.add( new Culprit( desc, arg, this.getShowCulprit() ) );
 		return this;
 	}
 
@@ -127,12 +107,12 @@ public final class Alert extends AlertBase {
 	}
 
 	public Alert hint( final String hint_text ) {
-		this.add( Culprit.hint( hint_text ) );
+		this.add( Culprit.hint( hint_text, this.getPrintCulprit() ) );
 		return this;
 	}
 
 	public Alert typedCulprit( final String desc, final Object arg ) {
-		this.add( Culprit.typedCulprit( desc, arg ) );
+		this.add( Culprit.typedCulprit( desc, arg, this.getShowCulprit() ) );
 		return this;
 	}
 
