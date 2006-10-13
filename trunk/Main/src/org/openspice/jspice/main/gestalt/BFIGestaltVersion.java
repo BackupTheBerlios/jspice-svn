@@ -18,7 +18,6 @@
  */
 package org.openspice.jspice.main.gestalt;
 
-import BFI.BFI;
 import BFI.BFIVersion;
 
 public class BFIGestaltVersion extends Gestalt.MultiPartGestaltVersion {
@@ -28,7 +27,7 @@ public class BFIGestaltVersion extends Gestalt.MultiPartGestaltVersion {
 	}
 
 	public int[] parts() {
-		return BFI.BFIVersion.VERSION;
+		return BFIVersion.VERSION;
 	}
 
 	public static final BFIGestaltVersion VERSION = new BFIGestaltVersion();

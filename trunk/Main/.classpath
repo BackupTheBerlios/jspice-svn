@@ -2,5 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BFI"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JLine"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/TADS2"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Tools"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/Core/jarfiles/org.mortbay.jetty.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
