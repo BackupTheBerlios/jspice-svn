@@ -19,7 +19,7 @@
 
 package org.openspice.jspice.conf;
 
-import org.openspice.jspice.main.Print;
+import org.openspice.jspice.tools.Print;
 
 import java.net.URLEncoder;
 import java.net.URLDecoder;
@@ -30,24 +30,24 @@ public abstract class StaticConf {
 //
 	public static final String STD_LIB = "org.openspice.stdlib";
 
-	static final String licence_nam = "LICENSE";  			//	U.S. spelling for licence, not a spelling mistake.
+	public static final String licence_nam = "LICENSE";  			//	U.S. spelling for licence, not a spelling mistake.
 
-	static final String CONF_EXT = "conf";
-	static final String SPICE_EXT = "spi";//	---- Versioning ----
+	public static final String CONF_EXT = "conf";
+	public static final String SPICE_EXT = "spi";//	---- Versioning ----
 //
 //	final static private String major_version = "0";
 //	final static private String minor_version = "4";
 //	final static private String incremental_version = "17";
 
 	public static final String ZIP_EXT = "zip";
-	static final String TXT_EXT = "txt";
+	public static final String TXT_EXT = "txt";
 	public static final String PKG_EXT = "jpkg";
 	public static final String AUTO_EXT = "auto";
 	public static final String SYMTAB_EXT = "symtab";
 
-	static final String JSPICE_CONF_NAM = "jspice";
-	static final String INVENTORY_NAM = "inventory";
-	static final String std_inventory_name = INVENTORY_NAM;
+	static public final String JSPICE_CONF_NAM = "jspice";
+	static public final String INVENTORY_NAM = "inventory";
+	static public final String std_inventory_name = INVENTORY_NAM;
 
 	public static final char VFILE_SEPARATOR = '.';
 	public static final char VFOLDER_LOGICAL_SEPARATOR = '.';
@@ -57,11 +57,11 @@ public abstract class StaticConf {
 	public static final char QUERY_CHAR = '?';
 	public static final boolean TRACK_BACK_ENABLED = false;
 
-	static final String load_file_nam = "load";
-	static final String load_folder_nam = load_file_nam;
-	static final String load_conf_file_name = load_folder_nam + VFILE_SEPARATOR + StaticConf.CONF_EXT;
-	static final String load_spice_file_nam = load_folder_nam;
-	static final String load_spice_file_name = load_spice_file_nam + VFILE_SEPARATOR + StaticConf.SPICE_EXT;
+	static public final String load_file_nam = "load";
+	static public final String load_folder_nam = load_file_nam;
+	static public final String load_conf_file_name = load_folder_nam + VFILE_SEPARATOR + StaticConf.CONF_EXT;
+	static public final String load_spice_file_nam = load_folder_nam;
+	static public final String load_spice_file_name = load_spice_file_nam + VFILE_SEPARATOR + StaticConf.SPICE_EXT;
 
 	public static String version() {
 		return JSpiceGestaltVersion.VERSION.version();

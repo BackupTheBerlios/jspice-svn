@@ -19,8 +19,8 @@
 package org.openspice.jspice.namespace;
 
 import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.conf.LoadConf;
 import org.openspice.jspice.conf.DynamicConf;
+import org.openspice.jspice.conf.LoadConf;
 import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.main.SuperLoader;
 import org.openspice.jspice.main.Print;

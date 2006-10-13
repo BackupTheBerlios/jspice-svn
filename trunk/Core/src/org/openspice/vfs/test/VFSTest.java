@@ -24,6 +24,7 @@ import org.openspice.vfs.VVolume;
 import org.openspice.vfs.zip.ZipVVolume;
 import org.openspice.vfs.file.FileVFolder;
 import org.openspice.vfs.file.FileVVolume;
+import org.openspice.jspice.main.conf.AppDynamicConf;
 import org.openspice.jspice.main.test.SpiceTestBase;
 import org.openspice.jspice.conf.DynamicConf;
 
@@ -68,7 +69,7 @@ public class VFSTest extends SpiceTestBase {
 //	}
 
 	public void testFileFVS() {
-		final DynamicConf jconf = new DynamicConf();
+		final DynamicConf jconf = new AppDynamicConf();
 		final VFolder home = jconf.getHome();
 		assertEquals( home.getVFile( "jspice", "conf" ).getNam(), "jspice" );
 	}

@@ -16,24 +16,12 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.loader;
+package org.openspice.jspice.main.manual;
 
-import org.openspice.jspice.main.conf.AppDynamicConf;
-import org.openspice.jspice.namespace.NameSpace;
+public interface SearchResult {
 
-import java.io.File;
-import java.io.IOException;
+	SearchPhrase searchHint();
 
-public abstract class ObjectLoaderBuilder extends LoaderBuilder {
-
-//	protected ObjectLoaderBuilder( final JSpiceConf jconf ) {
-//		super( jconf );
-//	}
-
-	public final Loader newLoader( final NameSpace current_ns ) {
-		return this.newObjectLoader( current_ns );
-	}
-
-	public abstract ObjectLoader newObjectLoader( final NameSpace current_ns );
+	ManualPage manualPage();
 
 }

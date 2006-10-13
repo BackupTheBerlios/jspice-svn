@@ -1,6 +1,6 @@
 /**
  *	JSpice, an Open Spice interpreter and library.
- *	Copyright (C) 2003, Stephen F. K. Leach
+ *	Copyright (C) 2005, Stephen F. K. Leach
  *
  * 	This program is free software; you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by
@@ -16,24 +16,20 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.loader;
+package org.openspice.jspice.main.gestalt;
 
-import org.openspice.jspice.main.conf.AppDynamicConf;
-import org.openspice.jspice.namespace.NameSpace;
+import BFI.BFIVersion;
 
-import java.io.File;
-import java.io.IOException;
+public class BFIGestaltVersion extends Gestalt.MultiPartGestaltVersion {
 
-public abstract class ObjectLoaderBuilder extends LoaderBuilder {
-
-//	protected ObjectLoaderBuilder( final JSpiceConf jconf ) {
-//		super( jconf );
-//	}
-
-	public final Loader newLoader( final NameSpace current_ns ) {
-		return this.newObjectLoader( current_ns );
+	public String title() {
+		return "BFI";
 	}
 
-	public abstract ObjectLoader newObjectLoader( final NameSpace current_ns );
+	public int[] parts() {
+		return BFIVersion.VERSION;
+	}
+
+	public static final BFIGestaltVersion VERSION = new BFIGestaltVersion();
 
 }

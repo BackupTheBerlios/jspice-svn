@@ -19,7 +19,8 @@
 package org.openspice.jspice.conf;
 
 import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.main.Print;
+import org.openspice.jspice.main.conf.AppDynamicConf;
+import org.openspice.jspice.tools.Print;
 import org.openspice.vfs.VFolder;
 import org.openspice.vfs.VFile;
 import org.openspice.vfs.VFSTools;
@@ -104,7 +105,7 @@ public final class InventoryConf {
 
 	private final List< VFolder > root_folder_list = new ArrayList< VFolder >();
 
-	InventoryConf( final DynamicConf _jspice_conf, final VFolder _inventory_path ) {
+	public InventoryConf( final DynamicConf _jspice_conf, final VFolder _inventory_path ) {
 		assert _jspice_conf != null && _inventory_path != null;
 		this.jspice_conf = _jspice_conf;
 		this.inventory_path = _inventory_path;
@@ -116,7 +117,7 @@ public final class InventoryConf {
 	}
 
 	//	package level visibility is deliberate.
-	void setNickname( final String nickname ) {
+	public void setNickname( final String nickname ) {
 		this.nickname = nickname;
 	}
 
@@ -124,7 +125,7 @@ public final class InventoryConf {
 		return this.root_folder_list;
 	}
 
-	final String getUniqueID() {
+	public final String getUniqueID() {
 		return this.inventory_path.getUniqueID();
 	}
 
@@ -132,7 +133,7 @@ public final class InventoryConf {
 		return this.inventory_path;
 	}
 
-	final void loadInventory() {
+	public final void loadInventory() {
 		final VFile inventory_conf = this.inventory_path.getVFile( this.jspice_conf.getInventoryConfNam(), StaticConf.CONF_EXT );
 //		final File inventory_conf = new File( this.inventory_path, this.jspice_conf.getInventoryConfFilename() );
 		final BufferedReader b = new BufferedReader( inventory_conf.readContents() );
@@ -183,7 +184,7 @@ public final class InventoryConf {
 		}
 	}
 
-	VFolder locatePackageFolder( final String external_pkg_name ) {
+	public VFolder locatePackageFolder( final String external_pkg_name ) {
 		final String pkg_name = StaticConf.packageNameToNam( external_pkg_name );
 		VFolder answer = null;
 		for ( Iterator it = this.root_folder_list.iterator(); it.hasNext(); ) {

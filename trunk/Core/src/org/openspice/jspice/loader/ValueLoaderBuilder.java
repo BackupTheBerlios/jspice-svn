@@ -18,8 +18,8 @@
  */
 package org.openspice.jspice.loader;
 
+import org.openspice.jspice.main.conf.AppDynamicConf;
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.alert.Alert;
 import org.openspice.vfs.VItem;
 import org.openspice.vfs.VFile;

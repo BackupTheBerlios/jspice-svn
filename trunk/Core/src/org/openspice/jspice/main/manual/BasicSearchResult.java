@@ -16,18 +16,24 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.conf;
+package org.openspice.jspice.main.manual;
 
-public class DynamicConfMixin {
+public class BasicSearchResult implements SearchResult {
 
-	protected final DynamicConf dyn_conf;
+	final SearchPhrase term;
+	final ManualPage page;
 
-	protected DynamicConfMixin( final DynamicConf dconf ) {
-		this.dyn_conf = dconf;
+	public SearchPhrase searchHint() {
+		return term;
 	}
 
-	public DynamicConf getDynamicConf() {
-		return this.dyn_conf;
+	public ManualPage manualPage() {
+		return page;
+	}
+
+	public BasicSearchResult( SearchPhrase term, ManualPage page ) {
+		this.term = term;
+		this.page = page;
 	}
 
 }

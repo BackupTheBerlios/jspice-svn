@@ -16,24 +16,34 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.loader;
+package org.openspice.jspice.main.jline_stuff;
 
-import org.openspice.jspice.main.conf.AppDynamicConf;
-import org.openspice.jspice.namespace.NameSpace;
+import java.util.List;
+import java.util.Iterator;
+import java.util.Collection;
 
-import java.io.File;
-import java.io.IOException;
+public class PrefixFilterAccumulator {
 
-public abstract class ObjectLoaderBuilder extends LoaderBuilder {
+	final String prefix;
+	final List acc_list;
 
-//	protected ObjectLoaderBuilder( final JSpiceConf jconf ) {
-//		super( jconf );
-//	}
-
-	public final Loader newLoader( final NameSpace current_ns ) {
-		return this.newObjectLoader( current_ns );
+	public PrefixFilterAccumulator( final String prefix, final List acc_list ) {
+		this.prefix = prefix;
+		this.acc_list = acc_list;
 	}
 
-	public abstract ObjectLoader newObjectLoader( final NameSpace current_ns );
+	public void add( final String candidate ) {
+//		System.err.println( "does '" + candidate + "' start with '" + this.prefix + "' = " +  candidate.startsWith( this.prefix ) );
+		if ( candidate.startsWith( this.prefix ) ) {
+			this.acc_list.add( candidate );
+		}
+	}
+
+	public void addAll( final Collection collection ) {
+		for ( Iterator it = collection.iterator(); it.hasNext(); ) {
+			final String c = (String)it.next();
+			this.add( c );
+		}
+	}
 
 }
