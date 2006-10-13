@@ -23,7 +23,7 @@ import org.openspice.jspice.expr.cases.NameExpr;
 import org.openspice.jspice.expr.cases.AnonExpr;
 import org.openspice.jspice.namespace.Location;
 import org.openspice.jspice.namespace.NameExprVisitor;
-import org.openspice.jspice.tools.Print;
+import org.openspice.tools.Print;
 
 public final class PetrifyAssign extends NameExprVisitor {
 

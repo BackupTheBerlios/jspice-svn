@@ -22,7 +22,7 @@ import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.conf.InventoryConf;
 import org.openspice.jspice.datatypes.ImmutableList;
-import org.openspice.jspice.tools.Print;
+import org.openspice.tools.Print;
 import org.openspice.vfs.VFolder;
 import org.openspice.vfs.VFile;
 

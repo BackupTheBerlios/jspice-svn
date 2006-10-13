@@ -20,7 +20,7 @@ package org.openspice.jspice.conf;
 
 import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.conf.DynamicConf;
-import org.openspice.jspice.tools.Print;
+import org.openspice.tools.Print;
 import org.openspice.vfs.VFolder;
 import org.openspice.vfs.VFile;
 import org.openspice.vfs.VFSTools;

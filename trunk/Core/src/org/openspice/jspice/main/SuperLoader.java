@@ -19,7 +19,6 @@
 package org.openspice.jspice.main;
 
 import org.openspice.jspice.conf.DynamicConf;
-import org.openspice.jspice.tools.Print;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.namespace.NameSpaceManager;
 import org.openspice.jspice.namespace.NameSpace;
@@ -30,6 +29,7 @@ import org.openspice.jspice.alert.AlertException;
 import org.openspice.jspice.loader.LoaderBuilder;
 import org.openspice.jspice.loader.Accumulator;
 import org.openspice.jspice.loader.ValueLoaderBuilder;
+import org.openspice.tools.Print;
 import org.openspice.vfs.VItem;
 
 import java.io.File;

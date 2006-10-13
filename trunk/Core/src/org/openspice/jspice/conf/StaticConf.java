@@ -19,7 +19,7 @@
 
 package org.openspice.jspice.conf;
 
-import org.openspice.jspice.tools.Print;
+import org.openspice.tools.Print;
 
 import java.net.URLEncoder;
 import java.net.URLDecoder;

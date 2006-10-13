@@ -23,7 +23,7 @@ import org.openspice.jspice.namespace.Var;
 import org.openspice.jspice.namespace.Props;
 import org.openspice.jspice.namespace.NameSpace;
 import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.tools.Print;
+import org.openspice.tools.Print;
 
 import java.util.TreeMap;
 import java.util.Iterator;

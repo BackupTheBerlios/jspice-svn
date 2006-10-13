@@ -19,7 +19,7 @@
 package org.openspice.jspice.namespace;
 
 import org.openspice.jspice.expr.cases.LambdaExpr;
-import org.openspice.jspice.tools.Print;
+import org.openspice.tools.Print;
 
 public abstract class Var {
 	Props props;							//	Forward declarations mean this cannot be final.

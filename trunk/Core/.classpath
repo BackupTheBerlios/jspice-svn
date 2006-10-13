@@ -12,5 +12,7 @@
 	<classpathentry kind="lib" path="jarfiles/javax.servlet.jar"/>
 	<classpathentry kind="lib" path="jarfiles/commons-net-1.2.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="src" path="/VFS"/>
+	<classpathentry kind="src" path="/Alert"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

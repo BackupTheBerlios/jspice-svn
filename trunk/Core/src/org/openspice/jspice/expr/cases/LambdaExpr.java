@@ -30,7 +30,7 @@ import org.openspice.jspice.namespace.Props;
 import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.lift.LiftFactory;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.tools.Print;
+import org.openspice.tools.Print;
 
 import java.util.List;
 import java.util.ArrayList;

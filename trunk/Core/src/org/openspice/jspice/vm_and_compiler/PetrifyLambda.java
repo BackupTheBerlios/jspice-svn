@@ -23,7 +23,7 @@ import org.openspice.jspice.expr.cases.LambdaExprForPetrification;
 import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.datatypes.proc.Proc;
-import org.openspice.jspice.tools.Print;
+import org.openspice.tools.Print;
 
 class Closure extends Proc {
 	final Proc proc;
