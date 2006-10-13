@@ -63,12 +63,6 @@ public class VFSTest extends TestCase {
 //		scan( folder );
 //	}
 
-	public void testFileFVS() {
-		final DynamicConf jconf = new AppDynamicConf();
-		final VFolder home = jconf.getHome();
-		assertEquals( home.getVFile( "jspice", "conf" ).getNam(), "jspice" );
-	}
-
 	public void testZipVFS() throws IOException {
 		assertTrue( "check zip file exists", new File( "jspice.zip").exists() );
 		final VVolume vvol = new ZipVVolume( new ZipFile( "jspice.zip" ) );
