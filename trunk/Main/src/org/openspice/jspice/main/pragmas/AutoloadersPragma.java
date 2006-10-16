@@ -20,6 +20,8 @@ package org.openspice.jspice.main.pragmas;
 
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.conf.LoaderBuilderRecord;
+import org.openspice.jspice.main.Pragma;
+import org.openspice.jspice.main.PragmaAction;
 
 import java.util.Iterator;
 

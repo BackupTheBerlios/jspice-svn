@@ -22,6 +22,9 @@ package org.openspice.jspice.main.pragmas;
 import java.util.List;
 import java.util.Iterator;
 
+import org.openspice.jspice.main.Pragma;
+import org.openspice.jspice.main.PragmaAction;
+
 public class EntitiesPragma implements PragmaAction {
 
 	//	List.

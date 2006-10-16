@@ -1,6 +1,8 @@
 package org.openspice.jspice.main.pragmas;
 
 import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.main.Pragma;
+import org.openspice.jspice.main.PragmaAction;
 import org.openspice.tools.Print;
 
 public class DebugPragma implements PragmaAction {

@@ -18,11 +18,8 @@
  */
 package org.openspice.jspice.main;
 
-import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.main.conf.AppDynamicConf;
-import org.openspice.jspice.main.pragmas.Pragma;
-
-import java.util.logging.Logger;
+import org.openspice.jspice.main.pragmas.RegisterPragmas;
 
 public abstract class AbsMain {
 
@@ -43,5 +40,10 @@ public abstract class AbsMain {
 	}
 
 	protected abstract void startUp( final CmdLineOptions cmd );
+	
+	static {
+		//	Bind all pragmas.
+		RegisterPragmas.register();
+	}
 
 }

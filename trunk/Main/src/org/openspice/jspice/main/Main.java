@@ -23,6 +23,7 @@ import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.main.conf.AppDynamicConf;
+import org.openspice.jspice.main.pragmas.RegisterPragmas;
 import org.openspice.jspice.tools.Hooks;
 import org.openspice.tools.ImmutableSetOfBoolean;
 import org.openspice.tools.Print;
@@ -68,6 +69,11 @@ public class Main extends AbsMain {
 		this.init( cmd );
 		this.interpreter.interpret( cmd.prompt != null ? cmd.prompt : this.jspice_conf.getPrompt() );
 		this.shutdown();
+	}
+	
+	
+	static {
+		RegisterPragmas.register();
 	}
 
 }

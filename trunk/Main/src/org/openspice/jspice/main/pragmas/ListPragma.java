@@ -18,6 +18,8 @@
  */
 package org.openspice.jspice.main.pragmas;
 
+import org.openspice.jspice.main.Pragma;
+import org.openspice.jspice.main.PragmaAction;
 import org.openspice.jspice.namespace.NameSpace;
 import org.openspice.jspice.namespace.Var;
 import org.openspice.jspice.namespace.Location;

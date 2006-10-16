@@ -22,6 +22,8 @@ import org.openspice.vfs.file.FileVVolume;
 import org.openspice.vfs.VFile;
 import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.main.Interpreter;
+import org.openspice.jspice.main.Pragma;
+import org.openspice.jspice.main.PragmaAction;
 
 import java.util.List;
 import java.util.Iterator;
