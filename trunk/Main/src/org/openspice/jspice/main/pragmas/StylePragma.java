@@ -24,7 +24,7 @@ import org.openspice.jspice.alert.Alert;
 import java.util.List;
 import java.util.Iterator;
 
-public class StylePragma {
+public class StylePragma implements PragmaAction {
 
 	public void enable( final List args ) {
 		if ( args.isEmpty() )  {
@@ -52,5 +52,16 @@ public class StylePragma {
 			}
 		}
 	}
+
+	public void doAction( final Pragma pragma ) {
+		this.enable( pragma.getArgList() );
+	}
+
+	public String[] names() {
+		return new String[] { "style" };
+	}
+
+	
+
 
 }

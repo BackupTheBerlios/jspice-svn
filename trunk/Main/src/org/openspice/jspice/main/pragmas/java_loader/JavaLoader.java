@@ -18,7 +18,6 @@
  */
 package org.openspice.jspice.main.pragmas.java_loader;
 
-import org.openspice.jspice.main.pragmas.JavaPragma;
 import org.openspice.jspice.main.Interpreter;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.namespace.NameSpace;
@@ -30,9 +29,9 @@ import java.lang.reflect.Method;
 
 public abstract class JavaLoader {
 
-	final JavaPragma parent;
+	final JavaPragmaLoader parent;
 
-	protected JavaLoader( final JavaPragma parent ) {
+	protected JavaLoader( final JavaPragmaLoader parent ) {
 		this.parent = parent;
 	}
 

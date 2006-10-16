@@ -27,7 +27,7 @@ import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.alert.Alert;
 import java.util.*;
 
-public class ListPragma {
+public class ListPragma implements PragmaAction {
 
 	//	This is all fairly yuck.  I should allow comments to be
 	//	associated with variables - not just values.  Otherwise I
@@ -79,6 +79,14 @@ public class ListPragma {
 			}
 			this.summarize( name, value );
 		}
+	}
+
+	public void doAction( final Pragma pragma ) {
+		this.list( pragma.getNameSpace(), pragma.getArgList() );
+	}
+
+	public String[] names() {
+		return new String[] { "list" };
 	}
 
 }

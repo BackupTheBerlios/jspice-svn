@@ -18,7 +18,6 @@
  */
 package org.openspice.jspice.main.pragmas.java_loader;
 
-import org.openspice.jspice.main.pragmas.JavaPragma;
 import org.openspice.jspice.alert.Alert;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -26,7 +25,7 @@ import java.util.ArrayList;
 
 public class MethodJavaLoader extends JavaLoader {
 
-	public MethodJavaLoader( final JavaPragma parent ) {
+	public MethodJavaLoader( final JavaPragmaLoader parent ) {
 		super( parent );
 	}
 

@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Iterator;
 import java.io.File;
 
-public final class LoadPragma {
+public final class LoadPragma implements PragmaAction {
 
 	public void load( final Interpreter interpreter, final List files ) {
 		for ( Iterator it = files.iterator(); it.hasNext(); ) {
@@ -41,5 +41,14 @@ public final class LoadPragma {
 			}
 		}
 	}
+
+	public void doAction(Pragma pragma) {
+		this.load( pragma.getInterpreter(), pragma.getArgList() );
+	}
+
+	public String[] names() {
+		return new String[] { "load" };
+	}
+
 
 }

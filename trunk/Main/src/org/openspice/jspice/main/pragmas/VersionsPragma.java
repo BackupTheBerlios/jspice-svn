@@ -18,24 +18,25 @@
  */
 package org.openspice.jspice.main.pragmas;
 
-import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.main.gestalt.Gestalt;
 
 import java.util.Iterator;
 
-public class VersionsPragma {
-
-	final DynamicConf jspice_conf;
-
-	public VersionsPragma( final DynamicConf jspice_conf ) {
-		this.jspice_conf = jspice_conf;
-	}
+public class VersionsPragma implements PragmaAction {
 
 	public void invoke() {
 		for ( Iterator it = Gestalt.versions().iterator(); it.hasNext(); ) {
 			final Gestalt.GestaltVersion v = (Gestalt.GestaltVersion)it.next();
 			System.out.println( v.format( "%p\t: %p %p" ) );
 		}
+	}
+
+	public void doAction( final Pragma pragma ) {
+		this.invoke();
+	}
+
+	public String[] names() {
+		return new String[] { "version" };
 	}
 
 }

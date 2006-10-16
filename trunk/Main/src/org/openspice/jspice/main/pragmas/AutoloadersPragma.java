@@ -23,16 +23,10 @@ import org.openspice.jspice.conf.LoaderBuilderRecord;
 
 import java.util.Iterator;
 
-public class AutoloadersPragma {
+public class AutoloadersPragma implements PragmaAction {
 
-	final DynamicConf jspice_conf;
-
-	public AutoloadersPragma( DynamicConf jspice_conf ) {
-		this.jspice_conf = jspice_conf;
-	}
-
-	public void list() {
-		for ( Iterator it = this.jspice_conf.getAutoloaders().iterator(); it.hasNext(); ) {
+	private void list( final DynamicConf jspice_conf ) {
+		for ( Iterator it = jspice_conf.getAutoloaders().iterator(); it.hasNext(); ) {
 			final LoaderBuilderRecord r = (LoaderBuilderRecord)it.next();
 			final String extn = r.getExtension();
 			System.out.print( extn );
@@ -45,4 +39,13 @@ public class AutoloadersPragma {
 		}
 	}
 
+	public void doAction( final Pragma pragma ) {
+		this.list( pragma.getDynamicConf() );
+		//new AutoloadersPragma( pragma.getDynamicConf() ).list();
+	}
+	
+	public String[] names() {
+		return new String[] { "autoloaders" };
+	}
+	
 }

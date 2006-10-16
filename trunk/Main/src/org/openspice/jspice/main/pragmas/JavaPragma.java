@@ -18,48 +18,16 @@
  */
 package org.openspice.jspice.main.pragmas;
 
-import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.main.pragmas.java_loader.MethodJavaLoader;
-import org.openspice.jspice.main.pragmas.java_loader.ClassJavaLoader;
-import org.openspice.jspice.main.pragmas.java_loader.JavaLoader;
-import org.openspice.jspice.main.InterpreterMixin;
-import org.openspice.jspice.main.Interpreter;
+import org.openspice.jspice.main.pragmas.java_loader.JavaPragmaLoader;
 
-import java.util.List;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-
-public class JavaPragma extends InterpreterMixin {
-
-	public JavaPragma( Interpreter interpreter ) {
-		super( interpreter );
+public class JavaPragma implements PragmaAction {
+		
+	public void doAction( final Pragma pragma ) {
+		new JavaPragmaLoader( pragma.getInterpreter() ).load( pragma.getArgList() );
 	}
 
-	/**
-	 * Load the method class or package specified into the current package.
-	 * @param args List< String >
-	 */
-	public void load( final List args ) {
-		//	The first argument should be "method", "class" or "package".
-		try {
-			final Iterator it = args.iterator();
-			final String what = ((String)it.next()).intern();
-			JavaLoader j;
-			if ( what == "class" ) {
-				j = new ClassJavaLoader( this );
-			} else if ( what == "method" ) {
-				j = new MethodJavaLoader( this );
-			} else {
-				throw new Alert( "Invalid java scope specifier", "Should be method or class" ).culprit( "scope", what ).mishap();
-			}
-			while ( it.hasNext() ) {
-				final String arg = (String)it.next();
-				j.load( arg );
-			}
-		} catch ( final NoSuchElementException e ) {
-			new Alert( "Invalid java command" ).mishap();
-		}
+	public String[] names() {
+		return new String[] { "java" };
 	}
 
 }

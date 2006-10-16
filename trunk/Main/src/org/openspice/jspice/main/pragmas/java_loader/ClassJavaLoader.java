@@ -18,7 +18,6 @@
  */
 package org.openspice.jspice.main.pragmas.java_loader;
 
-import org.openspice.jspice.main.pragmas.JavaPragma;
 import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.datatypes.proc.Unary1FastProc;
 import org.openspice.jspice.datatypes.proc.Proc;
@@ -31,7 +30,7 @@ import java.util.*;
 
 public class ClassJavaLoader extends JavaLoader {
 
-	public ClassJavaLoader( final JavaPragma parent ) {
+	public ClassJavaLoader( final JavaPragmaLoader parent ) {
 		super( parent );
 	}
 

@@ -18,21 +18,15 @@
  */
 package org.openspice.jspice.main.pragmas;
 
-import org.openspice.jspice.conf.DynamicConf;
 
 import java.util.List;
 import java.util.Iterator;
 
-public class EntitiesPragma {
+public class EntitiesPragma implements PragmaAction {
 
-	final DynamicConf dyn_conf;
-
-	public EntitiesPragma( DynamicConf dconf ) {
-		this.dyn_conf = dconf;
-	}
-
-	public void list( final List args ) {
-		final List list = this.dyn_conf.listEntities( args.isEmpty() ? ".*" : (String)args.get( 0 ) );
+	//	List.
+	public void doAction( final Pragma pragma ) {
+		final List list = pragma.getDynamicConf().listEntities( pragma.getArgList().isEmpty() ? ".*" : (String)pragma.getArgList().get( 0 ) );
 		int count = 0;
 		for ( Iterator it = list.iterator(); it.hasNext(); count++ ) {
 			final String ent = (String)it.next();
@@ -47,4 +41,8 @@ public class EntitiesPragma {
 		}
 	}
 
+	public String[] names( ) {
+		return new String[] { "entities" };
+	}
+	
 }

@@ -16,34 +16,32 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.main;
+package org.openspice.jspice.main.pragmas;
 
 import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.conf.DynamicConf;
+import org.openspice.jspice.main.Interpreter;
 import org.openspice.jspice.main.manual.Manual;
-import org.openspice.jspice.main.manual.ManualPragma;
 import org.openspice.jspice.main.manual.SearchPhrase;
 import org.openspice.jspice.main.jline_stuff.PrefixFilterAccumulator;
-import org.openspice.jspice.main.pragmas.*;
 import org.openspice.jspice.namespace.NameSpaceManager;
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.tools.Print;
 
 import java.util.*;
 
-public class Pragma {
+public class Pragma implements PragmaInterface {
 
 	Interpreter interpreter;				//	may be null .... for limited use .... a design bug ... todo:
 	private final DynamicConf jspice_conf;
 	private final String input_string;
 	private String command;
-	private final List arg_list;
+	private final List< String > arg_list;
 
 	public Pragma( final DynamicConf jconf, final String input_string ) {
 		this.jspice_conf = jconf;
 		this.input_string = input_string;
 		this.command = null;
-		this.arg_list = new ArrayList();
+		this.arg_list = new ArrayList< String >();
 		{
 			final StringTokenizer tok = new StringTokenizer( input_string );
 			while ( tok.hasMoreTokens() ) {
@@ -61,23 +59,36 @@ public class Pragma {
 		this.interpreter = interpreter;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openspice.jspice.main.pragmas.PragmaInterface#getDynamicConf()
+	 */
 	public DynamicConf getDynamicConf() {
 		return this.jspice_conf;
 	}
+	
+	public Interpreter getInterpreter() {
+		return this.interpreter;
+	}
 
+	/* (non-Javadoc)
+	 * @see org.openspice.jspice.main.pragmas.PragmaInterface#getNameSpace()
+	 */
 	public NameSpace getNameSpace() {
 		return this.interpreter.getCurrentNameSpace();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openspice.jspice.main.pragmas.PragmaInterface#getNameSpaceManager()
+	 */
 	public NameSpaceManager getNameSpaceManager() {
 		return this.interpreter.getCurrentNameSpace().getNameSpaceManager();
 	}
 
-	private String command() {
+	String command() {
 		return this.command;
 	}
 
-	private String arg( final int n ) {
+	String arg( final int n ) {
 		try {
 			return (String)this.arg_list.get( n );
 		} catch ( java.lang.IndexOutOfBoundsException e ) {
@@ -85,61 +96,27 @@ public class Pragma {
 		}
 	}
 
-
-	//	#debug [on|off]
-	private void debugPragma() {
-		final String t2 = this.arg( 0 );
-		boolean is_debugging = this.getDynamicConf().isDebugging();
-		if ( t2 != null ) {
-			if ( "on".equals( t2 ) ) {
-				is_debugging = true;
-			} else if ( "off".equals( t2 ) ) {
-				is_debugging = false;
-			} else {
-				new Alert( "Unrecognized argument for debug pragma" ).culprit( "arg", t2 ).mishap();
-			}
-			this.getDynamicConf().setIsDebugging( is_debugging );
-		}
-		Print.println( "debugging is " + ( is_debugging ? "on" : "off" ) );
+	public List getArgList() {
+		return this.arg_list;
 	}
 
 	//	#hXXXXX WHITESPACE [TOPIC]
 	private void manualPragma( final Manual manual ) {
 		final SearchPhrase t = new SearchPhrase();
-		for ( Iterator it = arg_list.iterator(); it.hasNext(); ) {
-			t.add( (String)it.next() );
+		for ( String s : this.arg_list ) {
+			t.add( s );
 		}
 		new ManualPragma().help( manual, t );
 	}
 
+	/* (non-Javadoc)
+	 * @see org.openspice.jspice.main.pragmas.PragmaInterface#perform()
+	 */
 	public void perform() {
-		final String c = this.command().intern();
-		if ( c == "autoloaders" ) {
-			new AutoloadersPragma( this.getDynamicConf()).list();
-
-		} else if ( c == "conditions" || c == "warranty" ) {
-			final Manual manual = this.getDynamicConf().getManualByName( "licence" );
-			final SearchPhrase t = new SearchPhrase();
-			t.add( "system" );
-			t.add( "." );					//	virtual package for inventory.
-			t.add( "jspice_" + c );
-			new ManualPragma().help( manual, t );
-		} else if ( c == "debug" ) {
-			this.debugPragma();
-		} else if ( c == "java" ) {
-			new JavaPragma( this.interpreter ).load( this.arg_list );
-		} else if ( c == "entities" ) {
-			new EntitiesPragma( this.getDynamicConf() ).list( this.arg_list );
- 		} else if ( c == "list" ) {
-			new ListPragma().list( this.getNameSpace(), this.arg_list );
-		} else if ( c == "load" ) {
-			new LoadPragma().load( this.interpreter, this.arg_list );
-		} else if ( c == "quit" || c == "exit" ) {
-			System.exit( 0 );
-		} else if ( c == "style" ) {
-			new StylePragma().enable( this.arg_list );
-		} else if ( c == "version" ) {
-			new VersionsPragma( this.getDynamicConf() ).invoke();
+		final String c = this.command();
+		final PragmaAction a = registered.get( c );
+		if ( a != null ) {
+			a.doAction( this );
 		} else {
 			final Manual manual = this.getDynamicConf().getManualByName( c );
 			if ( manual != null ) {
@@ -149,19 +126,37 @@ public class Pragma {
 			}
 		}
 	}
+	
+	private static Map< String, PragmaAction > registered = new HashMap< String, PragmaAction >(); 
+	
+	public static void register( final PragmaAction a ) {
+		final String[] ns = a.names();
+		for ( int i = 0; i < ns.length; i++ ) {
+			registered.put( ns[ i ], a );
+		}
+	}
+	
+	{
+		register( new AutoloadersPragma() );
+		register( new ManualPragma() );
+		register( new DebugPragma() );
+		register( new JavaPragma() );
+		register( new EntitiesPragma() );
+		register( new ListPragma() );
+		register( new LoadPragma() );
+		register( new QuitPragmaAction() );
+		register( new StylePragma() );
+		register( new VersionsPragma() );
+	}
 
+	/* (non-Javadoc)
+	 * @see org.openspice.jspice.main.pragmas.PragmaInterface#findPragmaCompletions(org.openspice.jspice.main.jline_stuff.PrefixFilterAccumulator)
+	 */
 	public void findPragmaCompletions( final PrefixFilterAccumulator acc ) {
-		acc.add( "autoloaders" );
-		acc.add( "conditions" );
-		acc.add( "debug" );
-		acc.add( "entities" );
-		acc.add( "exit" );
-		acc.add( "java" );
-		acc.add( "load" );
-		acc.add( "list" );
-		acc.add( "quit" );
-		acc.add( "style" );
-		acc.add( "warranty" );
+		for ( String s : registered.keySet() ) {
+			acc.add( s );
+		}
 		this.getDynamicConf().findManualCompletions( acc );
 	}
+	
 }

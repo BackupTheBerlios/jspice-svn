@@ -10,6 +10,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="/Core/jarfiles/org.mortbay.jetty.jar"/>
 	<classpathentry kind="src" path="/VFS"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Alert"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
