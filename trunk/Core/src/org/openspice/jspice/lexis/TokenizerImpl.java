@@ -25,8 +25,8 @@ import org.openspice.jspice.tokens.QuotedToken;
 import org.openspice.jspice.tokens.NumberToken;
 
 import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.main.Pragma;
 import org.openspice.jspice.main.Interpreter;
+import org.openspice.jspice.main.pragmas.Pragma;
 import org.openspice.jspice.tools.StyleWarning;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.tools.AbsIteratorOfChar;

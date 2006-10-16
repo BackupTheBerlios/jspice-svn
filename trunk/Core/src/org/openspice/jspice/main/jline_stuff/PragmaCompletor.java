@@ -19,7 +19,7 @@
 package org.openspice.jspice.main.jline_stuff;
 
 import org.openspice.jspice.conf.DynamicConf;
-import org.openspice.jspice.main.Pragma;
+import org.openspice.jspice.main.pragmas.Pragma;
 
 import java.util.List;
 import java.util.ArrayList;
