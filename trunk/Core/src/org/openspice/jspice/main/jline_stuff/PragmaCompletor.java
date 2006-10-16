@@ -35,6 +35,7 @@ public class PragmaCompletor implements jline.Completor {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	public int complete( String buff, final int cursor, final List clist ) {
 		if ( buff.length() == 0 ) {
 			//	Skip
