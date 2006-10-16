@@ -72,9 +72,7 @@ public class Main extends AbsMain {
 	}
 	
 	
-	static {
-		RegisterPragmas.register();
-	}
+
 
 }
 
