@@ -23,8 +23,8 @@ import org.openspice.jspice.datatypes.proc.Nullary0FastProc;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.tools.ReaderWriterTools;
 import org.openspice.vfs.VFile;
+import org.steelypip.bfi.BFI;
 
-import BFI.BFI;
 
 import java.lang.ref.SoftReference;
 

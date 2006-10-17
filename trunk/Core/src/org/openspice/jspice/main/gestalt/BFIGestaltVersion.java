@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.main.gestalt;
 
-import BFI.BFIVersion;
+import org.steelypip.bfi.BFIVersion;
 
 public class BFIGestaltVersion extends Gestalt.MultiPartGestaltVersion {
 
