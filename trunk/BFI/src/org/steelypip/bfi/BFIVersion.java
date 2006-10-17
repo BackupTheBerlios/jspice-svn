@@ -23,5 +23,7 @@ package org.steelypip.bfi;
  * 	Separated off the version processing code to improve loading efficiency.
  */
 public class BFIVersion {
+	
 	public static final int[] VERSION = new int[] { 1, 1, 1 };
+		
 }
