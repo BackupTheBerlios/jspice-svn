@@ -33,7 +33,7 @@
  * just stdin/stdout.
  */
 
-package BFI;
+package org.steelypip.bfi;
 
 import org.openspice.tools.FileTools;
 
