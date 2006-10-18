@@ -95,36 +95,38 @@ public class Pragma {
 		}
 	}
 
-	public List getArgList() {
+	public List< String > getArgList() {
 		return this.arg_list;
 	}
 
-	//	#hXXXXX WHITESPACE [TOPIC]
-	private void manualPragma( final Manual manual ) {
-		final SearchPhrase t = new SearchPhrase();
-		for ( String s : this.arg_list ) {
-			t.add( s );
-		}
-		new ManualPragma().help( manual, t );
-	}
+//	//	#hXXXXX WHITESPACE [TOPIC]
+//	private void manualPragma( final Manual manual ) {
+//		final SearchPhrase t = new SearchPhrase();
+//		for ( String s : this.arg_list ) {
+//			t.add( s );
+//		}
+//		new ManualPragma().help( manual, t );
+//	}
 
 	/* (non-Javadoc)
 	 * @see org.openspice.jspice.main.pragmas.PragmaInterface#perform()
 	 */
 	public void perform() {
 		final String c = this.command();
-		final PragmaAction a = registered.get( c );
+		final PragmaAction a = this.getRegistered( c );
 		if ( a != null ) {
 			a.doAction( this );
 		} else {
-			final Manual manual = this.getDynamicConf().getManualByName( c );
-			if ( manual != null ) {
-				this.manualPragma( manual );
-			} else {
+//			final Manual manual = this.getDynamicConf().getManualByName( c );
+//			if ( manual != null ) {
+//				this.manualPragma( manual );
+//			} else {
 				throw new Alert( "Invalid pragma after #" ).culprit( "line", this.input_string ).mishap();
-			}
+//			}
 		}
 	}
+	
+
 	
 	private static Map< String, PragmaAction > registered = new HashMap< String, PragmaAction >(); 
 	
@@ -134,7 +136,20 @@ public class Pragma {
 			registered.put( ns[ i ], a );
 		}
 	}
+	
+	static private PragmaActionFactory actionFactory;
+	
+	public static void registerDefault( final PragmaActionFactory d ) {
+		actionFactory = d;
+	}
 
+	private PragmaAction getRegistered( final String c ) {
+		final PragmaAction a = registered.get( c );
+		if ( a != null ) return a;
+		return actionFactory.newInstance( this, c ); 
+	}
+	
+	
 	/* (non-Javadoc)
 	 * @see org.openspice.jspice.main.pragmas.PragmaInterface#findPragmaCompletions(org.openspice.jspice.main.jline_stuff.PrefixFilterAccumulator)
 	 */
@@ -144,5 +159,7 @@ public class Pragma {
 		}
 		this.getDynamicConf().findManualCompletions( acc );
 	}
+
+
 	
 }

@@ -16,6 +16,6 @@ public final class RegisterPragmas {
 		Pragma.register( new QuitPragmaAction() );
 		Pragma.register( new StylePragma() );
 		Pragma.register( new VersionsPragma() );
+		Pragma.registerDefault( new ManualPragmaActionFactory() );
 	}
-	
 }

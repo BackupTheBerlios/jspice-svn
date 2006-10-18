@@ -1,7 +1,7 @@
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-
+//	Exploring how we might dynamically set up test suites.
 public class AllTests {
 
 	public static Test suite() {

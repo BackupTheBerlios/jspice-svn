@@ -70,7 +70,7 @@ public final class BFI {
 		this.x = new byte[ MAX_DATA_SIZE + 1 ];
 	}
 
-	public void execute( final String s ) {
+	public final void execute( final String s ) {
 		this.c = s.toCharArray();
 		Arrays.fill( this.x, (byte)0 );
 		p = l = pc = 0;
@@ -83,7 +83,7 @@ public final class BFI {
 		}
 	}
 
-	public void execute( final File file ) {
+	public final void execute( final File file ) {
 		this.execute( FileTools.fileAsString( file ) );
 	}
 
