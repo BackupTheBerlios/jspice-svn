@@ -5,5 +5,6 @@
 	<classpathentry kind="src" path="/Tools"/>
 	<classpathentry kind="lib" path="/Core/jarfiles/commons-net-1.2.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
+	<classpathentry kind="src" path="/Alert"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

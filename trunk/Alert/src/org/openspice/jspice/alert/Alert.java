@@ -21,44 +21,26 @@ package org.openspice.jspice.alert;
 
 import java.util.List;
 import java.util.Iterator;
-import java.util.LinkedList;
 
-class AlertBase {
-
-	private int index = 0;								//	index into list of culprits.
-	private LinkedList< Culprit > culprits = new LinkedList< Culprit >();
-
-	protected void add( final Culprit culprit ) {
-		this.culprits.add( this.index++, culprit );
-	}
-
-	protected Iterator culprit_iterator() {
-		return this.culprits.iterator();
-	}
-
-	public void resetIndex() {
-		this.index = 0;
-	}
-
-}
-
-public final class Alert extends AlertBase {
+public class Alert extends AlertBase implements AlertPrintable {
 
 	//	---- Different style for raising error messages ----
 	//	new Alert( snafu, ok ).culprit( MSG, OBJ )....mishap();
 
-	final Throwable cause;
-	final String complaint;
-	final String explanation;
-
-//	int index = 0;									//	index into list of culprits.
-//	LinkedList culprits = new LinkedList(); 		//new CulpritGroup();
-
-	public Alert( final Throwable t, final String _complaint, final String _explanation, final char phase ) {
+	private Throwable cause;
+	private String complaint;
+	private String explanation;
+	
+	private Alert init( final Throwable t, final String _complaint, final String _explanation, final char phase ) {
 		this.cause = t;
 		this.complaint = _complaint;
 		this.explanation = _explanation;
-		this.setPhase( phase );
+		this.setPhase( phase );	
+		return this;
+	}
+
+	public Alert( final Throwable t, final String _complaint, final String _explanation, final char phase ) {
+		this.init( t, _complaint, _explanation, phase );
 	}
 
 	public Alert( final Throwable t, final String _complaint ) {
@@ -92,6 +74,11 @@ public final class Alert extends AlertBase {
 	Throwable getCause() {
 		return this.cause;
 	}
+	
+	public String showToString( final Object x ) {
+		return "" + x;
+	}
+
 
 	private void setPhase( final char phase ) {
 		final String p = (
@@ -178,7 +165,7 @@ public final class Alert extends AlertBase {
 	private void output() {
 		for ( Iterator it = this.culprit_iterator(); it.hasNext(); ) {
 			final Culprit c = (Culprit)it.next();
-			c.output();
+			c.output( this );
 		}
 		Output.println( "" );
 		Output.flushAll();
@@ -202,14 +189,15 @@ public final class Alert extends AlertBase {
 		throw new Alert( t, msg, "Some supposedly unreachable code has been executed", '-' ).mishap();
 	}
 
+
 	public static AlertException unimplemented( final String msg ) {
-		final Alert alert = new Alert( "Internal error", "An unimplemented feature is required" );
+		final Alert alert = new Alert( null, "Internal error", "An unimplemented feature is required", '-' );
 		alert.culprit( "message", msg );
 		throw alert.mishap();
 	}
 
 	public static AlertException unimplemented() {
-		return Alert.unimplemented( "unimplemented" );
+		return unimplemented( "unimplemented" );
 	}
 
 	public Alert resetInsertionPoint() {

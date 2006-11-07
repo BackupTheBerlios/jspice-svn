@@ -19,13 +19,5 @@ class AlertBase {
 	public void resetIndex() {
 		this.index = 0;
 	}
-	
-	protected ShowCulprit getShowCulprit() {
-		return ShowCulprit.getShowCulprit();
-	}
-	
-	protected ShowCulprit getPrintCulprit() {
-		return ShowCulprit.getPrintCulprit();
-	}
 
 }

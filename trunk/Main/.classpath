@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/BFI"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Core"/>
@@ -10,5 +11,6 @@
 	<classpathentry kind="lib" path="/Core/jarfiles/org.mortbay.jetty.jar"/>
 	<classpathentry kind="src" path="/VFS"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Alert"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,7 +1,5 @@
 package org.openspice.jspice.alert;
 
-import org.openspice.jspice.tools.PrintTools;
-
 /**
  *	JSpice, an Open Spice interpreter and library.
  *	Copyright (C) 2003, Stephen F. K. Leach
@@ -22,7 +20,7 @@ import org.openspice.jspice.tools.PrintTools;
  */
 
 
-class Culprit {
+final class Culprit {
 	final String desc;
 	final Object arg;
 	final boolean typed;
@@ -47,9 +45,9 @@ class Culprit {
 		return new Culprit( desc, arg, true, false );
 	}
 
-	String keepShort( final Object x, final int mx_len, final int filemxlen ) {
+	private String keepShort(  final AlertPrintable p, final Object x, final int mx_len, final int filemxlen ) {
 		final int mxlen = mx_len > 5 ? mx_len : 5;
-		final String s = this.print ? ( "" + x ) : PrintTools.showToString( x );
+		final String s = this.print ? ( "" + x ) : p.showToString( x );
 		if ( s.length() > mxlen ) {
 			if ( s.charAt( 0 ) == '/' && s.length() < filemxlen ) {
 				return s;
@@ -64,20 +62,20 @@ class Culprit {
 	static final int maxlen = 60;
 	static final int filemaxlen = 256;
 
-	String keepShort( Object x ) {
-		return keepShort( x, maxlen, filemaxlen );
+	private String keepShort( final AlertPrintable p, Object x ) {
+		return keepShort( p, x, maxlen, filemaxlen );
 	}
 
 	static final int min_pad_width = 8;
 
-	void output() {
+	void output( final AlertPrintable p ) {
 		final String d = this.desc.toUpperCase();
 		Output.print( d );
 		for ( int i = d.length(); i < min_pad_width; i++ ) {
 			Output.print( " " );
 		}
 		Output.print( " : " );
-		Output.println( this.keepShort( this.arg ) );
+		Output.println( this.keepShort( p, this.arg ) );
 	}
 
 }
