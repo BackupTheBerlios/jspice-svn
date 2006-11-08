@@ -22,7 +22,7 @@ package org.openspice.jspice.parse;
 
 import org.openspice.jspice.expr.*;
 import org.openspice.jspice.expr.cases.*;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.util.*;
 
@@ -43,7 +43,7 @@ class HoleTracker extends ExprVisitor.DefaultReturn {
 		
 	void check() {
 		if ( this.used_anon && this.used_numd ) {
-			new Alert(
+			new SysAlert(
 				"Numbered and anonymous holes mixed",
 				"All the holes should be of the same type"
 			).mishap( 'G' );

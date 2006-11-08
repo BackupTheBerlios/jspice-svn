@@ -27,7 +27,7 @@ import org.openspice.jspice.expr.ExprBase;
 import org.openspice.jspice.expr.iterators.ExprIterator;
 import org.openspice.jspice.namespace.Var;
 import org.openspice.jspice.namespace.Props;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.lift.LiftFactory;
 import org.openspice.jspice.datatypes.Arity;
 import org.openspice.tools.Print;
@@ -93,7 +93,7 @@ public final class LambdaExpr extends ExprBase implements OneResult, LambdaExprF
 		try {
 			lambda = (LambdaExpr)this.clone();
 		} catch ( CloneNotSupportedException exn ) {
-			Alert.unreachable();
+			SysAlert.unreachable();
 		}
 		lambda.init = t.transform( this.init );
 		lambda.body = t.transform( this.body );
@@ -267,7 +267,7 @@ public final class LambdaExpr extends ExprBase implements OneResult, LambdaExprF
 	}
 
 	public Expr copy( final ExprIterator kids ) {
-		throw Alert.unreachable();
+		throw SysAlert.unreachable();
 	}
 
 	public ExprIterator getAllKids() {

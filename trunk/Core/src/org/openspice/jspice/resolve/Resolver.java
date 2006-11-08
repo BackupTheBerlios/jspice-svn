@@ -25,7 +25,7 @@ import org.openspice.jspice.expr.*;
 import org.openspice.jspice.expr.iterators.ExprIterator;
 import org.openspice.jspice.expr.cases.*;
 import org.openspice.jspice.namespace.*;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.main.SuperLoader;
 import org.openspice.vfs.VFolder;
 
@@ -139,7 +139,7 @@ public final class Resolver extends ExprVisitor {
 			//	Attempt to autoload.
 			final VFolder ipkg_folder = this.locatePackage( ipkg_name );
 			if ( ipkg_folder == null ) {
-				new Alert( "Unknown package" ).culprit( "package", ipkg_name ).mishap();
+				new SysAlert( "Unknown package" ).culprit( "package", ipkg_name ).mishap();
 			} else {
 				ipkg = this.loadPackage( ipkg_name, ipkg_folder );
 			}

@@ -23,7 +23,7 @@ import org.openspice.jspice.expr.cases.NameExpr;
 import org.openspice.jspice.expr.cases.NamedExpr;
 import org.openspice.jspice.expr.TmpName;
 import org.openspice.jspice.namespace.*;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.util.TreeMap;
 
@@ -78,7 +78,7 @@ final class GlobalEnv extends Env {
 					System.out.println( "key = " + me.getKey() + ", value = " + me.getValue() );
 				}
 				System.out.println( "/table" );*/
-				Alert.unreachable();
+				SysAlert.unreachable();
 			}
 		} else {
 			final String intn = (String)nme.getSymbol();

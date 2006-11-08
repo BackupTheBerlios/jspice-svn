@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.datatypes.repeaters;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.datatypes.repeaters.Repeater;
 import org.openspice.jspice.datatypes.regexs.Binding;
 import org.openspice.jspice.datatypes.Termin;
@@ -65,7 +65,7 @@ public final class MatcherRepeater extends Repeater {
 				f = this.matcher.lookingAt();
 				break;
 			default:
-				throw Alert.unreachable();
+				throw SysAlert.unreachable();
 		}
 		if ( f ) {
 			this.cubinding = new Binding( this.original, this.matcher );
@@ -91,7 +91,7 @@ public final class MatcherRepeater extends Repeater {
 				this.hasNext();
 				return this.next();
 			default:
-				throw Alert.unreachable();
+				throw SysAlert.unreachable();
 		}
 	}
 

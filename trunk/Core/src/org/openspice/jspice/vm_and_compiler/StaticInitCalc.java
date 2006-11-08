@@ -20,7 +20,7 @@ package org.openspice.jspice.vm_and_compiler;
 
 import org.openspice.jspice.expr.*;
 import org.openspice.jspice.expr.cases.*;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.datatypes.proc.Proc;
 
@@ -76,7 +76,7 @@ public final class StaticInitCalc extends ExprVisitor.DefaultUnreachable {
 		if ( ! ( obj instanceof Proc ) ) return null;
 		final Proc inv = ((Proc)obj).inverse();
 		if ( inv == null ) {
-			new Alert(
+			new SysAlert(
 				"Function used in initializer lacks inverse",
 				"Initializing an expression inverts functions"
 			).culprit( "function", obj ).mishap( 'G' );

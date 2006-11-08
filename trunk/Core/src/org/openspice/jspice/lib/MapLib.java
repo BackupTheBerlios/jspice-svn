@@ -18,7 +18,7 @@
  */
 
 package org.openspice.jspice.lib;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.datatypes.maps.PseudoMap;
 import org.openspice.jspice.datatypes.SpiceObject;
 import org.openspice.jspice.datatypes.elements.XmlElement;
@@ -39,7 +39,7 @@ public final class MapLib {
 		} else if ( obj instanceof SpiceObject ) {
 			return ((SpiceObject)obj).isEmpty();
 		} else {
-			throw new Alert(
+			throw new SysAlert(
 				"Map conversion failed",
 				"Trying to convert to map in process of running isEmpty"
 			).culprit( "object", obj ).mishap( 'E' );
@@ -56,7 +56,7 @@ public final class MapLib {
 		} else if ( obj instanceof List ) {
 			return new ListAsMap( (List)obj );
 		} else {
-			new Alert(
+			new SysAlert(
 				"Map conversion failed",
 				"An unsuitable object was used in a map context"
 			).culprit( "object", obj ).mishap( 'E' );
@@ -77,7 +77,7 @@ public final class MapLib {
 				try {
 					chars[ ((Integer)maplet.getKey()).intValue() ] = ((Character)maplet.getValue()).charValue();
 				} catch ( final Exception exn ) {
-					new Alert(
+					new SysAlert(
 						"Cannot convert Maplet to a valid Character in a valid position",
 						"Trying to convert a Map to a String"
 					).culprit( "map", map ).mishap( 'E' );
@@ -94,7 +94,7 @@ public final class MapLib {
 				try {
 					objects[ ((Integer)maplet.getKey()).intValue() ] = maplet.getValue();
 				} catch ( final Exception exn ) {
-					new Alert(
+					new SysAlert(
 						"Cannot putOne Maplet value in a valid position",
 						"Trying to convert a Map to a List"
 					).culprit( "map", map ).mishap( 'E' );
@@ -103,7 +103,7 @@ public final class MapLib {
             }
             return Arrays.asList( objects );
 		} else {
-			new Alert(
+			new SysAlert(
 				"Conversion from Map failed",
 				"The conversion to maps is not always reversible"
 			).
@@ -141,10 +141,10 @@ public final class MapLib {
 			} else if ( obj instanceof List || obj instanceof StringBuffer ) {
 				ListLib.putAt( obj, key, val );
 			} else {
-				throw new Alert( "cannot convert object to assignable map" ).culprit( "object", obj ).mishap( 'E' );
+				throw new SysAlert( "cannot convert object to assignable map" ).culprit( "object", obj ).mishap( 'E' );
 			}
 		} catch ( final UnsupportedOperationException e ) {
-			throw new Alert( "Trying to update the index of an immutable object" ).culprit( "object", obj ).culprit( "index/key", key ).culprit( "value", val ).mishap( 'E' );
+			throw new SysAlert( "Trying to update the index of an immutable object" ).culprit( "object", obj ).culprit( "index/key", key ).culprit( "value", val ).mishap( 'E' );
 		}
 	}
 	

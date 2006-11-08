@@ -19,7 +19,7 @@
 package org.openspice.vfs.ftp;
 
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.vfs.FixedConf;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;

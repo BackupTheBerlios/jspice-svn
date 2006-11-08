@@ -18,12 +18,12 @@
  */
 package org.openspice.jspice.main;
 
+import org.openspice.alert.AlertException;
 import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.tools.Hooks;
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.resolve.Resolver;
-import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.alert.AlertException;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.parse.HoleFinder;
 import org.openspice.jspice.parse.SpiceParser;
 import org.openspice.jspice.vm_and_compiler.Petrifier;
@@ -68,7 +68,7 @@ public final class Interpreter extends Loader {
 	}
 
 	public Object autoloadFileForValue( String name, VItem file ) {
-		throw Alert.unreachable();
+		throw SysAlert.unreachable();
 	}
 
 	public void interpret( final String origin, final Reader reader ) {
@@ -127,7 +127,7 @@ public final class Interpreter extends Loader {
 			}
 		} else if ( e != null || parser.tryReadToken( ";" ) == null ) {
 			//	WRONG parser.peekToken might be null
-			new Alert( "Unexpected token" ).culprit( "token", parser.peekToken() ).mishap( 'E');
+			new SysAlert( "Unexpected token" ).culprit( "token", parser.peekToken() ).mishap( 'E');
 		}
 	}
 
@@ -161,7 +161,7 @@ public final class Interpreter extends Loader {
 				if ( this.isDebugging() ) {
 					ex.printStackTrace();
 				}
-				new Alert( ex, "Uncaught internal exception", "This exception should have been reported via a mishap" ).
+				new SysAlert( ex, "Uncaught internal exception", "This exception should have been reported via a mishap" ).
 				culprit( "exception type", ex.getClass().getName() ).
 				internal_warning();
 				reset = true;

@@ -18,9 +18,9 @@
  */
 package org.openspice.jspice.main.pragmas.java_loader;
 
+import org.openspice.alert.Alert;
 import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.datatypes.proc.Proc;
-import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.vm_and_compiler.VM;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Constructor;

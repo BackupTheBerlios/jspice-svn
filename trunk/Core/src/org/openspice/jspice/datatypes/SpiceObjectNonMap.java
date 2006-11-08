@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.datatypes;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.util.List;
 import java.util.Map;
@@ -26,7 +26,7 @@ import java.util.Map;
 public abstract class SpiceObjectNonMap extends SpiceObject {
 
 	public final boolean isEmpty() {
-		throw new Alert( "Cannot determine if this is empty" ).culprit( "this", this ).mishap();
+		throw new SysAlert( "Cannot determine if this is empty" ).culprit( "this", this ).mishap();
 	}
 
 	public final boolean isMapLike() {
@@ -38,19 +38,19 @@ public abstract class SpiceObjectNonMap extends SpiceObject {
 	}
 
 	public final List convertToList() {
-		throw new Alert( "Cannot convert Termin into a List" ).mishap();
+		throw new SysAlert( "Cannot convert Termin into a List" ).mishap();
 	}
 
 	public final Map convertToMap() {
-		throw new Alert( "Cannot convert Termin into a Map" ).mishap();
+		throw new SysAlert( "Cannot convert Termin into a Map" ).mishap();
 	}
 
 	public final SpiceObject convertFromList( final List list ) {
-		throw Alert.unreachable();
+		throw SysAlert.unreachable();
 	}
 
 	public final SpiceObject convertFromMap( final Map map ) {
-		throw Alert.unreachable();
+		throw SysAlert.unreachable();
 	}
 
 }

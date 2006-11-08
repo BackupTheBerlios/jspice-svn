@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.lexis;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.conf.DynamicConf;
 
 import java.util.LinkedList;
@@ -38,13 +38,13 @@ public abstract class ParseEscape {
 	public abstract char readChar( final char default_char );
 	public abstract char readCharNoEOF();
 
-	public final Alert alert( final String msg ) {
+	public final SysAlert alert( final String msg ) {
 		return this.alert( msg, null );
 	}
 
 	//	Override this one.
-	public Alert alert( final String complaint, final String explanation ) {
-		throw new Alert( complaint, explanation ).mishap();
+	public SysAlert alert( final String complaint, final String explanation ) {
+		throw new SysAlert( complaint, explanation ).mishap();
 	}
 
 	private char parseAfterEscAmp() {
@@ -75,7 +75,7 @@ public abstract class ParseEscape {
 			final String s = b.toString().intern();
 			final Character tmp = this.dyn_conf != null ? this.dyn_conf.decode( s ) : null;
 			if ( tmp == null ) {
-				new Alert(
+				new SysAlert(
 					"Unrecognized HTML entity in string",
 					"Not all entities are recognized yet"
 				).
@@ -152,7 +152,7 @@ public abstract class ParseEscape {
 		char quote = ' ';	//	doesn't matter
 		for(;;) {
 			final char ch = this.readCharNoEOF();
-			if ( ch == '\n' || ch == '\r' ) new Alert( "Line break before end of string" ).mishap();
+			if ( ch == '\n' || ch == '\r' ) new SysAlert( "Line break before end of string" ).mishap();
 			switch ( state ) {
 				case 0:			//	outer level
 					switch ( ch ) {
@@ -208,7 +208,7 @@ public abstract class ParseEscape {
 					for ( int i = 0; i < count; i++ ) {
 						final char x = this.readCharNoEOF();
 						if ( !Character.isLetterOrDigit( ch ) ) {
-							new Alert( "Unexpected backquote sequence" ).culprit( "char", x +"" ).warning();
+							new SysAlert( "Unexpected backquote sequence" ).culprit( "char", x +"" ).warning();
 						}
 					}
 					break;

@@ -26,7 +26,7 @@ import org.openspice.vfs.codec.Codec;
 import org.openspice.vfs.codec.FileNameCodec;
 import org.openspice.vfs.codec.FolderNameCodec;
 import org.openspice.tools.SetOfBoolean;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.tools.Print;
 
 import java.util.zip.ZipEntry;

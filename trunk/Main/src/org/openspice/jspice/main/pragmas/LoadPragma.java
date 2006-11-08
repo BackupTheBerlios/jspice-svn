@@ -20,7 +20,7 @@ package org.openspice.jspice.main.pragmas;
 
 import org.openspice.vfs.file.FileVVolume;
 import org.openspice.vfs.VFile;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.jspice.main.Interpreter;
 import org.openspice.jspice.main.Pragma;
 import org.openspice.jspice.main.PragmaAction;

@@ -21,13 +21,11 @@ package org.openspice.jspice.loader;
 import org.openspice.jspice.namespace.Var;
 import org.openspice.jspice.namespace.FacetSet;
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.vfs.VItem;
 import org.openspice.vfs.VFolder;
 import org.openspice.vfs.VFile;
 
-import java.io.File;
-import java.io.IOException;
 
 public abstract class ObjectLoader extends Loader {
 
@@ -48,11 +46,11 @@ public abstract class ObjectLoader extends Loader {
 	}
 
 	public Object fileValueFromVFile( final String name, final VFile file ) {
-		throw Alert.unreachable();
+		throw SysAlert.unreachable();
 	}
 
 	public Object fileValueFromVFolder( final String name, final VFolder file ) {
-		throw Alert.unreachable();
+		throw SysAlert.unreachable();
 	}
 
 }

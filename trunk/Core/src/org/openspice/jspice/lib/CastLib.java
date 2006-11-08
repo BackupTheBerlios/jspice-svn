@@ -19,7 +19,7 @@
 
 
 package org.openspice.jspice.lib;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.proc.Unary1FastProc;
 import org.openspice.jspice.datatypes.Deferred;
@@ -39,11 +39,11 @@ import java.awt.*;
 public class CastLib {
 
 	private static RuntimeException oops( final Exception ex, final String msg, final Object obj ) {
-		return new Alert( ex, msg ).culprit( "item", obj ).mishap();
+		return new SysAlert( ex, msg ).culprit( "item", obj ).mishap();
 	}
 
 	private static RuntimeException oops( final String msg, final Object obj ) {
-		return new Alert( msg ).culprit( "item", obj ).mishap();
+		return new SysAlert( msg ).culprit( "item", obj ).mishap();
 	}
 
 	public static boolean to_boolean( final Object obj ) {
@@ -219,7 +219,7 @@ public class CastLib {
 		} catch ( final ClassCastException _ ) {
 		}
 		if ( obj == null ) {
-			throw new Alert( "Trying to apply absent" ).mishap();
+			throw new SysAlert( "Trying to apply absent" ).mishap();
 		} else {
 			if ( obj instanceof List ) {
 				return (
@@ -256,7 +256,7 @@ public class CastLib {
 					}
 				);
 			} else {
-				throw new Alert( "Don't know how to apply this object" ).culprit( "object", obj ).mishap();
+				throw new SysAlert( "Don't know how to apply this object" ).culprit( "object", obj ).mishap();
 			}
 		}
 	}

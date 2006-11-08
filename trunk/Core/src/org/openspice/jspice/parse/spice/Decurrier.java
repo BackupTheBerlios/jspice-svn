@@ -22,7 +22,7 @@ import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.expr.cases.NameExpr;
 import org.openspice.jspice.expr.cases.LambdaExpr;
 import org.openspice.jspice.expr.cases.ApplyExpr;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.parse.Parser;
 
 final class Decurrier {
@@ -53,7 +53,7 @@ final class Decurrier {
 			app = (ApplyExpr)app.getFun();
 		}
 		if ( ! ( app.getFun() instanceof NameExpr ) ) {
-			new Alert( "Invalid procedure header" ).culprit( "expr", app.getFun() ).mishap( 'P' );
+			new SysAlert( "Invalid procedure header" ).culprit( "expr", app.getFun() ).mishap( 'P' );
 		}
 		return this;
 	}
@@ -61,7 +61,7 @@ final class Decurrier {
 	public static Decurrier parse( final Parser parser, final String closing_keyword ) {
 		final Expr head = parser.readDefineHead();
 		if ( parser.tryReadToken( "=>" ) == null && parser.tryReadToken( "as" ) == null ) {
-			new Alert( "Expecting '=>' or 'as' before the body of this definition" ).culprit( "token", parser.peekToken() ).mishap();
+			new SysAlert( "Expecting '=>' or 'as' before the body of this definition" ).culprit( "token", parser.peekToken() ).mishap();
 		}
 		final Expr body = parser.readStmntsTo( closing_keyword );
 		return new Decurrier( head, body ).canonize();

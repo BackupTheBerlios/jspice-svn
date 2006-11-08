@@ -20,7 +20,7 @@ package org.openspice.jspice.arithmetic;
 
 
 import org.openspice.jspice.tools.Consumer;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.tools.IntegerTools;
 
 
@@ -180,7 +180,7 @@ public final class ComplexNum extends Num {
 	}
 
 	private static final RuntimeException oops( final Num x, final Num y ) {
-		throw new Alert( "Trying to compare complex numbers" ).culprit( "left operand", x ).culprit( "right operand", y ).mishap();
+		throw new SysAlert( "Trying to compare complex numbers" ).culprit( "left operand", x ).culprit( "right operand", y ).mishap();
 	}
 
 	public boolean isGreaterThan( final Num that ) {

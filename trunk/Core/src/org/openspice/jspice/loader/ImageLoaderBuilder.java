@@ -19,9 +19,8 @@
 package org.openspice.jspice.loader;
 
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.datatypes.Deferred;
-import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.vfs.VFile;
 
 import javax.imageio.ImageIO;
@@ -51,7 +50,7 @@ public class ImageLoaderBuilder extends ValueLoaderBuilder {
 						final BufferedImage image = ImageIO.read( file.inputStreamContents() );
 						return image;
 					} catch ( final IOException exn ) {
-						throw new Alert( exn, "Cannot load image" ).culprit( "file", file ).mishap();
+						throw new SysAlert( exn, "Cannot load image" ).culprit( "file", file ).mishap();
 					}
 				}
 

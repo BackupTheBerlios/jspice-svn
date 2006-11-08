@@ -19,7 +19,7 @@
 
 package org.openspice.jspice.conf;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.tools.Print;
 import org.openspice.vfs.VFolder;
 import org.openspice.vfs.VFile;
@@ -95,7 +95,7 @@ public final class LoadConf {
 					}
 				}
 			} catch ( final IOException ex ) {
-				new Alert( "Cannot open the configuration file" ).culprit( "file", f ).mishap();
+				new SysAlert( "Cannot open the configuration file" ).culprit( "file", f ).mishap();
 			}
 		} else if ( ( d = pkg_dir.getVFolder( StaticConf.load_folder_nam, null ) ) != null ) {
 			Print.println( Print.CONFIG, "found load folder" );

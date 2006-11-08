@@ -25,7 +25,7 @@ import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.expr.ExprVisitor;
 import org.openspice.jspice.expr.iterators.ExprIterator;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 public final class CheckOneExpr extends UnaryExpr implements OneResult {
 
@@ -41,7 +41,7 @@ public final class CheckOneExpr extends UnaryExpr implements OneResult {
 			return new CheckOneExpr( e );
 		} else {
 			throw(
-				new Alert(
+				new SysAlert(
 					"Arity mismatch (" + n + " results)",
 					"This expression must return one result"
 				).culprit( "expression", e ).mishap( 'E' )

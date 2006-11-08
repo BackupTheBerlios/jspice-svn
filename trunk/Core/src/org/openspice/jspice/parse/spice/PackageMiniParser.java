@@ -21,12 +21,12 @@ package org.openspice.jspice.parse.spice;
 import org.openspice.jspice.parse.miniparser.Prefix;
 import org.openspice.jspice.parse.Parser;
 import org.openspice.jspice.expr.Expr;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 public final class PackageMiniParser extends Prefix {
 
 	public Expr prefix( final String interned, final Parser parser ) {
-		throw Alert.unimplemented();
+		throw SysAlert.unimplemented();
 	}
 
 }

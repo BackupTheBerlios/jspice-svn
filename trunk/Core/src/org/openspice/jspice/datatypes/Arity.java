@@ -1,6 +1,6 @@
 package org.openspice.jspice.datatypes;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 /**
  *	JSpice, an Open Spice interpreter and library.
@@ -130,22 +130,22 @@ public final class Arity {
 	
 	public void check( final int nargs ) {
 		if ( nargs < this.count ) {
-			new Alert( "Too few arguments" ).mishap( 'E' );
+			new SysAlert( "Too few arguments" ).mishap( 'E' );
 		} else if ( nargs > this.count && !this.more ) {
-			new Alert( "Too many arguments" ).mishap( 'E' );
+			new SysAlert( "Too many arguments" ).mishap( 'E' );
 		}
 	}
 	
 	public void failCheck( final int nargs ) {
 		this.check( nargs );
-		Alert.unreachable();
+		SysAlert.unreachable();
 	}
 	
 	public static void failCheck( final int count, final int nargs ) {
 		try {
 			new Arity( count ).failCheck( nargs );
 		} catch ( final ArityException exn ) {
-			Alert.unreachable( exn );
+			SysAlert.unreachable( exn );
 		}
 	}
 	

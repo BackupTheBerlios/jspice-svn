@@ -26,7 +26,7 @@ import org.openspice.jspice.expr.*;
 import org.openspice.jspice.expr.cases.CommaExpr;
 import org.openspice.jspice.expr.cases.NameExpr;
 import org.openspice.jspice.expr.cases.SkipExpr;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.main.Interpreter;
 
@@ -62,13 +62,13 @@ public class ParserImpl extends Parser {
 
 	char phase = 'P';
 
-	private Alert alert( final String msg ) {
+	private org.openspice.alert.Alert alert( final String msg ) {
 		return this.alert( msg, null );
 	}
 
-	private Alert alert( final String msg1, final String msg2 ) {
+	private org.openspice.alert.Alert alert( final String msg1, final String msg2 ) {
 		return (
-			new Alert( msg1, msg2, this.phase ).
+			new org.openspice.jspice.tools.SysAlert( msg1, msg2, this.phase ).
 			culprit( "file", this.tokens.getPrintName() ).
 			culprit( "line no.", new Integer( this.tokens.getLineNumber() ) ).
 			resetInsertionPoint()

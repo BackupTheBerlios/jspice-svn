@@ -21,7 +21,7 @@ package org.openspice.vfs.ftp;
 import org.openspice.vfs.VVolume;
 import org.openspice.vfs.AbsVVolume;
 import org.openspice.vfs.VFolderRef;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.tools.Print;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTP;

@@ -23,8 +23,7 @@ import org.openspice.jspice.expr.cases.*;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.datatypes.proc.Proc;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 final class StaticInit extends ExprVisitor.DefaultUnreachable implements Cloneable {
 	final Petrifier petrifier;
@@ -55,7 +54,7 @@ final class StaticInit extends ExprVisitor.DefaultUnreachable implements Cloneab
 	Pebble result() {
 		if ( this.count == 0 ) return this.do_first_pebble;
 
-		new Alert( "Initialization does not match source expression" ).
+		new SysAlert( "Initialization does not match source expression" ).
 		hint( this.count > 0 ? "Too many input values" : "Too few input values" ).
 		culprit( "Excess", new Integer( this.count ) ).
 		mishap( 'G' );
@@ -73,7 +72,7 @@ final class StaticInit extends ExprVisitor.DefaultUnreachable implements Cloneab
 				)
 			);
 		} else {
-			new Alert(
+			new SysAlert(
 				"Insufficient inputs to initialization",
 				"A simple count shows an imbalance"
 			).mishap( 'G' );
@@ -91,7 +90,7 @@ final class StaticInit extends ExprVisitor.DefaultUnreachable implements Cloneab
 				)
 			);
 		} else {
-			new Alert(
+			new SysAlert(
 				"Insufficient inputs to initialization",
 				"A simple count shows an imbalance"
 			).mishap( 'G' );
@@ -118,7 +117,7 @@ final class StaticInit extends ExprVisitor.DefaultUnreachable implements Cloneab
 				final StaticInit st = this.make( this.count - a_reserve, this.initializing ).apply( b );
 				return st.make( st.count + a_reserve, this.initializing ).apply( a );
 			} else {
-				return Alert.unreachable();
+				return SysAlert.unreachable();
 			}
 		}
 	}
@@ -153,7 +152,7 @@ final class StaticInit extends ExprVisitor.DefaultUnreachable implements Cloneab
 			);
 			return this.make( this.count - nargs, st.result(), this.initializing );
 		} else {
-			return Alert.unreachable();
+			return SysAlert.unreachable();
 		}
 	}
 	
@@ -161,7 +160,7 @@ final class StaticInit extends ExprVisitor.DefaultUnreachable implements Cloneab
 		if ( this.count >= 1 ) {
 			return this.make( this.count - 1, this.make( 1, this.initializing ).apply( expr.getFirst() ).result(), this.initializing );
 		} else {
-			new Alert(
+			new SysAlert(
 				"Insufficient inputs to initialization",
 				"A simple count shows an imbalance"
 			).mishap( 'G' );

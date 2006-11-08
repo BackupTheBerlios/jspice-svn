@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.main;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.tools.Print;
 
 import java.net.URL;

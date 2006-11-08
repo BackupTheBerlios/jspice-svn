@@ -19,7 +19,7 @@
 
 package org.openspice.jspice.main.conf;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.jspice.class_builder.JSpiceClassLoader;
 import org.openspice.jspice.conf.ConfTokenizer;
 import org.openspice.jspice.conf.DynamicConf;

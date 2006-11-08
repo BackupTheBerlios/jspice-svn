@@ -19,7 +19,7 @@
 
 package org.openspice.jspice.lexis;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.io.LineNumberReader;
 import java.io.Reader;
@@ -64,9 +64,9 @@ public class SourceCore {
             if ( ( this.last_char_read = this.reader.read() ) == -1 ) clearPrompt();
 			return this.last_char_read;
         } catch ( IOException ex ) {
-            new Alert( "Could not read from input source" ).culprit( "cause", ex.getMessage() ).mishap( 'T' );
+            new SysAlert( "Could not read from input source" ).culprit( "cause", ex.getMessage() ).mishap( 'T' );
         }
-    	Alert.unreachable();
+    	SysAlert.unreachable();
         return -1;					//	sop
 	}
 

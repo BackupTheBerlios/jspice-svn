@@ -22,7 +22,7 @@ import org.openspice.jspice.datatypes.lists.PseudoList;
 import org.openspice.jspice.datatypes.SpiceObject;
 import org.openspice.jspice.datatypes.maps.PseudoMap;
 import org.openspice.jspice.datatypes.maps.*;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.util.*;
 
@@ -38,7 +38,7 @@ public final class MapTools {
 		} else if ( obj instanceof SpiceObject ) {
 			return ((SpiceObject)obj).convertToMap();
 		} else {
-			new Alert(
+			new SysAlert(
 				"Map conversion failed",
 				"An unsuitable object was used in a map context"
 			).
@@ -58,7 +58,7 @@ public final class MapTools {
 		} else if ( example instanceof SpiceObject ) {
 			return ((SpiceObject)example).convertFromMap( map );
 		} else {
-			throw new Alert(
+			throw new SysAlert(
 				"Conversion from Map failed",
 				"The conversion to maps is not always reversible"
 			).

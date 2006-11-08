@@ -22,7 +22,7 @@ import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.proc.UnaryFastProc;
 import org.openspice.jspice.vm_and_compiler.VM;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.built_in.maplets.NewMapletProc;
 
 import java.util.Map;
@@ -43,7 +43,7 @@ public class InvMapletProc extends UnaryFastProc {
 			vm.push( me.getKey() );
 			return me.getValue();
 		} catch ( final ClassCastException exn ) {
-			return new Alert( "Maplet needed" ).culprit( "object", tos ).mishap();
+			return new SysAlert( "Maplet needed" ).culprit( "object", tos ).mishap();
 		}
 	}
 }

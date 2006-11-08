@@ -19,9 +19,9 @@
 package org.openspice.jspice.datatypes.proc;
 
 
+import org.openspice.alert.AlertException;
 import org.openspice.jspice.vm_and_compiler.*;
-import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.alert.AlertException;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.datatypes.SpiceObjectNonMap;
 import org.openspice.jspice.built_in.inspect.FieldAdder;
@@ -88,7 +88,7 @@ public abstract class Proc extends SpiceObjectNonMap implements ProcIntf {
 			values.addFirst( vm.pop() );
 		}
 
-		final Alert alert = new Alert( complaint, explanation );
+		final SysAlert alert = new SysAlert( complaint, explanation );
 
 		alert.culprit( "procedure", this );
 		{

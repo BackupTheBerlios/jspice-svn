@@ -18,7 +18,8 @@
  */
 package org.openspice.jspice.main.pragmas.java_loader;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
+
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.ArrayList;

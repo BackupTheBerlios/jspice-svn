@@ -23,8 +23,7 @@ import org.openspice.jspice.expr.cases.*;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.datatypes.proc.Proc;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 //
 //	This could all be done in integer arithmetic with a little
@@ -77,13 +76,13 @@ public final class DynamicInitReserve extends ExprVisitor.DefaultUnreachable {
 				Object run( Object tos, final VM vm ) {
 					tos = fun_pebble.run( tos, vm );
 					if ( ! ( tos instanceof Proc ) ) {
-						new Alert(
+						new SysAlert(
 							"Trying to invert non-procedure"
 						).hint( "e.g. val f(x) = E, f not a procedure" ).culprit( "value", tos ).mishap( 'E' );
 					}
 					final Proc inv = ((Proc)tos).inverse();
 					if ( inv == null ) {
-						new Alert(
+						new SysAlert(
 							"Procedure lacks inverse"
 						).hint( "e.g. val f(x) = E, f cannot be run backward" ).culprit( "value", tos ).mishap( 'E' );
 					}

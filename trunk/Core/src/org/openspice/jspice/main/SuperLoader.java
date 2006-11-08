@@ -18,14 +18,14 @@
  */
 package org.openspice.jspice.main;
 
+import org.openspice.alert.AlertException;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.namespace.NameSpaceManager;
 import org.openspice.jspice.namespace.NameSpace;
 import org.openspice.jspice.namespace.FacetSet;
 import org.openspice.jspice.namespace.Var;
-import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.alert.AlertException;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.loader.LoaderBuilder;
 import org.openspice.jspice.loader.Accumulator;
 import org.openspice.jspice.loader.ValueLoaderBuilder;
@@ -96,7 +96,7 @@ public final class SuperLoader {
 	}
 
 	private AlertException failToLoad( final Exception exn, final String loader_builder_class_name  ) {
-		return new Alert( exn, "Cannot construct loader" ).culprit( "class name", loader_builder_class_name ).mishap();
+		return new SysAlert( exn, "Cannot construct loader" ).culprit( "class name", loader_builder_class_name ).mishap();
 	}
 
 	private LoaderBuilder newLoaderBuilder( final String loader_builder_class_name ) {
@@ -156,7 +156,7 @@ public final class SuperLoader {
 				throw new RuntimeException( e );
 			}
 		} else {
-			throw new Alert( "Cannot load this file" ).culprit( "file", file ).mishap();
+			throw new SysAlert( "Cannot load this file" ).culprit( "file", file ).mishap();
 		}
 	}
 

@@ -25,7 +25,7 @@ import org.openspice.jspice.expr.TmpName;
 import org.openspice.jspice.expr.ExprVisitor;
 import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.expr.iterators.ExprIterator;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.tools.IteratorTools;
 
 import java.util.Iterator;
@@ -129,7 +129,7 @@ public final class NamedExpr extends NameExpr {
 
 	public void checkAssignable() {
 		if ( this.isConstant() ) {
-			throw new Alert( "Trying to assign to constant identifier" ).culprit( "constant", this.symbol ).mishap();
+			throw new SysAlert( "Trying to assign to constant identifier" ).culprit( "constant", this.symbol ).mishap();
 		}
 	}
 	

@@ -25,7 +25,7 @@ import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.expr.ExprVisitor;
 import org.openspice.jspice.expr.iterators.ExprIterator;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 public final class CheckBooleanExpr extends UnaryExpr implements OneResult {
 
@@ -41,7 +41,7 @@ public final class CheckBooleanExpr extends UnaryExpr implements OneResult {
 			return new CheckBooleanExpr( e );
 		} else {
 			throw(
-				new Alert(
+				new SysAlert(
 					"Mismatch (" + ne.toNiceString() + " results)",
 					"This expression must return a single Boolean result"
 				).culprit( "expression", e ).mishap( 'E' )

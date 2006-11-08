@@ -25,7 +25,7 @@ import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.expr.ExprVisitor;
 import org.openspice.jspice.expr.iterators.ExprIterator;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 public final class CheckCountExpr extends UnaryExpr implements OneResult {
 	final int count;
@@ -47,7 +47,7 @@ public final class CheckCountExpr extends UnaryExpr implements OneResult {
 			return new CheckCountExpr( k, e );
 		} else {
 			throw(
-				new Alert(
+				new SysAlert(
 					"Arity mismatch (" + n + " results)",
 					"This expression must return " + k + " result" + ( k == 1 ? "" : "s" )
 				).culprit( "expression", e ).mishap( 'C' )

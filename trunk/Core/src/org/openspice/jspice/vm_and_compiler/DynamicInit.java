@@ -22,7 +22,7 @@ import org.openspice.jspice.expr.*;
 import org.openspice.jspice.expr.cases.*;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 public final class DynamicInit extends ExprVisitor.DefaultUnreachable {
 	final Petrifier petrifier;
@@ -51,7 +51,7 @@ public final class DynamicInit extends ExprVisitor.DefaultUnreachable {
 			new Pebble() {
 				Object run( final Object tos, final VM vm ) {
 					if ( vm.n_args <= 0 ) {
-						new Alert(
+						new SysAlert(
 							"Underflow during initialization",
 							"Too few inputs were available to assign to variable"
 						).culprit( "variable", hello_expr.getNameExpr() ).mishap( 'E' );
@@ -68,7 +68,7 @@ public final class DynamicInit extends ExprVisitor.DefaultUnreachable {
 			new Pebble() {
 				Object run( final Object tos, final VM vm ) {
 					if ( vm.n_args <= 0 ) {
-						new Alert(
+						new SysAlert(
 							"Underflow during initialization",
 							"Too few inputs were available to assign to anonymous variable"
 						).mishap( 'E' );
@@ -97,7 +97,7 @@ public final class DynamicInit extends ExprVisitor.DefaultUnreachable {
 					final int a_reserve = ((Arity)tos).getCount();
 					tos = vm.pop();
 					if ( a_reserve > vm.n_args ) {
-						new Alert(
+						new SysAlert(
 							"Underflow during initialization",
 							"Too few inputs to initialize both expressions"
 						).culprit( "expr1", a ).culprit( "expr2", b ).mishap( 'E' );
@@ -126,13 +126,13 @@ public final class DynamicInit extends ExprVisitor.DefaultUnreachable {
 				Object run( Object tos, final VM vm ) {
 					tos = fun_pebble.run( tos, vm );
 					if ( ! ( tos instanceof Proc ) ) {
-						new Alert(
+						new SysAlert(
 							"Trying to invert non-procedure"
 						).hint( "e.g. val f(x) = E, but f not a procedure" ).culprit( "value", tos ).mishap( 'E' );
 					}
 					final Proc inv = ((Proc)tos).inverse();
 					if ( inv == null ) {
-						new Alert(
+						new SysAlert(
 							"Procedure lacks inverse"
 						).hint( "e.g. val f(x) = E, f cannot be run backward" ).culprit( "value", tos ).mishap( 'E' );
 					}
@@ -142,7 +142,7 @@ public final class DynamicInit extends ExprVisitor.DefaultUnreachable {
 					//
 					final Arity inv_in_arity = inv.inArity();
 					if ( inv_in_arity.getCount() > vm.n_args ) {
-						new Alert( "Underflow detected during initialization" ).mishap( 'E' );
+						new SysAlert( "Underflow detected during initialization" ).mishap( 'E' );
 					}
 					final int wants = inv_in_arity.isFixed() ? inv_in_arity.getCount() : vm.n_args;
 					final int reserved = vm.n_args - wants;
@@ -167,7 +167,7 @@ public final class DynamicInit extends ExprVisitor.DefaultUnreachable {
 					//	At this point vm_and_compiler.n_args should indicate that all the outputs have
 					//	been consumed.
 					if ( vm.n_args != 0 ) {
-						new Alert( "Unused inputs during initialization" ).mishap( 'E' );
+						new SysAlert( "Unused inputs during initialization" ).mishap( 'E' );
 					}
 					
 					vm.n_args = reserved;

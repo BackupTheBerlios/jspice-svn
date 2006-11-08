@@ -21,7 +21,7 @@ package org.openspice.vfs.ftp;
 import org.openspice.vfs.*;
 import org.openspice.vfs.codec.FolderNameCodec;
 import org.openspice.vfs.codec.Codec;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.tools.Print;
 import org.openspice.tools.ImmutableSetOfBoolean;
 import org.apache.commons.net.ftp.FTPClient;

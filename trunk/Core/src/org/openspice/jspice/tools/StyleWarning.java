@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.tools;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -58,13 +58,13 @@ public class StyleWarning {
 
 	public static final void dot_rhs_parentheses() {
 		if ( isTrue( DOT_RHS_PARENTHESES )  ) {
-			new Alert( "Using dot operator with unbracketed right hand side" ).warning();
+			new SysAlert( "Using dot operator with unbracketed right hand side" ).warning();
 		}
 	}
 
 	public static final void one_char_literal( final String s ) {
 		if ( isTrue( SINGLE_CHAR_LITERAL ) ) {
-			new Alert( "Using multi-character literal" ).culprit( "literal", s ).warning();
+			new SysAlert( "Using multi-character literal" ).culprit( "literal", s ).warning();
 		}
 	}
 

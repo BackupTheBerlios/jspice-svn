@@ -22,7 +22,7 @@ import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.lib.CastLib;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 public final class PartApply extends Proc {
 	final static public org.openspice.jspice.built_in.PartApply PART_APPLY = new org.openspice.jspice.built_in.PartApply();
@@ -44,7 +44,7 @@ public final class PartApply extends Proc {
 			try {
 				ia = proc.inArity().sub( frozvals.length );
 			} catch ( final Arity.ArityException exn ) {
-				new Alert(
+				new SysAlert(
 					"Cannot partially apply this procedure to so many arguments"
 				).culprit( "procedure", proc ).warning( 'E' );
 				ia = Arity.ZERO_OR_MORE;

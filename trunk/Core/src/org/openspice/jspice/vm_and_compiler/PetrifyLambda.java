@@ -20,7 +20,7 @@ package org.openspice.jspice.vm_and_compiler;
 
 import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.expr.cases.LambdaExprForPetrification;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.tools.Print;
@@ -97,7 +97,7 @@ public class PetrifyLambda {
 		
 		Arity init_arity = StaticInitCalc.calc( init_expr );
 		if ( init_arity == null ) {
-			new Alert(
+			new SysAlert(
 				"Arity of procedure cannot be properly determined",
 				"One of the arguments cannot be statically resolved"
 			).

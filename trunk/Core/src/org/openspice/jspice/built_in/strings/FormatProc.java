@@ -22,7 +22,7 @@ import org.openspice.jspice.datatypes.proc.FastProc;
 import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.lib.CastLib;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.tools.Consumer;
 import org.openspice.jspice.tools.StringBufferConsumer;
@@ -30,7 +30,7 @@ import org.openspice.jspice.tools.StringBufferConsumer;
 public class FormatProc extends FastProc {
 
 	private static final void oops( final CharSequence s ) {
-		throw new Alert( "malformed control string" ).culprit( "control_string", s ).mishap();
+		throw new SysAlert( "malformed control string" ).culprit( "control_string", s ).mishap();
 	}
 
 	public static final void formatTo( final Consumer consumer, final CharSequence control_string, final Object[] args ) {

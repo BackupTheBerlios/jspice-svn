@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.jspice.main.Interpreter;
 import org.openspice.jspice.main.InterpreterMixin;
 

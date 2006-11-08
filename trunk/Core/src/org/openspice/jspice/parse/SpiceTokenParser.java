@@ -29,7 +29,7 @@ import org.openspice.jspice.arithmetic.GreaterThanOrEqual;
 import org.openspice.jspice.arithmetic.Negate;
 import org.openspice.jspice.datatypes.Symbol;
 import org.openspice.jspice.datatypes.proc.Unary1InvokeProc;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.built_in.ShortCuts;
 import org.openspice.jspice.built_in.symbols.NewSymbolProc;
 import org.openspice.jspice.built_in.strings.FormatProc;
@@ -111,7 +111,7 @@ public final class SpiceTokenParser extends TokenParser {
 		final SpiceParser p = new SpiceParser( this.interpreter, "interpolated string", new StringReader( interp ), null );
 		final Expr e = p.readStmnts();
 		if ( p.peekToken() != null ) {
-			new Alert( "Invalid interpolation expression" ).culprit( "interpolated", interp ).mishap();
+			new SysAlert( "Invalid interpolation expression" ).culprit( "interpolated", interp ).mishap();
 		}
 		return e;
 	}
@@ -180,7 +180,7 @@ public final class SpiceTokenParser extends TokenParser {
 				return ConstantExpr.make( Pattern.compile( w, quotedToken.getFlags() ) );
 			}
 		}
-		throw Alert.unreachable( flav );
+		throw SysAlert.unreachable( flav );
 	}
 
 	public Expr parseQuoted( final QuotedToken quotedToken, final int prec, final Expr lhs, final Parser parser ) {

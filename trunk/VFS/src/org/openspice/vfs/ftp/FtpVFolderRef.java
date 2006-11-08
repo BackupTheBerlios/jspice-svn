@@ -27,7 +27,7 @@ import org.openspice.vfs.codec.FolderNameCodec;
 import org.openspice.vfs.codec.Codec;
 import org.openspice.tools.SetOfBoolean;
 import org.openspice.tools.ImmutableSetOfBoolean;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.tools.Print;
 
 public class FtpVFolderRef extends AbsVFolderRef implements VFolderRef {

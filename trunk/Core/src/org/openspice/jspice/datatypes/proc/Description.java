@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.datatypes.proc;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.tools.StringBufferConsumer;
 import org.openspice.jspice.tools.PrintTools;
 
@@ -30,7 +30,7 @@ public class Description {
 
 	public Description( String name, String signature, String comment ) {
 		if ( signature != null && signature.indexOf( "%p" ) < 0 ) {
-			new Alert( "Missing %p in signature string" ).culprit( "name", name ).culprit( "signature", signature ).warning();
+			new SysAlert( "Missing %p in signature string" ).culprit( "name", name ).culprit( "signature", signature ).warning();
 		}
 		this.name = name;
 		this.signature = signature;

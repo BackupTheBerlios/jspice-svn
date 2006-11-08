@@ -18,10 +18,8 @@
  */
 package org.openspice.jspice.main;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.conf.DynamicConf;
-import org.openspice.jspice.main.manual.Manual;
-import org.openspice.jspice.main.manual.SearchPhrase;
 import org.openspice.jspice.main.jline_stuff.PrefixFilterAccumulator;
 import org.openspice.jspice.namespace.NameSpaceManager;
 import org.openspice.jspice.namespace.NameSpace;
@@ -121,7 +119,7 @@ public class Pragma {
 //			if ( manual != null ) {
 //				this.manualPragma( manual );
 //			} else {
-				throw new Alert( "Invalid pragma after #" ).culprit( "line", this.input_string ).mishap();
+				throw new SysAlert( "Invalid pragma after #" ).culprit( "line", this.input_string ).mishap();
 //			}
 		}
 	}

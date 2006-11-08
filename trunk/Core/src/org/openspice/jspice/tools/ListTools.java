@@ -20,7 +20,7 @@ package org.openspice.jspice.tools;
 
 import org.openspice.jspice.datatypes.lists.PseudoList;
 import org.openspice.jspice.datatypes.SpiceObject;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.util.*;
 
@@ -36,7 +36,7 @@ public final class ListTools {
 		} else if ( obj instanceof Map ) {
 			return new ArrayList( ( (Map)obj ).values() );
 		} else {
-			new Alert(
+			new SysAlert(
 				"List conversion failed",
 				"An unsuitable object was used in a list context"
 			).
@@ -60,7 +60,7 @@ public final class ListTools {
 		} else if ( example instanceof SpiceObject ) {
 			return ((SpiceObject)example).convertFromList( list );
 		} else {
-			new Alert(
+			new SysAlert(
 				"Conversion from List failed",
 				"The conversion to lists is not always reversible"
 			).

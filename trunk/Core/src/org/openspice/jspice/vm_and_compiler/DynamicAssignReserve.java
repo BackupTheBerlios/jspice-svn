@@ -23,8 +23,7 @@ import org.openspice.jspice.expr.cases.*;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.datatypes.proc.Proc;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 //
 //	This could all be done in integer arithmetic with a little
@@ -76,7 +75,7 @@ public final class DynamicAssignReserve extends ExprVisitor.DefaultUnreachable {
 				Object run( Object tos, final VM vm ) {
 					tos = fun_pebble.run( tos, vm );
 					if ( ! ( tos instanceof Proc ) ) {
-						new Alert(
+						new SysAlert(
 							"Trying to get updater of non-procedure"
 						).hint( "e.g. f(x) := E, but f not a procedure" ).culprit( "value", tos ).mishap( 'E' );
 					}

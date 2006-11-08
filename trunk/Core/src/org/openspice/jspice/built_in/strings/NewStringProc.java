@@ -21,9 +21,7 @@ package org.openspice.jspice.built_in.strings;
 import org.openspice.jspice.datatypes.proc.Vary1Proc;
 import org.openspice.jspice.datatypes.Deferred;
 import org.openspice.jspice.vm_and_compiler.VM;
-import org.openspice.jspice.alert.Alert;
-import org.openspice.jspice.lib.ConvertLib;
-import org.openspice.tools.StringBufferTools;
+import org.openspice.jspice.tools.SysAlert;
 
 public class NewStringProc extends Vary1Proc {
 
@@ -50,7 +48,7 @@ public class NewStringProc extends Vary1Proc {
 			} else if ( x instanceof CharSequence ) {
 				b.append( ((CharSequence)x) );
 			} else {
-				new Alert( "Character or String needed" ).culprit( "item", x ).mishap();
+				new SysAlert( "Character or String needed" ).culprit( "item", x ).mishap();
 			}
 		}
 		vm.drop( nargs );

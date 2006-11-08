@@ -20,7 +20,7 @@ package org.openspice.jspice.parse.miniparser;
 
 import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.parse.Parser;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 public final class ReservedMiniParser extends MiniParser {
 
@@ -35,7 +35,7 @@ public final class ReservedMiniParser extends MiniParser {
 	}
 
 	public Expr parse( String interned, int prec, Expr lhs, Parser parser ) {
-		Alert alert = new Alert( "Keyword reserved for future use" ).culprit( "keyword", interned );
+		org.openspice.alert.Alert alert = new org.openspice.jspice.tools.SysAlert( "Keyword reserved for future use" ).culprit( "keyword", interned );
 		if ( this.alt_message != null ) {
 			alert = alert.hint( "Use alternative, " + this.alt_message );
 		}

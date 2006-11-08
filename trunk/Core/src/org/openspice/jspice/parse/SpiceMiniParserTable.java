@@ -21,7 +21,7 @@ package org.openspice.jspice.parse;
 import org.openspice.jspice.parse.spice.*;
 import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.expr.cases.NameExpr;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.tokens.Token;
 import org.openspice.jspice.tokens.NameToken;
 import org.openspice.jspice.parse.miniparser.*;
@@ -53,7 +53,7 @@ public final class SpiceMiniParserTable extends Standard {
 						if ( tok instanceof NameToken ) {
 							return NameExpr.make( ((NameToken)tok).getInterned() ).modNickname( interned );
 						} else {
-							new Alert( "Unexpected constant after ::" ).culprit( "constant", tok ).mishap( 'P' );
+							new SysAlert( "Unexpected constant after ::" ).culprit( "constant", tok ).mishap( 'P' );
 							return null; 	//	sop
 						}
 					} else {

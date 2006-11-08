@@ -20,7 +20,7 @@ package org.openspice.jspice.tokens;
 
 import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.parse.TokenParser;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.arithmetic.Num;
 import org.openspice.jspice.arithmetic.IntegerNum;
 import org.openspice.jspice.arithmetic.BigIntegerNum;
@@ -39,7 +39,7 @@ public final class NumberToken extends Token {
 				try {
 					return new DoubleNum( Double.parseDouble( num ) );
 				} catch ( final NumberFormatException ex3 ) {
-					throw new Alert( "Cannot understand this number token" ).culprit( "number", num ).mishap();
+					throw new SysAlert( "Cannot understand this number token" ).culprit( "number", num ).mishap();
 				}
 			}
 		}

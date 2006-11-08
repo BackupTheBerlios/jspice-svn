@@ -21,7 +21,7 @@ package org.openspice.jspice.vm_and_compiler;
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.datatypes.ImmutableList;
 import org.openspice.jspice.conf.DynamicConf;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.tools.StackOfInt;
 
 import java.util.*;
@@ -86,7 +86,7 @@ public final class VM {
 			} catch ( ArrayIndexOutOfBoundsException ex ) {
 				//	Intercepted underflow.  THIS NEVER HAPPENS.
 				this.top = 0;
-				throw new Alert( "Stack underflow" ).mishap();
+				throw new SysAlert( "Stack underflow" ).mishap();
 			}
 		}
 
@@ -95,7 +95,7 @@ public final class VM {
 			if ( this.top < 0 ) {
 				//	Intercepted underflow.  THIS NEVER HAPPENS.
 				this.top = 0;
-				throw new Alert( "Stack underflow" ).mishap();
+				throw new SysAlert( "Stack underflow" ).mishap();
 			}
 		}
 

@@ -23,7 +23,7 @@ import org.openspice.vfs.VFile;
 import org.openspice.vfs.AbsVFileRef;
 import org.openspice.tools.SetOfBoolean;
 import org.openspice.tools.ImmutableSetOfBoolean;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 
 public class FtpVFileRef extends AbsVFileRef implements VFileRef {
 

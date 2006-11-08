@@ -30,7 +30,7 @@ import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.datatypes.elements.XmlElement;
 import org.openspice.jspice.namespace.Var;
 import org.openspice.jspice.namespace.Location;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.tools.FailException;
 import org.openspice.jspice.built_in.ShortCuts;
 
@@ -56,14 +56,14 @@ public class Petrifier extends ExprVisitor.DefaultUnimplemented {
 						tos = subproc.run( tos, vm );
 						if ( vm.length() - before != 1 ) {
 							//  Absolutely stupid error message.
-							new Alert( "Check 1 result failed" ).mishap( 'E' );
+							new SysAlert( "Check 1 result failed" ).mishap( 'E' );
 						}
 						return tos;
 					}
 				}
 			);
 		} else {
-			new Alert(
+			new SysAlert(
 				"Arity mismatch (" + n + " results)",
 				"This expression must return one result"
 			).culprit( "expression", e ).mishap( 'G' );
@@ -82,9 +82,9 @@ public class Petrifier extends ExprVisitor.DefaultUnimplemented {
 					final int diff = vm.length() - before;
 					if ( diff != 1 ) {
 						if ( diff < 1 ) {
-							new Alert( "Missing value for conditional examples" ).mishap( 'E' );
+							new SysAlert( "Missing value for conditional examples" ).mishap( 'E' );
 						} else {
-							new Alert( "Too many values for conditional examples" ).culprit( "number of values", diff ).mishap( 'E' );
+							new SysAlert( "Too many values for conditional examples" ).culprit( "number of values", diff ).mishap( 'E' );
 						}
 					}
 					return CastLib.toBoolean( tos );
@@ -124,7 +124,7 @@ public class Petrifier extends ExprVisitor.DefaultUnimplemented {
 					tos = subproc.run( tos, vm );
 					if ( vm.length() - before != count ) {
 						//  Absolutely stupid error message.
-						new Alert(
+						new SysAlert(
 							"Dynamic check of the number of results failed"
 						).
 						culprit( "Wanted", new Integer( count ) ).
@@ -146,7 +146,7 @@ public class Petrifier extends ExprVisitor.DefaultUnimplemented {
 					tos = subproc.run( tos, vm );
 					if ( vm.length() - before != 1 ) {
 						//  Absolutely stupid error message.
-						new Alert( "Check 1 result failed" ).mishap( 'E' );
+						new SysAlert( "Check 1 result failed" ).mishap( 'E' );
 					}
 					return tos;
 				}
@@ -182,7 +182,7 @@ public class Petrifier extends ExprVisitor.DefaultUnimplemented {
 
 	public Object visitHoleExpr( final HoleExpr expr, final Object arg  ) {
 		return (
-			new Alert(
+			new SysAlert(
 				"Misplaced hole found",
 				"Holes must have the right kind of parent expression"
 			).mishap( 'G' )
@@ -225,7 +225,7 @@ public class Petrifier extends ExprVisitor.DefaultUnimplemented {
 					tos = dynamic_pebble.run( tos, vm );
 					
 					if ( vm.v_args != 0 ) {
-						new Alert( "Assignment failed" ).mishap( 'E' );
+						new SysAlert( "Assignment failed" ).mishap( 'E' );
 					}
 					vm.v_args = vm.intpop();
 					return tos;
@@ -273,7 +273,7 @@ public class Petrifier extends ExprVisitor.DefaultUnimplemented {
 					tos = dynamic_pebble.run( tos, vm );
 					
 					if ( vm.n_args != 0 ) {
-						new Alert( "Initialization failed" ).mishap( 'E' );
+						new SysAlert( "Initialization failed" ).mishap( 'E' );
 					}
 					vm.n_args = vm.intpop();
 					return tos;
@@ -294,7 +294,7 @@ public class Petrifier extends ExprVisitor.DefaultUnimplemented {
 			if ( ! ( const_fun instanceof Proc ) ) break;	//	defensive
 			final Proc inv = ((Proc)const_fun).inverse();
 			if ( inv == null ) {
-				new Alert(
+				new SysAlert(
 					"Invalid initialization - no inverse",
 					"Function calls inside initializations must be invertible"
 				).culprit( "function", const_fun ).mishap( 'G' );
@@ -573,7 +573,7 @@ public class Petrifier extends ExprVisitor.DefaultUnimplemented {
 						try {
 							map.put( x, y );
 						} catch ( final ClassCastException ex ) {
-							new Alert(
+							new SysAlert(
 								"Attribute name not a symbol",
 								"Names of XML element attributes must be comparable"
 							).culprit( "attribute name", x ).mishap( 'E' );

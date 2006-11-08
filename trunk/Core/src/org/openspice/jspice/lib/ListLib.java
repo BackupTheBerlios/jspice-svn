@@ -20,7 +20,7 @@
 package org.openspice.jspice.lib;
 
 import org.openspice.jspice.tools.ListTools;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.util.*;
 
@@ -38,7 +38,7 @@ public class ListLib {
 				return ListTools.convertTo( obj ).get( n );
 			}
 		} catch ( java.lang.IndexOutOfBoundsException e ) {
-			throw new Alert( "Index out of bounds" ).culprit(  "item", obj ).culprit( "index", new Integer( n ) ).mishap();
+			throw new SysAlert( "Index out of bounds" ).culprit(  "item", obj ).culprit( "index", new Integer( n ) ).mishap();
 		}
 	}
 
@@ -52,7 +52,7 @@ public class ListLib {
 				return ListTools.convertTo( obj ).size();
 			}
 		} catch ( final ClassCastException exn ) {
-			throw new Alert(
+			throw new SysAlert(
 				"Object cannot be converted to a list"
 			).culprit( "object", obj ).mishap( 'E' );
 		}
@@ -73,19 +73,19 @@ public class ListLib {
 			try {
 				return ListTools.allbutfirst( k, (List)obj );
 			} catch ( java.lang.IllegalArgumentException e ) {
-				throw new Alert( e, "Invalid arguments" ).culprit( "number to remove", n ).culprit( "list", obj ).mishap();
+				throw new SysAlert( e, "Invalid arguments" ).culprit( "number to remove", n ).culprit( "list", obj ).mishap();
 			}
 		} else if ( obj instanceof String ) {
 			try {
 				return ((String)obj).substring( k );
 			} catch ( java.lang.StringIndexOutOfBoundsException e ) {
-				throw new Alert( e, "Invalid arguments" ).culprit( "number to remove", n ).culprit( "string", obj ).mishap();
+				throw new SysAlert( e, "Invalid arguments" ).culprit( "number to remove", n ).culprit( "string", obj ).mishap();
 			}
 		} else {
 			try {
 				return ListTools.convertFrom( ListTools.allbutfirst( k, ListTools.convertTo( obj ) ), obj );
 			} catch ( java.lang.IllegalArgumentException e ) {
-				throw new Alert( e, "Invalid arguments" ).culprit( "number to remove", n ).culprit( "list", obj ).mishap();
+				throw new SysAlert( e, "Invalid arguments" ).culprit( "number to remove", n ).culprit( "list", obj ).mishap();
 			}
 		}
 	}
@@ -96,19 +96,19 @@ public class ListLib {
 			try {
 				return ListTools.justfirst( k, ((List)seq) );
 			} catch ( java.lang.IndexOutOfBoundsException e ) {
-				throw new Alert( e, "Invalid argument" ).culprit( "number to extract", n ).culprit( "list", seq ).mishap();
+				throw new SysAlert( e, "Invalid argument" ).culprit( "number to extract", n ).culprit( "list", seq ).mishap();
 			}
 		} else if ( seq instanceof String ) {
 			try {
 				return ((String)seq).substring( 0, k );
 			} catch ( java.lang.StringIndexOutOfBoundsException e ) {
-				throw new Alert( e, "Invalid arguments" ).culprit( "number to extract", n ).culprit( "string", seq ).mishap();
+				throw new SysAlert( e, "Invalid arguments" ).culprit( "number to extract", n ).culprit( "string", seq ).mishap();
 			}
 		} else {
 			try {
 				return ListTools.convertFrom( ListTools.justfirst( k, ListTools.convertTo( seq ) ), seq );
 			} catch ( java.lang.IndexOutOfBoundsException e ) {
-				throw new Alert( e, "Invalid argument" ).culprit( "number to extract", n ).culprit( "list", seq ).mishap();
+				throw new SysAlert( e, "Invalid argument" ).culprit( "number to extract", n ).culprit( "list", seq ).mishap();
 			}
 		}
 	}
@@ -119,20 +119,20 @@ public class ListLib {
 			try {
 				return ListTools.allbutlast( k, (List)seq );
 			} catch ( java.lang.IllegalArgumentException e ) {
-				throw new Alert( e, "Invalid argument" ).culprit( "number to remove", n ).culprit( "list", seq ).mishap();
+				throw new SysAlert( e, "Invalid argument" ).culprit( "number to remove", n ).culprit( "list", seq ).mishap();
 			}
 		} else if ( seq instanceof String ) {
 			final String s = (String)seq;
 			try {
 				return ((String)seq).substring( 0, s.length() - k );
 			} catch ( java.lang.StringIndexOutOfBoundsException e ) {
-				throw new Alert( e, "Invalid argument" ).culprit( "number to remove", n ).culprit( "string", seq ).mishap();
+				throw new SysAlert( e, "Invalid argument" ).culprit( "number to remove", n ).culprit( "string", seq ).mishap();
 			}
 		} else {
 			try {
 				return ListTools.convertFrom( ListTools.allbutlast( k, ListTools.convertTo( seq ) ), seq );
 			} catch ( java.lang.IllegalArgumentException e ) {
-				throw new Alert( e, "Invalid argument" ).culprit( "number to remove", n ).culprit( "list", seq ).mishap();
+				throw new SysAlert( e, "Invalid argument" ).culprit( "number to remove", n ).culprit( "list", seq ).mishap();
 			}
 		}
 	}
@@ -143,20 +143,20 @@ public class ListLib {
 			try {
 				return ListTools.justlast( k, (List)seq );
 			} catch ( java.lang.IndexOutOfBoundsException e ) {
-				throw new Alert( e, "Invalid argument" ).culprit( "number to extract", n ).culprit( "list", seq ).mishap();
+				throw new SysAlert( e, "Invalid argument" ).culprit( "number to extract", n ).culprit( "list", seq ).mishap();
 			}
 		} else if ( seq instanceof String ) {
 			final String s = (String)seq;
 			try {
 				return s.substring( s.length() - k );
 			} catch ( java.lang.StringIndexOutOfBoundsException e ) {
-				throw new Alert( e, "Invalid argument" ).culprit( "number to extract", n ).culprit( "string", seq ).mishap();
+				throw new SysAlert( e, "Invalid argument" ).culprit( "number to extract", n ).culprit( "string", seq ).mishap();
 			}
 		} else {
 			try {
 				return ListTools.convertFrom( ListTools.justlast( k, ListTools.convertTo( seq ) ), seq );
 			} catch ( java.lang.IndexOutOfBoundsException e ) {
-				throw new Alert( e, "Invalid argument" ).culprit( "number to extract", n ).culprit( "list", seq ).mishap();
+				throw new SysAlert( e, "Invalid argument" ).culprit( "number to extract", n ).culprit( "list", seq ).mishap();
 			}
 		}
 	}
@@ -196,7 +196,7 @@ public class ListLib {
 				return ListTools.convertTo( obj ).get( idx );
 			}
 		} catch ( final ClassCastException exn ) {
-			new Alert(
+			new SysAlert(
 				"Index not an integer"
 			).culprit( "index", key ).culprit( "map", obj ).mishap( 'E' );
 			return null;
@@ -213,12 +213,12 @@ public class ListLib {
 			} else if ( obj instanceof StringBuffer ) {
 				((StringBuffer)obj).setCharAt( idx, CastLib.toCharacter( val ).charValue() );
 			} else {
-				new Alert( "Cannot convert object to an assignable list" ).culprit( "object", obj ).mishap( 'E' );
+				new SysAlert( "Cannot convert object to an assignable list" ).culprit( "object", obj ).mishap( 'E' );
 			}
 		} catch ( final ClassCastException exn ) {
-			throw new Alert( "Index not an integer" ).culprit( "index", key ).culprit( "map", obj ).mishap( 'E' );
+			throw new SysAlert( "Index not an integer" ).culprit( "index", key ).culprit( "map", obj ).mishap( 'E' );
 		} catch ( final UnsupportedOperationException e ) {
-			throw new Alert( "Trying to update the index of an immutable object" ).culprit( "object", obj ).culprit( "index/key", key ).culprit( "value", val ).mishap( 'E' );
+			throw new SysAlert( "Trying to update the index of an immutable object" ).culprit( "object", obj ).culprit( "index/key", key ).culprit( "value", val ).mishap( 'E' );
 		}
 	}
 	
@@ -234,7 +234,7 @@ public class ListLib {
 		} else if ( x instanceof CharSequence && y instanceof CharSequence ) {
 			return x.toString() + y.toString();
 		} else {
-			new Alert(
+			new SysAlert(
 				"Mismatched arguments for append"
 			).culprit( "first", x ).culprit( "second", y ).mishap( 'E' );
 			return null;	//	sop.

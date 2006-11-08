@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.datatypes.regexs;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.util.AbstractList;
 import java.util.Iterator;
@@ -55,7 +55,7 @@ public final class BindingList extends AbstractList< Binding > {
 				list = list.tail;
 				i += 1;
 			} else {
-				throw new Alert( "Index out of range" ).culprit( "index", new Integer( k ) ).mishap();
+				throw new SysAlert( "Index out of range" ).culprit( "index", new Integer( k ) ).mishap();
 			}
 		}
 		return this.head;

@@ -23,7 +23,7 @@ import org.openspice.jspice.datatypes.SpiceObjectImmutableList;
 import org.openspice.jspice.datatypes.maps.ListAsMap;
 import org.openspice.jspice.tools.Consumer;
 import org.openspice.jspice.built_in.inspect.FieldAdder;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.util.regex.Matcher;
 import java.util.List;
@@ -80,11 +80,11 @@ public class Binding extends SpiceObjectImmutableList {
 	}
 
 	public SpiceObject convertFromList( final List list ) {
-		throw new Alert( "Cannot convert from list to binding" ).culprit( "list", list ).mishap();
+		throw new SysAlert( "Cannot convert from list to binding" ).culprit( "list", list ).mishap();
 	}
 
 	public SpiceObject convertFromMap( Map map ) {
-		throw new Alert( "Cannot convert from map to binding" ).culprit( "map", map ).mishap();
+		throw new SysAlert( "Cannot convert from map to binding" ).culprit( "map", map ).mishap();
 	}
 
 	public final  String getMatched() {

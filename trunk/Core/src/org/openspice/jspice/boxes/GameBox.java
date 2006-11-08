@@ -22,9 +22,6 @@ import tads2.jetty.PlatformIO;
 import tads2.jetty.OutputFormatter;
 import tads2.jetty.Jetty;
 
-import java.io.*;
-
-import org.openspice.jspice.alert.Alert;
 import org.openspice.vfs.VFile;
 
 public class GameBox extends CmdBox implements PlatformIO {

@@ -20,7 +20,7 @@ package org.openspice.jspice.conf;
 
 import org.openspice.jspice.lexis.ParseEscape;
 import org.openspice.jspice.lexis.ParseEscapeException;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.io.Reader;
 import java.io.IOException;
@@ -62,7 +62,7 @@ public class ConfTokenizer extends ParseEscape {
 		try {
 			final int ich = this.reader.read();
 			if ( ich == -1 ) {
-				throw new Alert( "Unexpected end of input" ).mishap();
+				throw new SysAlert( "Unexpected end of input" ).mishap();
 			}
 			return (char)ich;
 		} catch ( IOException e ) {
@@ -118,7 +118,7 @@ public class ConfTokenizer extends ParseEscape {
 				try {
 					this.buffer.append( this.parseEscape() );
 				} catch ( ParseEscapeException e ) {
-					throw new Alert( "Attempting to use forbidden escape sequence '\\('" ).mishap();
+					throw new SysAlert( "Attempting to use forbidden escape sequence '\\('" ).mishap();
 				}
 			} else if ( quoted && ch == quote_char || !quoted && Character.isWhitespace( ch ) ) {
 				list.add( this.buffer.toString() );

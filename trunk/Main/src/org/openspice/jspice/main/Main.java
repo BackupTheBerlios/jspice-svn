@@ -19,7 +19,7 @@
 
 package org.openspice.jspice.main;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.main.conf.AppDynamicConf;

@@ -1,7 +1,7 @@
 package org.openspice.jspice.arithmetic;
 
 import org.openspice.jspice.tools.Showable;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.math.BigInteger;
 import java.math.BigDecimal;
@@ -53,7 +53,7 @@ public abstract class Num extends Number implements Showable {
 			return (Num)x;
 		} else {
 			//	I'm not entirely sure this is the way to handle this problem ....
-			new Alert( "Converting unrecognized number type to Double" ).culprit( "number", x ).warning();
+			new SysAlert( "Converting unrecognized number type to Double" ).culprit( "number", x ).warning();
 			return new DoubleNum( x.doubleValue() );
 		}
 	}

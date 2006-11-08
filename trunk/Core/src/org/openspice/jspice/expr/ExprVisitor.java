@@ -1,6 +1,5 @@
 package org.openspice.jspice.expr;
 
-import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.expr.cases.*;
 
 /**
@@ -32,14 +31,14 @@ public abstract class ExprVisitor { // extends ExprTransform {
 	
 	public abstract static class DefaultUnimplemented extends ExprVisitor {
 		public Object visitExpr( final Expr e, final Object arg ) {
-			org.openspice.jspice.alert.Alert.unimplemented();
+			org.openspice.alert.Alert.unimplemented();
 			return (Expr)null;	//	sop.
 		}
 	}
 	
 	public abstract static class DefaultUnreachable extends ExprVisitor {
 		public Object visitExpr( final Expr e, final Object arg ) {
-			org.openspice.jspice.alert.Alert.unreachable();
+			org.openspice.alert.Alert.unreachable();
 			return (Expr)null;	//	sop.
 		}
 	}

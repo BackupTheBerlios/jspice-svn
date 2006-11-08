@@ -22,7 +22,7 @@ import org.openspice.jspice.tools.Consumer;
 import org.openspice.jspice.tools.StringBufferConsumer;
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.tools.Showable;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.built_in.inspect.FieldAdder;
 import org.openspice.jspice.datatypes.proc.Proc;
 
@@ -42,7 +42,7 @@ public abstract class SpiceObject implements Showable {
 	public abstract boolean isListLike();
 
 	public Proc asProc() {
-		throw new Alert( "Cannot apply this item" ).culprit( "item", this ).mishap();
+		throw new SysAlert( "Cannot apply this item" ).culprit( "item", this ).mishap();
 	}
 
 	//	Make this abstract when we are about to embark on hacking the summaries.

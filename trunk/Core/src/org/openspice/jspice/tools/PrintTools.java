@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.tools;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.datatypes.SpiceObject;
 
 import java.util.*;
@@ -62,7 +62,7 @@ public final class PrintTools {
 	}
 
 	private static final void oops( final CharSequence s ) {
-		throw new Alert( "malformed control string" ).culprit( "control_string", s ).mishap();
+		throw new SysAlert( "malformed control string" ).culprit( "control_string", s ).mishap();
 	}
 
 	public static final void formatTo( final Consumer consumer, final CharSequence control_string, final Object[] args ) {

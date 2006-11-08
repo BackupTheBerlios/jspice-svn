@@ -26,7 +26,7 @@ import org.openspice.jspice.datatypes.proc.Unary1InvokeProc;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.ThunkDeferred;
 import org.openspice.jspice.vm_and_compiler.VM;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 public final class ParenMiniParser extends Bothfix {
 
@@ -66,7 +66,7 @@ public final class ParenMiniParser extends Bothfix {
 			ApplyExpr.make(
 				new Unary1InvokeProc() {
 					public Object invoke( final Object _ ) {
-						throw Alert.unreachable();
+						throw SysAlert.unreachable();
 					}
 
 					public Object fastCall( final Object tos, final VM vm, final int nargs ) {

@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.namespace;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.vfs.VItem;
 
 abstract class LifeCycle {
@@ -61,7 +61,7 @@ abstract class LifeCycle {
 		}
 		boolean lifeCycleCheck( final boolean wantsValue ) {
 			if ( wantsValue ) {
-				throw new Alert( "Accessing forward-declared variable before it is defined" ).culprit( "variable", this.perm ).mishap();
+				throw new SysAlert( "Accessing forward-declared variable before it is defined" ).culprit( "variable", this.perm ).mishap();
 			} else {
 				return false;
 			}
@@ -79,7 +79,7 @@ abstract class LifeCycle {
 
 		boolean lifeCycleCheck( final boolean wantsValue ) {
 			if ( wantsValue ) {
-				throw new Alert( "Accessing variable while autoload is in progress" ).culprit( "variable", this.perm ).mishap();
+				throw new SysAlert( "Accessing variable while autoload is in progress" ).culprit( "variable", this.perm ).mishap();
 			} else {
 				return false;
 			}
@@ -111,9 +111,9 @@ abstract class LifeCycle {
 
 			//	Verify that autoloading worked.
 			if ( locn.lifeCycle.unSet() ) {
-				new Alert( "Autoload failed to bind variable" ).culprit( "variable", this.perm ).mishap();
+				new SysAlert( "Autoload failed to bind variable" ).culprit( "variable", this.perm ).mishap();
 			} else if ( !this.perm.getFacetSet().match( facet ) ) {
-				new Alert( "Autoload putOne variable in wrong facet" ).
+				new SysAlert( "Autoload putOne variable in wrong facet" ).
 				culprit( "variable", this.perm ).
 				culprit( "target facet", facet ).
 				culprit( "loaded facet(s)", this.perm.getFacetSet() ).

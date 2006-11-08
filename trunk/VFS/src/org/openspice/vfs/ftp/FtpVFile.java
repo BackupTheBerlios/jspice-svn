@@ -23,7 +23,7 @@ import org.openspice.vfs.VFileRef;
 import org.openspice.vfs.PathAbsVFile;
 import org.openspice.vfs.codec.Codec;
 import org.openspice.vfs.codec.FileNameCodec;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.tools.Print;
 import org.apache.commons.net.ftp.FTPClient;
 

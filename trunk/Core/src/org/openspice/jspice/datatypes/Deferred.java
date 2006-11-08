@@ -23,7 +23,7 @@ import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.tools.ListTools;
 import org.openspice.jspice.lib.MapLib;
 import org.openspice.jspice.lib.IsLib;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.built_in.inspect.FieldAdder;
 
 import java.util.List;
@@ -80,7 +80,7 @@ public abstract class Deferred extends SpiceObject {
 		} else if ( this.ref instanceof HardReference ) {
 			return ((HardReference)this.ref).get();
 		} else {
-			throw Alert.unreachable();
+			throw SysAlert.unreachable();
 		}
 	}
 
@@ -109,11 +109,11 @@ public abstract class Deferred extends SpiceObject {
 	}
 
 	public SpiceObject convertFromList( final List list ) {
-		throw Alert.unreachable();
+		throw SysAlert.unreachable();
 	}
 
 	public SpiceObject convertFromMap( final Map map ) {
-		throw Alert.unreachable();
+		throw SysAlert.unreachable();
 	}
 
 	public boolean isEmpty() {

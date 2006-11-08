@@ -21,9 +21,8 @@ package org.openspice.jspice.expr;
 
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.expr.markers.*;
-import org.openspice.jspice.expr.*;
 import org.openspice.jspice.expr.cases.ConstantExpr;
 import org.openspice.jspice.expr.iterators.ExprIterator;
 import org.openspice.tools.IteratorTools;
@@ -49,7 +48,7 @@ public abstract class ExprBase extends Expr {
 	 */
 	protected final Arity defaultArity() {
 		if ( this instanceof BadResults ) {
-			Alert.unreachable( this + "" );
+			SysAlert.unreachable( this + "" );
 		}
 		return(
 			this instanceof ZeroResults ? Arity.ZERO :

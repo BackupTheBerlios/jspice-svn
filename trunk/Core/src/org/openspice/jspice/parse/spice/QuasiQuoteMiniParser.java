@@ -29,7 +29,7 @@ import org.openspice.jspice.tokens.Token;
 import org.openspice.jspice.tokens.NumberToken;
 import org.openspice.jspice.tokens.QuotedToken;
 import org.openspice.jspice.tokens.WordLikeToken;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.datatypes.Symbol;
 import org.openspice.jspice.built_in.lists.InvListProc;
 import org.openspice.jspice.built_in.lists.NewListProc;
@@ -50,7 +50,7 @@ public class QuasiQuoteMiniParser extends Prefix {
 			if ( u == null ) u = parser.tryReadToken( "}" );
 			if ( u == null ) u = parser.tryReadToken( ")" );
 			if ( u != null ) {
-				new Alert( "Unmatched close bracket" ).culprit( "bracket", u ).mishap();
+				new SysAlert( "Unmatched close bracket" ).culprit( "bracket", u ).mishap();
 			} else if ( parser.tryReadToken( "(" ) != null ) {
 				sofar = CommaExpr.make( sofar, parser.readStmntsTo( ")" ) );
 			} else if ( parser.tryReadToken( "{" ) != null ) {
@@ -66,7 +66,7 @@ public class QuasiQuoteMiniParser extends Prefix {
 			} else {
 				final Token t = parser.readToken();
 				if ( t == null ) {
-					new Alert( "Unexpected end of input inside quasiquotes" ).mishap();
+					new SysAlert( "Unexpected end of input inside quasiquotes" ).mishap();
 				}
 				if ( t instanceof NumberToken ) {
 					sofar = CommaExpr.make( sofar, ConstantExpr.make( ((NumberToken)t).getNumber() ) );
@@ -84,12 +84,12 @@ public class QuasiQuoteMiniParser extends Prefix {
 					} else if ( qt.isRegexpToken() ) {
 						sofar = CommaExpr.make( sofar, ConstantExpr.make( Pattern.compile( w ) ) );
 					} else {
-						Alert.unreachable();
+						SysAlert.unreachable();
 					}
 				} else if ( t instanceof WordLikeToken ) {
 					sofar = CommaExpr.make( sofar, ConstantExpr.make( Symbol.make( t.getWord() ) ) );
 				} else {
-					Alert.unreachable();
+					SysAlert.unreachable();
 				}
 			}
 		}

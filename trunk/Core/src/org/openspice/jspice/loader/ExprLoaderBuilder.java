@@ -19,7 +19,7 @@
 package org.openspice.jspice.loader;
 
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.main.Interpreter;
 import org.openspice.vfs.VFile;
 
@@ -39,9 +39,9 @@ public class ExprLoaderBuilder extends ObjectLoaderBuilder {
 			final ArrayList answer = new ArrayList();
 			intr.evaluate( answer, file.getUniqueID().toString(), file.readContents(), null );
 			if ( answer.isEmpty() ) {
-				new Alert( "No results from expression file" ).culprit( "file", file ).mishap();
+				new SysAlert( "No results from expression file" ).culprit( "file", file ).mishap();
 			} else if ( answer.size() > 1 ) {
-				new Alert( "Too many results from expression file" ).culprit( "file", file ).culprit( "results list", answer ).mishap();
+				new SysAlert( "Too many results from expression file" ).culprit( "file", file ).culprit( "results list", answer ).mishap();
 			}
 			return answer.get( 0 );
 		}

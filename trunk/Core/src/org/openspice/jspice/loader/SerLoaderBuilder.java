@@ -19,7 +19,7 @@
 package org.openspice.jspice.loader;
 
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.vfs.VFile;
 
 import java.io.*;
@@ -42,7 +42,7 @@ public class SerLoaderBuilder extends ValueLoaderBuilder {
 		try {
 			return new ObjectInputStream( file.inputStreamContents() ).readObject();
 		} catch ( final ClassNotFoundException exn ) {
-			throw new Alert( exn, "Cannot resolve class while deserializing Java object file" ).culprit( "file", file ).mishap();
+			throw new SysAlert( exn, "Cannot resolve class while deserializing Java object file" ).culprit( "file", file ).mishap();
 		}
 	}
 	

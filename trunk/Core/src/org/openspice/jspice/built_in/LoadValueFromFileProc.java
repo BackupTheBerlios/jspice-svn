@@ -18,17 +18,13 @@
  */
 package org.openspice.jspice.built_in;
 
+import org.openspice.alert.Alert;
 import org.openspice.jspice.datatypes.proc.Unary1InvokeProc;
-import org.openspice.jspice.lib.CastLib;
 import org.openspice.jspice.lib.ConvertLib;
 import org.openspice.jspice.vm_and_compiler.VM;
-import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.main.SuperLoader;
-import org.openspice.vfs.file.FileVFile;
 import org.openspice.vfs.file.FileVVolume;
 import org.openspice.vfs.VItem;
-
-import java.io.File;
 
 public class LoadValueFromFileProc extends Unary1InvokeProc {
 

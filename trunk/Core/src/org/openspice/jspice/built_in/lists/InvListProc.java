@@ -21,7 +21,7 @@ package org.openspice.jspice.built_in.lists;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.tools.ListTools;
 import org.openspice.jspice.lib.CastLib;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.proc.Unary1PlusFastProc;
 
@@ -59,7 +59,7 @@ public class InvListProc extends Unary1PlusFastProc {
 			vm.moveNvalsTo( vargs, list );
 		} catch ( final UnsupportedOperationException exn ) {
 //			System.err.println( "exn = " + exn );
-			new Alert( exn, "Trying to update an immutable list" ).culprit( "list", list ).mishap( 'E' );
+			new SysAlert( exn, "Trying to update an immutable list" ).culprit( "list", list ).mishap( 'E' );
 		}
 		return vm.pop();
 	}

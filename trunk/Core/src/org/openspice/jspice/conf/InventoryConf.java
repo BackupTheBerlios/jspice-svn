@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.conf;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.tools.Print;
 import org.openspice.vfs.VFolder;
@@ -171,10 +171,10 @@ public final class InventoryConf {
 				} else if ( "nickname".equals( name ) ) {
 					this.nickname = value;
 				} else {
-					new Alert( "Invalid line in inventory configuration file" ).culprit( "file", inventory_conf ).culprit( "line", line ).mishap();
+					new SysAlert( "Invalid line in inventory configuration file" ).culprit( "file", inventory_conf ).culprit( "line", line ).mishap();
 				}
 			} catch ( final IOException ex ) {
-				new Alert( ex, "Problem encountered while read inventory configuration file" ).culprit( "file", inventory_conf ).mishap();
+				new SysAlert( ex, "Problem encountered while read inventory configuration file" ).culprit( "file", inventory_conf ).mishap();
 			}
 		}
 
@@ -195,7 +195,7 @@ public final class InventoryConf {
 					answer = f;
 				} else {
 //					System.err.println( "f = " + f + " ; " + ( f != null ? f.getClass().getName() : "(null!)" ) );
-					new Alert( "Duplicate package folders" ).
+					new SysAlert( "Duplicate package folders" ).
 					culprit( "pkg_name", external_pkg_name ).
 					culprit( "folder", answer ).
 					culprit( "folder", f ).

@@ -22,7 +22,7 @@ import org.openspice.jspice.expr.*;
 import org.openspice.jspice.expr.cases.*;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.lib.CastLib;
 
 public final class DynamicAssign extends ExprVisitor.DefaultUnreachable {
@@ -55,7 +55,7 @@ public final class DynamicAssign extends ExprVisitor.DefaultUnreachable {
 			new Pebble() {
 				Object run( final Object tos, final VM vm ) {
 					if ( vm.v_args <= 0 ) {
-						new Alert(
+						new SysAlert(
 							"Underflow during assignment",
 							"Too few inputs were available to assign to variable"
 						).
@@ -86,7 +86,7 @@ public final class DynamicAssign extends ExprVisitor.DefaultUnreachable {
 					final int a_reserve = ((Arity)tos).getCount();
 					tos = vm.pop();
 					if ( a_reserve > vm.v_args ) {
-						new Alert(
+						new SysAlert(
 							"Underflow during assignment",
 							"Too few inputs to initialize both expressions"
 						).culprit( "expr1", a ).culprit( "expr2", b ).mishap( 'E' );
@@ -115,7 +115,7 @@ public final class DynamicAssign extends ExprVisitor.DefaultUnreachable {
 				Object run( Object tos, final VM vm ) {
 					tos = fun_pebble.run( tos, vm );
 					if ( ! ( tos instanceof Proc ) ) {
-						new Alert(
+						new SysAlert(
 							"Trying to get updater of non-procedure"
 						).hint( "e.g. f(x) := E, f not a procedure" ).culprit( "value", tos ).mishap( 'E' );
 					}
@@ -127,7 +127,7 @@ public final class DynamicAssign extends ExprVisitor.DefaultUnreachable {
 					final Arity vals_arity = proc.valsUArity();
 //					System.err.println( "vals_arity = " + vals_arity + "; vm.n_args = " + vm.n_args + "; vm.v_args = " + vm.v_args);
 					if ( vals_arity.getCount() > vm.v_args ) {
-						new Alert( "Underflow detected during initialization" ).mishap( 'E' );
+						new SysAlert( "Underflow detected during initialization" ).mishap( 'E' );
 					}
 					final int wants = vals_arity.isFixed() ? vals_arity.getCount() : vm.v_args;
 					final int reserved = vm.v_args - wants;

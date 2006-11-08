@@ -18,7 +18,7 @@
  */
 package org.openspice.vfs;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 
 import java.util.StringTokenizer;
 

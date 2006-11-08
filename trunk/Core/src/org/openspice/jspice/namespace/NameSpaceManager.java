@@ -21,7 +21,7 @@ package org.openspice.jspice.namespace;
 
 import org.openspice.jspice.namespace.NameSpace;
 import org.openspice.jspice.namespace.NameSpaceDirTools;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.main.SuperLoader;
 import org.openspice.jspice.conf.StaticConf;
 import org.openspice.vfs.VFolder;
@@ -168,7 +168,7 @@ public class NameSpaceManager {
 		if ( nmsp != null ) return nmsp;
 		nmsp = this.autoload( cname );
 		if ( nmsp != null ) return nmsp;
-		new Alert( "No such package" ).culprit( "name", cname ).mishap( 'I' );
+		new SysAlert( "No such package" ).culprit( "name", cname ).mishap( 'I' );
 		return null;	//	sop
 	}
 

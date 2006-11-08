@@ -23,7 +23,7 @@ import org.openspice.jspice.expr.cases.*;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.Arity;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.tools.FailException;
 
 final class StaticAssign extends ExprVisitor.DefaultUnreachable implements Cloneable {
@@ -55,7 +55,7 @@ final class StaticAssign extends ExprVisitor.DefaultUnreachable implements Clone
 	Pebble result() {
 		if ( this.count == 0 ) return this.do_first_pebble;
 		throw (
-			new Alert( "Assignment does not match source expression" ).
+			new SysAlert( "Assignment does not match source expression" ).
 			hint( this.count > 0 ? "Too many input values" : "Too few input values" ).
 			culprit( "Excess", new Integer( this.count ) ).
 			mishap( 'G' )
@@ -71,7 +71,7 @@ final class StaticAssign extends ExprVisitor.DefaultUnreachable implements Clone
 				)
 			);
 		} else {
-			new Alert(
+			new SysAlert(
 				"Insufficient inputs to initialization",
 				"A simple count shows an imbalance"
 			).mishap( 'G' );
@@ -108,7 +108,7 @@ final class StaticAssign extends ExprVisitor.DefaultUnreachable implements Clone
 				final StaticAssign st = this.make( this.count - a_reserve ).apply( b );
 				return st.make( st.count + a_reserve ).apply( a );
 			} else {		
-				return Alert.unreachable();
+				return SysAlert.unreachable();
 			}
 		}
 	}

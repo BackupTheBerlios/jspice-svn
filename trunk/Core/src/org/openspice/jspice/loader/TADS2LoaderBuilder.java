@@ -21,13 +21,7 @@ package org.openspice.jspice.loader;
 import org.openspice.jspice.namespace.NameSpace;
 import org.openspice.jspice.datatypes.proc.Nullary0FastProc;
 import org.openspice.jspice.vm_and_compiler.VM;
-import org.openspice.jspice.alert.Alert;
-import org.openspice.vfs.VItem;
 import org.openspice.vfs.VFile;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 import tads2.jetty.GameTerminal;
 import tads2.jetty.Jetty;

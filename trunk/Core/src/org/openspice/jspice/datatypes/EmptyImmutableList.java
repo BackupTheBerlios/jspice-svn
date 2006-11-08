@@ -18,14 +18,14 @@
  */
 package org.openspice.jspice.datatypes;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.util.AbstractList;
 
 public class EmptyImmutableList extends AbstractList {
 
     public Object get( final int index ) {
-        throw new Alert( "Trying to index an empty list" ).culprit( "index", new Integer( index ) ).mishap();
+        throw new SysAlert( "Trying to index an empty list" ).culprit( "index", new Integer( index ) ).mishap();
     }
 
     public int size() {

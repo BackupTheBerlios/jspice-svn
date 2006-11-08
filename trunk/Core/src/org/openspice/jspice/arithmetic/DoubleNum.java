@@ -1,7 +1,7 @@
 package org.openspice.jspice.arithmetic;
 
 import org.openspice.jspice.tools.Consumer;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -191,7 +191,7 @@ public class DoubleNum extends RealNum {
 	}
 
 	public Num widenExactly() {
-		throw Alert.unreachable();
+		throw SysAlert.unreachable();
 	}
 
 	public Num widenInexactly() {

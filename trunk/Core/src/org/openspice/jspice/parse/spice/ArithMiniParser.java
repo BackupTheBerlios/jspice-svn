@@ -22,7 +22,7 @@ import org.openspice.jspice.parse.miniparser.Bothfix;
 import org.openspice.jspice.parse.Parser;
 import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.expr.cases.ApplyExpr;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 public class ArithMiniParser extends Bothfix {
 
@@ -37,7 +37,7 @@ public class ArithMiniParser extends Bothfix {
 		} else if ( sym.equals( "-" ) ) {
 			return ApplyExpr.make( "unary_-", parser.readExpr() );
 		} else {
-			new Alert(
+			new SysAlert(
 				"Infix operator missing left hand argument"
 			).culprit( "operator", sym ).mishap( 'P' );
 			return null;	//	sop

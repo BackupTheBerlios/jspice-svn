@@ -21,7 +21,7 @@ package org.openspice.vfs.zip;
 import org.openspice.vfs.AbsVFileRef;
 import org.openspice.vfs.VFile;
 import org.openspice.tools.SetOfBoolean;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 
 import java.util.zip.ZipEntry;
 

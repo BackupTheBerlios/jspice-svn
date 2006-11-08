@@ -19,7 +19,7 @@
 
 package org.openspice.jspice.lexis;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.io.*;
 
@@ -54,7 +54,7 @@ public class Source extends SourceCore implements SourceIntf, org.openspice.jspi
 	public char readCharNoEOF() {
 		final int ch = readInt();
 		if ( ch == -1 ) {
-			new Alert( "Unexpected end of file" ).mishap( 'T' );
+			new SysAlert( "Unexpected end of file" ).mishap( 'T' );
 		}
 		return (char)ch;
 	}

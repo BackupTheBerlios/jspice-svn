@@ -22,7 +22,7 @@ import org.openspice.jspice.expr.cases.*;
 import org.openspice.jspice.namespace.Var;
 import org.openspice.jspice.namespace.Props;
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.tools.Print;
 
 import java.util.TreeMap;
@@ -60,7 +60,7 @@ final class LocalEnv extends Env {
 					final NamedExpr named = (NamedExpr)nme;
 					_lambda.addArg( LocalEnv.this.addLocal( Props.VAL, named ) );
 				} else {
-					Alert.unreachable();
+					SysAlert.unreachable();
 				}
 			}
 		}
@@ -105,7 +105,7 @@ final class LocalEnv extends Env {
 				if ( loc.getProps().isForwardVersion( hello_expr.getProps() ) ) {
 					loc.setProps( hello_expr.getProps() );
 				} else {
-					new Alert(
+					new SysAlert(
 						"Already declared in same scope"
 					).culprit( "name", named.getTitle() ).mishap( 'R' );
 				}

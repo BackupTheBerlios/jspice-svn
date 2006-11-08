@@ -31,7 +31,7 @@ import org.openspice.jspice.namespace.Props;
 import org.openspice.jspice.lib.MapLib;
 import org.openspice.tools.IntegerTools;
 import org.openspice.jspice.lib.CastLib;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.tokens.Token;
 import org.openspice.jspice.datatypes.proc.Binary1InvokeProc;
 
@@ -305,7 +305,7 @@ public class ForMiniParser extends Prefix {
 			matchers.add( match_expr );
 			iterators.add( app );
 		} else {
-			new Alert( "Bad for loop expression" ).mishap( 'P' );
+			new SysAlert( "Bad for loop expression" ).mishap( 'P' );
 		}
 	}
 
@@ -345,7 +345,7 @@ public class ForMiniParser extends Prefix {
 					readGenerator( parser, matches, iterators );
 					final Token nexttok = parser.peekToken();
 					if ( nexttok == null || !nexttok.hasName( "while" ) && !nexttok.hasName( "until" ) && !nexttok.hasName( "suchthat" ) && !nexttok.hasName( "do" ) && !nexttok.hasName( ";" ) ) {
-						new Alert( "Unexpected token following iterator" ).culprit( "token", nexttok ).mishap();
+						new SysAlert( "Unexpected token following iterator" ).culprit( "token", nexttok ).mishap();
 					}
 				}
 				parser.tryReadToken( ";" );		//	dispose of optional semi-colon

@@ -21,7 +21,7 @@ package org.openspice.jspice.parse.spice;
 import org.openspice.jspice.parse.miniparser.Prefix;
 import org.openspice.jspice.parse.Parser;
 import org.openspice.jspice.tokens.NameToken;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.expr.cases.ImportExpr;
 
@@ -39,7 +39,7 @@ public class ImportMiniParser extends Prefix {
 				final NameToken name2 = parser.readPackageName();
 				//	And we must verify that name1 is a feasible nickname.
 				if ( name1.getWord().indexOf( '.' ) != -1 ) {
-					new Alert( "invalid nickname" ).culprit( "token", name1 ).mishap( 'P' );
+					new SysAlert( "invalid nickname" ).culprit( "token", name1 ).mishap( 'P' );
 				}
 				this.nickname = name1;
 				this.pkg_name = name2;

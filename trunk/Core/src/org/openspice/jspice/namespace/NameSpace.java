@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.namespace;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.conf.LoadConf;
 import org.openspice.jspice.conf.StaticConf;
@@ -92,7 +92,7 @@ public class NameSpace {
 		final Map< String, Import > bnn = this.imports_by_nickname;
 		final Import imp = bnn.get( nn );
 		if ( imp != null ) {
-			new Alert(
+			new SysAlert(
 				"Trying to add a second import with this nickname",
 				"All imports to a package must have different nicknames"
 			).
@@ -112,7 +112,7 @@ public class NameSpace {
 		final Map bnn = this.imports_by_nickname;
 		final Import imp = (Import)bnn.get( nn );
 		if ( imp == null ) {
-			new Alert( "No import with this nickname" ).culprit( "nickname", nn ).mishap( 'I' );
+			new SysAlert( "No import with this nickname" ).culprit( "nickname", nn ).mishap( 'I' );
 		}
 		return imp.getNameSpace().getName();
 	}
@@ -282,7 +282,7 @@ public class NameSpace {
 				if ( d != null && okfacets.match( d.getFacetSet() ) ) {
 					if ( perm != null ) {
 						//	Ambiguous!
-						new Alert(
+						new SysAlert(
 							"Ambiguous import",
 							"There are two imports for this identifier"
 						).
@@ -346,12 +346,12 @@ public class NameSpace {
 				)
 			);
 			if ( d != null ) return d;
-			new Alert( "Cannot import identifier" ).
+			new SysAlert( "Cannot import identifier" ).
 			culprit(  "nickname", nickname ).
 			culprit(  "identifier", id ).
 			mishap( 'I' );
 		} 
-		new Alert( "No import associated with this nickname" ).
+		new SysAlert( "No import associated with this nickname" ).
 		culprit( "nickname", nickname ).
 		mishap( 'I' );
 		return null;	//	sop
@@ -366,7 +366,7 @@ public class NameSpace {
 	private Var.Perm fetchUnqualifiedPerm( final String id ) {
 		final Var.Perm answer = this.tryFetchUnqualifiedPerm( FacetSet.ALL, id );
 		if ( answer != null ) return answer;
-		new Alert(
+		new SysAlert(
 			"Undeclared variable",
 			"Neither declared locally nor importable"
 		).
@@ -431,7 +431,7 @@ public class NameSpace {
 		if ( d != null ) {
 			if ( d.getProps().isForwardVersion( props ) ) {
 				if ( d.getIsImportedFlag() ) {
-					new Alert(
+					new SysAlert(
 						"Trying to redeclare implicitly declared import",
 						"Identifier has been imported by unqualified reference"
 					).
@@ -445,7 +445,7 @@ public class NameSpace {
 			} else {
 				if ( Print.wouldPrint( Print.IMPORT ) ) Print.println( "previous declaration noticed (" + prev_allowed + ")" );
 				if ( !prev_allowed ) {
-					new Alert( "Identifier already declared" ).
+					new SysAlert( "Identifier already declared" ).
 					culprit( "name", id ).
 					mishap( 'I' );
 				}
@@ -459,7 +459,7 @@ public class NameSpace {
 					}
 				} else {
 					if ( d.getIsImportedFlag() ) {
-						new Alert(
+						new SysAlert(
 							"Trying to redeclare implicitly declared import",
 							"Identifier has been imported by unqualified reference"
 						).
@@ -468,7 +468,7 @@ public class NameSpace {
 						culprit( "suggest", "Change to a qualified reference" ).
 						mishap( 'I' );
 					} else {
-						new Alert(
+						new SysAlert(
 							"Duplicate declaration of local identifier found",
 							"Identifier is already declared"
 						).

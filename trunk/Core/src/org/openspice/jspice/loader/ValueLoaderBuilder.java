@@ -19,7 +19,7 @@
 package org.openspice.jspice.loader;
 
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.vfs.VItem;
 import org.openspice.vfs.VFile;
 import org.openspice.vfs.VFolder;
@@ -42,11 +42,11 @@ public abstract class ValueLoaderBuilder extends LoaderBuilder {
 	}
 
 	public Object loadValueFromVFile( final VFile file ) throws IOException {
-		throw Alert.unreachable();
+		throw SysAlert.unreachable();
 	}
 
 	public Object loadValueFromVFolder( final VFolder file ) throws IOException {
-		throw Alert.unreachable();
+		throw SysAlert.unreachable();
 	}
 
 }

@@ -18,9 +18,9 @@
  */
 package org.openspice.jspice.datatypes.proc;
 
+import org.openspice.alert.Alert;
 import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.vm_and_compiler.VM;
-import org.openspice.jspice.alert.Alert;
 
 public abstract class Binary1InvokeProc extends BinaryFastProc {
 

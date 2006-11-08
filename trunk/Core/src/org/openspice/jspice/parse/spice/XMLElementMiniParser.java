@@ -23,7 +23,7 @@ import org.openspice.jspice.parse.Parser;
 import org.openspice.jspice.expr.*;
 import org.openspice.jspice.expr.cases.*;
 import org.openspice.jspice.tokens.Token;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -59,7 +59,7 @@ public final class XMLElementMiniParser extends Bothfix {
 			parser.peekXmlName();
 			final Token closing_tok = parser.readToken();
 			if ( !opening_tok.matches( closing_tok ) ) {
-				new Alert(
+				new SysAlert(
 					"Mismatched closing tag",
 					"Opening and closing tag names must match"
 				).

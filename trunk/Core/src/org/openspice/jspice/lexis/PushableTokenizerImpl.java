@@ -19,7 +19,7 @@
 
 package org.openspice.jspice.lexis;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.tokens.Token;
 import org.openspice.jspice.tokens.NameToken;
 import org.openspice.jspice.main.Interpreter;
@@ -58,7 +58,7 @@ public class PushableTokenizerImpl implements PushableTokenizer {
 		if ( t.isNameToken() ) {
 			return (NameToken)t;
 		} else {
-			new Alert( "A name is required here" ).culprit( "token", t ).mishap( 'T' );
+			new SysAlert( "A name is required here" ).culprit( "token", t ).mishap( 'T' );
 			return null;
 		}
 	}

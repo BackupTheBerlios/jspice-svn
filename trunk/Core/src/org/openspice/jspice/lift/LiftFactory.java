@@ -21,7 +21,7 @@ package org.openspice.jspice.lift;
 
 import org.openspice.jspice.expr.*;
 import org.openspice.jspice.expr.cases.*;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.namespace.FacetSet;
 import org.openspice.jspice.namespace.Props;
 
@@ -59,7 +59,7 @@ public final class LiftFactory extends ExprVisitor {
 	}
 	
 	public Object visitExpr( final Expr e, final Object arg ) {
-		new Alert(
+		new SysAlert(
 			"Unsuitable target for initialization"
 		).culprit( "target", e ).mishap( 'G' );
 		return null;
@@ -99,7 +99,7 @@ public final class LiftFactory extends ExprVisitor {
 			this.lifted = CommaExpr.make( this.lifted, InitExpr.make( null, Props.VAL, tmp, e1 ) );
 			return ApplyExpr.make( tmp, e2 );
 		} else {
-			return new Alert( "Invalid formal parameters" ).mishap( 'G' );
+			return new SysAlert( "Invalid formal parameters" ).mishap( 'G' );
 		}
 	}
 	

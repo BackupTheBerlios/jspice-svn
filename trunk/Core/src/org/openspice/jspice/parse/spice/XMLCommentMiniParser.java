@@ -22,13 +22,13 @@ import org.openspice.jspice.parse.miniparser.Prefix;
 import org.openspice.jspice.parse.Parser;
 import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.expr.cases.CommaExpr;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.tokens.Token;
 
 public final class XMLCommentMiniParser extends Prefix {
 
 	private Expr readXmlComment( final Parser parser ) {
-		throw Alert.unimplemented();
+		throw SysAlert.unimplemented();
 	}
 
 	public Expr prefix( final String interned, final Parser parser ) {

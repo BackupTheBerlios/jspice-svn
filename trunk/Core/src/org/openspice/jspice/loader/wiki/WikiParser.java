@@ -20,7 +20,7 @@ package org.openspice.jspice.loader.wiki;
 
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.SAXException;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.lexis.ParseEscapeException;
 
@@ -108,7 +108,7 @@ final class WikiParser {
 				case '!':
 					return;
 				default:
-					throw new Alert( "Undefined commented sequence" ).culprit( "comment", s ).mishap();
+					throw new SysAlert( "Undefined commented sequence" ).culprit( "comment", s ).mishap();
 			}
 		}
 	}
@@ -157,7 +157,7 @@ final class WikiParser {
 				try {
 					this.output_engine.accept( pinline.parseEscape() );
 				} catch ( ParseEscapeException e ) {
-					throw new Alert( "Trying to use forbidden escape sequence in Wiki '\\('" ).mishap();
+					throw new SysAlert( "Trying to use forbidden escape sequence in Wiki '\\('" ).mishap();
 				}
 			} else if ( ch == '_' || ch == '*' ) {
 				this.processStyleModifier( pinline, ch, ch == '_' ? "i" : "b" );

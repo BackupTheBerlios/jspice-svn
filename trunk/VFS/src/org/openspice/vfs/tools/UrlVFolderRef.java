@@ -22,7 +22,7 @@ import org.openspice.vfs.FixedConf;
 import org.openspice.vfs.VFolderRef;
 import org.openspice.vfs.ftp.FtpVVolume;
 import org.openspice.vfs.file.FileVVolume;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.alert.Alert;
 import org.openspice.tools.Print;
 import java.net.URL;
 import java.net.MalformedURLException;

@@ -19,7 +19,7 @@
 package org.openspice.jspice.lib;
 
 import org.openspice.jspice.datatypes.Deferred;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 public class ConvertLib {
 
@@ -28,7 +28,7 @@ public class ConvertLib {
 		if ( x instanceof String ) return (String)x;
 		if ( x instanceof StringBuffer ) return x.toString();
 		if ( x instanceof CharSequence ) return x.toString();
-		throw new Alert( "String needed" ).culprit( "item", x ).mishap();
+		throw new SysAlert( "String needed" ).culprit( "item", x ).mishap();
 	}
 
 }

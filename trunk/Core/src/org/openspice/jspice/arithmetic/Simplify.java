@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.arithmetic;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 
 import java.math.BigInteger;
 import java.math.BigDecimal;
@@ -41,7 +41,7 @@ public final class Simplify {
 			return x;
 		} else {
 			//	I'm not entirely sure this is the way to handle this problem ....
-			new Alert( "Converting unrecognized number type to Double" ).culprit( "number", x ).warning();
+			new SysAlert( "Converting unrecognized number type to Double" ).culprit( "number", x ).warning();
 			return new Double( x.doubleValue() );
 		}
 	}

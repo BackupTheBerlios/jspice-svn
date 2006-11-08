@@ -19,7 +19,7 @@
 package org.openspice.jspice.loader;
 
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.vfs.VFile;
 
 import java.io.*;
@@ -42,7 +42,7 @@ public class LineLoaderBuilder extends ValueLoaderBuilder {
 		final BufferedReader rdr = new BufferedReader( file.readContents() );
 		final String line = rdr.readLine();
 		if ( line == null ) {
-			new Alert( "Empty line file" ).culprit( "file", file ).mishap();
+			new SysAlert( "Empty line file" ).culprit( "file", file ).mishap();
 		}
 		return line;
 	}

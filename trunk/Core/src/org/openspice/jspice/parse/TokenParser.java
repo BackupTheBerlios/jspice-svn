@@ -20,7 +20,7 @@ package org.openspice.jspice.parse;
 
 import org.openspice.jspice.expr.Expr;
 import org.openspice.jspice.expr.cases.NameExpr;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.tokens.Token;
 import org.openspice.jspice.tokens.NameToken;
 import org.openspice.jspice.tokens.QuotedToken;
@@ -57,7 +57,7 @@ public abstract class TokenParser {
 		} else if ( token instanceof QuotedToken ) {
 			return this.atomicQuoted( (QuotedToken)token );
 		} else {
-			throw Alert.unreachable();
+			throw SysAlert.unreachable();
 		}
 	}
 
@@ -65,7 +65,7 @@ public abstract class TokenParser {
 		if ( token instanceof NameToken ) {
 			return this.atomicName( (NameToken)token );
 		} else {
-			throw new Alert( "Name token required" ).culprit( "token", token ).mishap( 'P' );
+			throw new SysAlert( "Name token required" ).culprit( "token", token ).mishap( 'P' );
 		}
 	}
 }

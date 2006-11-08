@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.arithmetic;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.tools.Consumer;
 
 import java.math.BigInteger;
@@ -57,7 +57,7 @@ public final class RatioNum extends RationalNum {
 
 		//	Sort out signs.
 		if ( dsign == 0 ) {
-			new Alert( "Divide by zero", "Rational numbers must have non-zero denominator" ).mishap();
+			new SysAlert( "Divide by zero", "Rational numbers must have non-zero denominator" ).mishap();
 		} else if ( dsign < 0 ) {
 			n = n.negate();
 			d = d.negate();

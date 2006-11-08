@@ -24,7 +24,7 @@ import org.openspice.jspice.tokens.NameToken;
 import org.openspice.jspice.tokens.QuotedToken;
 import org.openspice.jspice.tokens.NumberToken;
 
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.main.Interpreter;
 import org.openspice.jspice.tools.StyleWarning;
 import org.openspice.jspice.conf.DynamicConf;
@@ -184,8 +184,8 @@ class TokenizerImpl extends TokenizerImplMixinFlags implements Tokenizer {
         return this.source.getLineNumber() + 1;
     }
 
-	public final Alert alert( final String msg1, final String msg2 ) {
-		final Alert a = new Alert( msg1, msg2, 'T' );
+	public final SysAlert alert( final String msg1, final String msg2 ) {
+		final SysAlert a = new SysAlert( msg1, msg2, 'T' );
         a.culprit( "file", this.getPrintName() );
         a.culprit( "line no.", new Integer( this.getLineNumber() ) );
 		return a;
@@ -247,7 +247,7 @@ class TokenizerImpl extends TokenizerImplMixinFlags implements Tokenizer {
 		char ch = this.readCharNoEOF();   //okChar( endChar );
 		while ( ch != end_char ) {
 			if ( ch == '\r' || ch == '\n' ) {
-				new Alert( "Unterminated string",
+				new SysAlert( "Unterminated string",
 					"A newline or carriage return was encountered before the closing quotes" ).
 					culprit( "partial string", this.fetchTokenText() ).
 					mishap( 'T' );

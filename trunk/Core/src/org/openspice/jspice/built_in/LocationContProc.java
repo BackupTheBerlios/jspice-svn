@@ -18,8 +18,8 @@
  */
 package org.openspice.jspice.built_in;
 
+import org.openspice.alert.Alert;
 import org.openspice.jspice.namespace.Location;
-import org.openspice.jspice.alert.Alert;
 import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.built_in.InvLocationContProc;
 import org.openspice.jspice.datatypes.proc.Unary1InvokeProc;

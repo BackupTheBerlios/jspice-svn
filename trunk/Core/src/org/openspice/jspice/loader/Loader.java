@@ -25,7 +25,7 @@ import org.openspice.jspice.namespace.Location;
 import org.openspice.jspice.main.SuperLoader;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.vm_and_compiler.VM;
-import org.openspice.jspice.alert.Alert;
+import org.openspice.jspice.tools.SysAlert;
 import org.openspice.vfs.VItem;
 import org.openspice.vfs.VFile;
 import org.openspice.vfs.VFolder;
@@ -77,11 +77,11 @@ public abstract class Loader {
 	}
 
 	public void loadVFile( final VFile file ) {
-		throw new Alert( "Cannot load from file" ).culprit( "file", file ).mishap();
+		throw new SysAlert( "Cannot load from file" ).culprit( "file", file ).mishap();
 	}
 
 	public void loadVFolder( final VFolder file ) {
-		throw new Alert( "Cannot load from folder" ).culprit( "folder", file ).mishap();
+		throw new SysAlert( "Cannot load from folder" ).culprit( "folder", file ).mishap();
 	}
 
 	public void autoloadVItem( final VItem file, final Var.Perm perm, final FacetSet facets ) {
@@ -93,11 +93,11 @@ public abstract class Loader {
 	}
 
 	public void autoloadVFile( final VFile file, final Var.Perm perm, final FacetSet facets ) {
-		throw new Alert( "Cannot autoload from file" ).culprit( "file", file ).mishap();
+		throw new SysAlert( "Cannot autoload from file" ).culprit( "file", file ).mishap();
 	}
 
 	public void autoloadVFolder( final VFolder file, final Var.Perm perm, final FacetSet facets ) {
-		throw new Alert( "Cannot autoload from folder" ).culprit( "folder", file ).mishap();
+		throw new SysAlert( "Cannot autoload from folder" ).culprit( "folder", file ).mishap();
 	}
 
 

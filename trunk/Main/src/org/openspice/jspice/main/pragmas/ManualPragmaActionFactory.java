@@ -1,11 +1,11 @@
 package org.openspice.jspice.main.pragmas;
 
+import org.openspice.alert.Alert;
 import org.openspice.jspice.main.Pragma;
 import org.openspice.jspice.main.PragmaAction;
 import org.openspice.jspice.main.PragmaActionFactory;
 import org.openspice.jspice.main.manual.Manual;
 import org.openspice.jspice.main.manual.SearchPhrase;
-import org.openspice.jspice.alert.Alert;
 
 public class ManualPragmaActionFactory extends PragmaActionFactory {
 
