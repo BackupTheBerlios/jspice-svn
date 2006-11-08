@@ -1,4 +1,4 @@
-package org.openspice.jspice.alert;
+package org.openspice.alert;
 
 /**
  *	JSpice, an Open Spice interpreter and library.
@@ -20,19 +20,17 @@ package org.openspice.jspice.alert;
  */
 
 
-public class Output {
-	
-	static void println( final Object s ) {
-		System.err.println( s );
+public final class Abort extends Severity {
+
+	String getDescription() {
+		return "MISHAP ";
 	}
 
-	static void print( final Object s ) {
-		System.err.print( s );
+	//	An abort never returns.
+	AlertException throwUp( final AlertException ax ) {
+		throw ax;
 	}
 
-	static void flushAll() {
-		System.err.flush();
-		System.out.flush();
-	}
+	static final Abort abort = new Abort();
 
 }

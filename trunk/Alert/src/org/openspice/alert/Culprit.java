@@ -1,4 +1,4 @@
-package org.openspice.jspice.alert;
+package org.openspice.alert;
 
 /**
  *	JSpice, an Open Spice interpreter and library.

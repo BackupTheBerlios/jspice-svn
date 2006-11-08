@@ -1,4 +1,4 @@
-package org.openspice.jspice.alert;
+package org.openspice.alert;
 
 /**
  *	JSpice, an Open Spice interpreter and library.
@@ -19,15 +19,20 @@ package org.openspice.jspice.alert;
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-public class AlertException extends RuntimeException {
 
-	private static final long serialVersionUID = -5361927640910276025L;
+public class Output {
+	
+	static void println( final Object s ) {
+		System.err.println( s );
+	}
 
-	final Alert alert;
+	static void print( final Object s ) {
+		System.err.print( s );
+	}
 
-	public AlertException( final Alert _alert ) {
-		super( _alert.getComplaint() );
-		this.alert = _alert;
+	static void flushAll() {
+		System.err.flush();
+		System.out.flush();
 	}
 
 }

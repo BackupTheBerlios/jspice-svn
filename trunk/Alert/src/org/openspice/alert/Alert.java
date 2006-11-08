@@ -17,7 +17,7 @@
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-package org.openspice.jspice.alert;
+package org.openspice.alert;
 
 import java.util.List;
 import java.util.Iterator;
@@ -200,6 +200,7 @@ public class Alert extends AlertBase implements AlertPrintable {
 		return unimplemented( "unimplemented" );
 	}
 
+	//	I would like to delete this when I have stablised the projects.
 	public Alert resetInsertionPoint() {
 		this.resetIndex();
 		return this;

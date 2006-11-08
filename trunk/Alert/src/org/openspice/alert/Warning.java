@@ -1,4 +1,4 @@
-package org.openspice.jspice.alert;
+package org.openspice.alert;
 
 /**
  *	JSpice, an Open Spice interpreter and library.
@@ -19,18 +19,24 @@ package org.openspice.jspice.alert;
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+public final class Warning extends Severity {
 
-public final class Abort extends Severity {
+	final String description;
+
+	public Warning( String description ) {
+		this.description = description;
+	}
 
 	String getDescription() {
-		return "MISHAP ";
+		return this.description;
 	}
 
-	//	An abort never returns.
-	AlertException throwUp( final AlertException ax ) {
-		throw ax;
+	//	A warning returns and does not throw.
+	AlertException throwUp( final AlertException aex ) {
+		return aex;
 	}
 
-	static final Abort abort = new Abort();
+	static final Warning warning = new Warning( "WARNING" );
+	static final Warning internal = new Warning( "INTERNAL WARNING" );
 
 }

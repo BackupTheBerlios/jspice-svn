@@ -1,4 +1,4 @@
-package org.openspice.jspice.alert;
+package org.openspice.alert;
 
 import java.util.Iterator;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package org.openspice.jspice.alert;
+package org.openspice.alert;
 
 /**
  *	JSpice, an Open Spice interpreter and library.
@@ -19,18 +19,15 @@ package org.openspice.jspice.alert;
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+public class AlertException extends RuntimeException {
 
-public abstract class Severity { //extends AssertionError {
+	private static final long serialVersionUID = -5361927640910276025L;
 
-	abstract String getDescription();
+	final Alert alert;
 
-	/**
-	 * The Alert.report method will always finish by calling throwUp
-	 * of the severity level.  This should throw for fatal errors and
-	 * return for non-fatal errors.
- 	 * @param ex an AlertException that encapsulates the Alert
-	 * @return if non-fatal returns ex
-	 */
-	abstract AlertException throwUp( final AlertException ex );
+	public AlertException( final Alert _alert ) {
+		super( _alert.getComplaint() );
+		this.alert = _alert;
+	}
 
 }

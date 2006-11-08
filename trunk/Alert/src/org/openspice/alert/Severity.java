@@ -1,4 +1,4 @@
-package org.openspice.jspice.alert;
+package org.openspice.alert;
 
 /**
  *	JSpice, an Open Spice interpreter and library.
@@ -19,24 +19,18 @@ package org.openspice.jspice.alert;
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-public final class Warning extends Severity {
 
-	final String description;
+public abstract class Severity { //extends AssertionError {
 
-	public Warning( String description ) {
-		this.description = description;
-	}
+	abstract String getDescription();
 
-	String getDescription() {
-		return this.description;
-	}
-
-	//	A warning returns and does not throw.
-	AlertException throwUp( final AlertException aex ) {
-		return aex;
-	}
-
-	static final Warning warning = new Warning( "WARNING" );
-	static final Warning internal = new Warning( "INTERNAL WARNING" );
+	/**
+	 * The Alert.report method will always finish by calling throwUp
+	 * of the severity level.  This should throw for fatal errors and
+	 * return for non-fatal errors.
+ 	 * @param ex an AlertException that encapsulates the Alert
+	 * @return if non-fatal returns ex
+	 */
+	abstract AlertException throwUp( final AlertException ex );
 
 }
