@@ -1,0 +1,46 @@
+#!/bin/sh
+
+if [ ! -e .jspice_build ]; then 
+	echo "Wrong directory (no .jspice_build)"
+	exit 1
+fi
+
+cd unified-jar-file
+UJF=`pwd`/unified.jar
+
+#	Create an empty archive.
+mkdir dummy_directory
+jar cf $UJF dummy_directory
+rmdir dummy_directory
+
+#	Create a scratch directory.
+mkdir -p tmpjarfiles
+cd tmpjarfiles
+
+#	Unpack the relevant 3rd party classes
+for i in ../../skeleton/jarfiles/*.jar
+do
+	jar xf $i 
+done
+
+#	Remove the META-INF directory
+rm -r ./META-INF
+
+#	Add the unpacked 3rd party class files to the archive
+for i in *
+do
+	jar uf $UJF -C . $i
+done
+cd ..
+
+#	Delete the scratch directory
+rm -r ./tmpjarfiles
+
+#	Add the relevant classes from my code.
+jar uf $UJF -C ../../Core/classes org
+jar uf $UJF -C ../../Tools/classes org
+jar uf $UJF -C ../../BFI/classes BFI
+jar uf $UJF -C ../../TADS2/classes tads2
+jar uf $UJF -C ../../JLine/classes jline
+
+jar i $UJF

@@ -1,0 +1,62 @@
+Ditch Day Drifter
+Copyright (c) 1990, 1996 by Michael J. Roberts.  All rights reserved.
+
+This package was prepared June 1, 2002.
+
+Ditch Day Drifter is a game that demonstrates TADS, the Text Adventure
+Development System, a programming tool for writing text adventure games.
+
+Ditch Day Drifter is distributed free of charge.  Please feel free to
+ give a copy of Ditch Day Drifter to your friends.  Ditch Day Drifter
+may be distributed on the condition that it is distributed free of charge,
+unmodified, and in its entirety; please see LICENSE.DDD for details.
+
+
+The TADS Run-Time
+-----------------
+
+In order to play Ditch Day Drifter, you need the TADS Run-Time module.
+To make the Ditch Day Drifter distribution file smaller, we distribute
+the TADS Run-Time module separately.  You should be able to find the
+file TADS2RUN (usually with an extension indicating the type of compression
+utility used, such as .ZIP or .SIT) from the same place you got Ditch
+Day Drifter.
+
+Notes for DOS users
+-------------------
+
+To run the game, type:   TR DITCH
+
+On PC's, you can edit command lines with the arrow keys and other standard
+editing keys.  Review Mode (described in DITCH.DOC) is activated with
+function key F1.
+
+Saved games are stored in standard DOS files, by default in the current
+directory (the directory from which you start the game), so make sure
+you have free disk space before you begin playing.
+
+
+About TADS
+----------
+
+TADS is a programming system that lets you write your own professional-
+quality text adventure games.  TADS uses a high-level, C-like object-oriented
+language.  The system comes with a compiler, the run-time system, a source
+file that implements a large set of common adventure objects, on-line
+documentation, and the source for a complete sample game.  TADS is
+freeware.
+
+
+
+ABOUT HIGH ENERGY SOFTWARE
+--------------------------
+
+High Energy Software formerly distributed TADS as a shareware system,
+but is no longer in business.  Mike Roberts, the developer of TADS,
+is now maintaining and distributing the system as freeware.  We have
+made an effort to remove references from these files to High Energy
+Software and its former telephone and other contact information,
+since all of those numbers and addresses are no longer in service.
+If we inadvertantly left any such references intact, please disregard
+them, since they're oversights.
+

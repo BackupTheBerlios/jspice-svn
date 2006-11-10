@@ -1,0 +1,13 @@
+#!/bin/sh
+mkdir $1
+cd $1
+mkdir auto docs help lib load
+
+cat > load.conf <<EOF
+load folder load
+load file load.spi
+EOF
+
+cat > load.spi << EOF
+# This loads when the package loads
+EOF

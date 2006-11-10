@@ -1,0 +1,22 @@
+Installing JSpice
+-----------------
+
+1.  Unpack the distribution.
+
+2.  It will create a directory called
+        jspice-vXXX
+    where XXX is the distribution version number.  The name and location of 
+    this directory does not matter.  We suggest moving it to either /usr/local
+    or ~/local.
+    
+3.  We will call the jspice-vXXX diectory the base directory, BASEDIR.
+
+4.  To execute the interpreter, use
+        BASEDIR/bin/jspice
+    You can put this on your $PATH or make a symbolic link to your 
+    ~/bin for convenience.  (If you want to use the other convenience 
+    scripts that are bundled in the same directory, you'll need to 
+    put it on your $PATH.)
+    
+----------------------------
+Steve Leach, 17th March 2004. 

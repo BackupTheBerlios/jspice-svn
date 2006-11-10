@@ -1,0 +1,19 @@
+#!/bin/sh
+# Feeble attempt at self-homing.
+#jspice_home=`dirname $0`/..
+jspice_home="${0%/*}"/..
+# Now canonize.
+jspice_home=`( cd $jspice_home ; pwd )`
+exec java -cp \
+${jspice_home}/jarfiles/org.openspice.jspice.jar:\
+${jspice_home}/jarfiles/org.openspice.tools.jar:\
+${jspice_home}/jarfiles/jline.jar:\
+${jspice_home}/jarfiles/bfi.jar:\
+${jspice_home}/jarfiles/tads2.jar:\
+${jspice_home}/jarfiles/regexp.jar:\
+${jspice_home}/jarfiles/javax.servlet.jar:\
+${jspice_home}/jarfiles/org.mortbay.jetty.jar:\
+${jspice_home}/jarfiles/org.mortbay.jmx.jar \
+-Dorg.openspice.jspice.env="`env`" \
+-Dorg.openspice.jspice.home=${jspice_home} \
+org.openspice.jspice.main.MainWithJLine

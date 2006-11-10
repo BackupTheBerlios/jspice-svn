@@ -1,0 +1,12 @@
+#!/bin/sh
+# Feeble attempt at self-homing.
+#jspice_home=`dirname $0`/..
+jspice_home="${0%/*}"/..
+# Now canonize.
+jspice_home=`( cd $jspice_home ; pwd )`
+exec java -cp \
+${jspice_home}/jarfiles/unified.jar \
+-Dcom.apple.mrj.application.apple.menu.about.name=JSpice \
+-Dorg.openspice.jspice.env="`env`" \
+-Dorg.openspice.jspice.home=${jspice_home} \
+org.openspice.jspice.main.StartSplash "$@"

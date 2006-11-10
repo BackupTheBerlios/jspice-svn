@@ -1,0 +1,114 @@
+#!/bin/sh
+
+if [ ! -e .jspice_build ]; then 
+	echo "Wrong directory (no .jspice_build)"
+	exit 1
+fi
+
+if [ -z $1 ]; then
+	echo "Missing version argument"
+	exit 1
+fi
+
+# Set up the useful file names.
+version=$1
+prefix=jspice-v
+tmpdir=${prefix}${version}
+fullsuffix="-source"
+litesuffix="-runtime"
+
+bznmfull=${prefix}${version}${fullsuffix}.tar.bz2
+bznmlite=${prefix}${version}${litesuffix}.tar.bz2
+
+bznamefull=distros/${bznmfull}
+bznamelite=distros/${bznmlite}
+
+gznmfull=${prefix}${version}${fullsuffix}.tar.gz
+gznmlite=${prefix}${version}${litesuffix}.tar.gz
+
+gznamefull=distros/${gznmfull}
+gznamelite=distros/${gznmlite}
+
+calcversion=`./bin/build-version`
+if [ $version != ${calcversion} ]; then
+	echo "Version mismatch ($version != $calcversion)"
+	exit 1
+fi
+
+for i in ${bznamefull} ${gznamefull} ${bznamelite} ${gznamelite}
+do
+	if [ -e $i ]; then
+		echo "That version already exists (${i})"
+		exit 1
+	fi
+done
+
+if [ -e ${tmpdir} ]; then
+	echo "The previous run left junk behind (${tmpdir})"
+	exit 1
+fi
+
+# Now to create the appropriate distribution directory.  Emphemeral.
+echo 'Create temporary directory ...'
+mkdir ${tmpdir}
+
+# Copy the skeleton files across.
+( cd skeleton; tar cf - . ) | ( cd ${tmpdir}; tar xf - )
+
+# Create the jar file.
+echo 'Bring the jar files up to date ...'
+./mk-jarfiles
+
+# Copy the newly made jarfiles across.
+echo 'Copy the jar files across'
+tar cf - jarfiles | ( cd ${tmpdir}; tar xf - )
+
+
+# Add the jarfiles, javadocs and source code
+echo 'Adding the javadocs and source code directories ...'
+(cd .. ; tar cf - BFI/src Core/src JLine/src Office/src TADS2/src Tools/src javadocs) | ( cd ${tmpdir}; tar xf - )
+
+# Then create the tarball(s).  Rename around to get the directory name right.
+echo "Renaming ${tmpdir} to ${tmpdir}${fullsuffix}"
+mv ${tmpdir} ${tmpdir}${fullsuffix}
+echo 'Make the bzip2 full tarball ...'
+tar cf - ${tmpdir}${fullsuffix} | bzip2 > ${bznamefull}
+echo 'Make the gzip full tarball ...'
+tar cf - ${tmpdir}${fullsuffix} | gzip > ${gznamefull}
+echo "Renaming ${tmpdir}${fullsuffix} to ${tmpdir}"
+mv ${tmpdir}${fullsuffix} ${tmpdir}
+
+
+# And prune to make the lite tarballs.
+echo "Lightening the directory to make the lite tarballs ..."
+echo "  1. prune away javadocs"
+rm -rf ${tmpdir}/javadocs
+echo "  2. prune away Core"
+rm -rf ${tmpdir}/Core
+echo "  3. prune away Tools"
+rm -rf ${tmpdir}/Tools
+echo "  4. prune away tads2 pkg"
+rm -rf ${tmpdir}/inventory/tads2-pkg
+
+# Then create the tarball(s).  Rename around to get the directory name right.
+echo "Renaming ${tmpdir} to ${tmpdir}${litesuffix}"
+mv ${tmpdir} ${tmpdir}${litesuffix}
+echo "Make the bzip2 lite tarball ..."
+tar cf - ${tmpdir}${litesuffix} | bzip2 > ${bznamelite}
+echo "Make the gzip2 lite tarball ..."
+tar cf - ${tmpdir}${litesuffix} | gzip > ${gznamelite}
+echo "Renaming ${tmpdir}${litesuffix} to ${tmpdir}"
+mv ${tmpdir}${litesuffix} ${tmpdir}
+
+# Trash the emphemeral directory.  
+echo "Clean up emphemeral directory ..."
+rm -rf ${tmpdir}
+
+# Now upload the tarball(s) to the target directory.  Copy to the screen for
+# copy/paste in case of timeout.
+echo 'Upload ...'
+scp_cmd="scp $bznamefull $bznamelite $gznamefull $gznamelite spice@openspice.org:/www/openspice/htdocs/download/jspice/"
+echo $scp_cmd
+$scp_cmd
+
+echo "Done"

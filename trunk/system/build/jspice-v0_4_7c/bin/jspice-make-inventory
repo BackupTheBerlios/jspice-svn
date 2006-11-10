@@ -1,0 +1,28 @@
+#!/bin/sh
+mkdir $1
+cd $1
+
+cat > inventory.conf <<EOF
+<inventory-configuration>
+
+<!-- 
+INVENTORY CONFIGURATION FILE
+----------------------------
+
+Linked inventories:
+  <inventory enabled="y|n" regex="y|n">NAME</inventory>
+
+Package enabling:
+  <package enabled="y|n" regex="y|n">NAME</package>
+                                    
+Notes:
+    * First match found is always the one that counts
+    * Regular expressions are in Spice format
+    * The initial default is to enable all possible matches.
+-->
+
+<inventory enabled="y" regex="y"/>
+<package enabled="y" regex="y"/>
+
+</inventory-configuration>
+EOF

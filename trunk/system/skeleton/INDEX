@@ -1,0 +1,18 @@
+BFI				Java files for the embedded Brain**** interpreter (IDEA module)
+bin				Executable scripts.
+build			Directory used for building a new distribution.
+Core			Java files for core of the JSpice system (IDEA module)
+docs			Documentation directory.
+INSTALL.txt		Installation instructions.
+inventory		The JSpice system library.
+jarfiles		All the required jar files (Java libraries) for the executables
+javadocs		Javadocs directory, as you might have guessed.
+JLine			Java files which provide readline-like facilities (IDEA module)
+jspice.conf		The JSpice system configuration file
+licences		Directory containing all the required open source licences.
+LICENSE.txt		The JSpice licence (GPL v2.0)
+NEWS.txt		News of what's changed - essentially a version history
+Office			Java files for asynchronous message passing (IDEA module)
+README.txt		Introductory text for this distribution
+TADS2			Java files for the embedded TADS2 interpreter (IDEA module)
+Tools			Java files for general Java utilities (IDEA module)

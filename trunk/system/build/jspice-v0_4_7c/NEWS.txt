@@ -1,0 +1,419 @@
+=                          JSpice Distribution News                         =
+#############################################################################
+==                  Changes in Reverse Chronological Order                 ==
+#############################################################################
+
+=== Version 0.4.7, 29th July 2004 ===
+
+  * Added suchthat (filter) to for loops.
+  
+  * Fixed bug in Pragma expansion
+
+=== Version 0.4.6, 29th July 2004 ===
+
+  * Added short lambdas: e.g. ( x => x + 1 )
+  	(Spotted by GJH)
+
+=== Version 0.4.5, 29th July 2004 ===
+
+  * Added isEmpty, isList, isMap, isListFlavour, isMapFlavour, isString 
+    with summaries.
+
+=== Version 0.4.4, 28th July 2004 ===
+
+  * Added newSymbol and symbolString.
+
+  * Added elementName, elementAttributes and elementChildren.  Gave them
+    summaries.
+    
+  * Added full error handling for allButFirst, allButLast, justFirst and
+    justLast, head, tail and last.
+    
+  * Fixed bug in assigning to (var x).  (Thanks to GJH for spotting this.)
+  
+  * Prompt now configurable in jspice.conf.
+  
+  * Added personal configuration ( ~/.jspice/jspice.conf).
+
+=== Version 0.4.3 ===
+
+  * Added attributeMap and tagName to stdlib.
+
+  * Standardized prompt now invisible to the compiler.
+  
+  * addFirst and addLast functions added.
+  
+  * Fixed bug in tag syntax when more than one attribute was used.
+
+=== Version 0.4.2, 24th July 2004 ===
+
+  * Added functions newList and newMap (compatible with MillScript.)
+  
+  * Added {% ... %} syntax for creating immutable Maps.
+
+  * Added new #list pragma for listing the contents of packages.
+  
+  * New self-describing summaries for procedures in order to support the
+    #list pragma.
+    
+  * Fixed bug in compilation of simple assignments!
+  
+  * Improved error messages when updating immutable objects.
+
+=== Version 0.4.1, July 23rd 2004 ===
+
+  * New list processing functions: 
+        head/first, tail
+        reverse, cons, snoc
+        allButFirst, allButLast, justFirst, justLast
+        
+  * The lexis of "-:" was broken.  Fixed.
+  
+  * Fixed a bug in the lexis of 
+       3.last
+    which meant that the three was being converted to floating point.
+
+=== Version 0.4.0, 22nd July 2004 ===
+
+  * Massive reengineering of the autoloading mechanism to go thru 
+    a very narrow "virtual filing system" interface.  Hopefully this will
+    buy a great deal of flexibility in the future.
+    
+    However, this has probably introduced a slew of teething problems which
+    I will have to work thru as they crop up.
+
+  * Added #load macro in preparation for emacs intergration.
+
+  * Fixed the trailing semi-colon bug.
+  
+  * Improved error reporting when faults appear in the head of
+    a definition (#2020)
+    
+  * Fixed a long-standing bug in the way phase is reported.
+
+  * Major reorganization of code to utilize modules.
+  
+  * Fixed the implementation of Culprit and CulpritList in the alert
+    package - eliminating CulpritGroup altogether.
+
+=== Version 0.3.12 ===
+
+  * Tab completion for pragmas implemented.
+
+  * Several bug fixes for JLine.
+  
+  * Basic preparation for complex numbers.  Operators "+:" and "-:"
+    added i.e. same convention as Pop-11.  Complex numbers work with
+    +, -, * and /.  The scientific routines won't work with them yet,
+    apart from sqrt.
+    
+  * Added the #quit pragma that forces the system to exit.  The
+    #exit pragma is a synonym for UNIX sysadmins.  This supercedes
+    the IntelliJHack (***) which has been withdrawn.
+
+
+=== Version 0.3.11 ===
+
+  * Added experimental function openURL( String ).
+  
+  * Added format function.
+  
+
+=== Version 0.3.10 ===
+
+  * Rewrote pragma code to clean up the treatment of manuals.  But
+    it is still the case that extensions other than *.txt are ignored.
+    
+  * Added completion to the readline capabilities.  Had to hack JLine
+    to get the right effect, which was a bit of a pity.
+    
+  * The TADS2 interpreter now free of global variables.  As a consequence
+    you can run multiple instances in several threads without them
+    interfering with each other.
+
+=== Version 0.3.9 ===
+
+  * Jetty servlet container included.  This is a highly experimental piece of
+    code that tries to encapsulate the console-driven applications.
+
+  * lastResults() added.
+  
+  * loadValueFromFile added.
+  
+  * Fixed ccr.gam.
+  
+  * Eliminated CharacterEntity.java in favour of new directive in 
+    jspice.conf.  This makes the set of entities configurable.
+    
+  * Non-standard syntax added for deferred values (=| STMNTS |=).
+    This exposes deferred values for programming.
+    
+  * Pragma for checking and changing the debug status added.
+        #debug [on|off]
+        
+  * New "lite" distribution added that omits source code, javadocs,
+    and the TADS2 package.
+  
+  
+=== Version 0.3.8 ===
+
+  * Fix tokenization of floating point numbers in expressions such
+    as "2.sqrt"
+      
+  * Reorganized lexis code in order to share escape parsing with the
+    Wiki parser.  Also lifted the classes and interfaces of Tokenizer.java
+    into individual files - simply because IDEA and other IDEs like it that
+    way.
+    
+  * Added CSV and TSV loader.
+    
+  * Fixed long standing bug in the way XML elements print out.
+  
+  * Fixed recently introduced bug in the number lexer.
+
+=== Version 0.3.7 ===
+
+  * Added math routines:
+        sin, cos, tan, asin, acos, atan, atan2,
+        log, log2, log10,
+        ceil, floor, round, abs,
+        sqrt, pow,
+        toDegrees, toRadians
+        
+  * Data inspector "inspect" added.
+
+=== Version 0.3.6 ===
+
+  * Fixed error message for bad comments.  (Was reporting ASCII code.)
+  
+  * Very basic help system in place.  Exploiting newly created # code
+    for the following pragmas.
+        #help <topic>
+        #licence <topic>
+        #conditions <topic>
+        #warranty <topic>
+    This is very crude but a reasonable starting place.
+    
+  * Added a simple but effective form of readline courtesy of JLine.  
+    See
+        #licence jline
+
+=== Version 0.3.5 ===
+
+  * Brought definitions of unary + & - up to date (bug #002038).
+  
+  * Eliminated old, redundant arithmetic libraries.
+  
+  * Fixed usage of TADS2 interpreter (bug #002043 raised by GJH).
+  
+  * Sorted out licensing issues for TADS2 games.  Several games 
+    are now bundled by default into the distribution.
+  
+  * Eliminated debug messages when importing.
+
+
+=== Version 0.3.4 ===
+
+  * Numerical comparison now implemented.
+  
+  * Long standing bug in comparison of values with different run-time types
+    fixed.  Used java.lang.Object.equals which has a tendency to throw
+    ClassCastExceptions with the slightest provocation.
+
+  * Added tokenization of floating points and big integers.
+  
+  * Fixed default right associatively in parser - should always have been
+    left associative.
+
+=== Version 0.3.3 ===
+
+  * Reimplemented arithmetic completely.  Now handles Integer, BigInteger,
+    and Double.  However, there is no guaranteed canonization of small
+    numbers - indeed, there cannot be!  This is a bit of a problem for 
+    implementing ==.
+    
+    This prepares the ground for the full Spice implementation of numbers.
+    
+  * Fixed an error reporting problem - tokens were printing wrongly in
+    compiler errors.  (Pointed out by Aaron Sloman.)
+
+=== Version 0.3.2 ===
+
+  * CVS integration: cvs.jspice.berlios.de
+  
+  * Added slot updaters
+  
+  * Broke up massive Proc class by removing the myriad static inner
+    classes and moving them into the built_in package where they belong.
+    In the process introduced built_in.ShortCut to take over the role
+    of the short-cut lookups in Proc.  This isn't a very satisfactory class
+    and needs some attention.
+
+=== Version 0.3.1, 18th June 2004 ===
+
+  * Minimal slots supported - without updaters!  So don't expect to do
+    anything exciting with them for a while.
+    
+        define class Foo; slot alpha; enddefine
+        
+    Slot code is generated on the fly which is quite interesting and
+    complicated. 
+    
+  * Trying to make slot update work exposed a nasty bug in the assignment
+    code.  Fixed.
+
+=== Version 0.3.0 ===
+
+  * Added the very initial stages of the "define class" syntax.
+  
+  * Created framework for dynamic class and method construction.  See
+    JSpiceClassLoader for details.
+
+=== Version 0.2.11 ===
+
+  * Changed long comments to meet resolution on long comments.  The
+    closing bracket is now "#)" rather than ")#".
+
+=== Version 0.2.10 ===
+
+  * Added new Deferred data type - not sure whether this is an idea that
+    will work.  However, shifted to loading images this way after 
+    investigation showed that image-delegation triggers a VM bug.
+    
+  * Importantly, the mapping from extensions to LoaderBuilders is now
+    done in jspice.conf and not an internal map.
+
+=== Version 0.2.9 ===
+
+  * Fixed bug in autoloading which disabled most formats.
+
+=== Version 0.2.8 ===
+
+  * Java serialization format now supported (*.ser)
+  
+  * Autoloading supports image formats (*.gif, *.png and maybe *.jpg).
+  
+  * Autoloading supports TADS2 and Brain*** as well :-)
+  
+  * Fixed nasty bug in explode for maps - improved efficiency at the
+    same time.
+
+=== Version 0.2.7 ===
+
+  * Lots of new autoloadable formats added.  The list now includes:
+      * Arbitrary Spice expressions (*.expr)
+      * Single lines loaded as a String (*.line)
+      * Multiple lines loaded as a List of String (*.lines)
+      * Maps with string or symbol keys (*-map/*.* and *-symtab/*.*)
+      * Properties loaded as a Map (*.prop)
+      * Spice definitions (*.spi)
+      * Text files loaded as a String (*.txt)
+      * URIs and URLS (*.uri and *.url)
+      * XML files loaded as an Element (*.xml) 
+
+=== Version 0.2.6 ===
+
+  * Long comments now nest!  (I forgot this was part of the spec!)
+
+=== Version 0.2.5 ===
+
+  * Long comments added.
+
+=== Version 0.2.4 ===
+
+  * Added termin to the standard name space.
+  
+  * Added repeater machinery.  Not sure if it is going to be useful.
+  
+  * getEnv function changed to environment_variable - which now acts as
+    a mutable Map.  The '${' syntax now works in update mode.
+        ${NAME} := VALUE
+    
+    
+== Version 0.2.3 ===
+
+  * Added split, which was missing from the group of regular expression
+    operators.
+    
+  * Added getEnv function.  This requires a vile patch to the bin/jspice
+    file.  But as Java doesn't directly support accessing environment 
+    variables, what can one do?
+
+=== Version 0.2.2 ===
+
+  * Added basic regular expressions.
+  
+=== Version 0.2.1 ===
+
+  * Autoloading of multiple languages added.
+ 
+=== Version 0.2 ===
+
+  * Autoloading added.
+
+=== Version 0.1.7 ===
+
+  * The Spice interpreter is now fully subsumed into the multi-language
+    loader framework - phew!  
+    
+  * The current name-space tracker is now integrated into the loader 
+    framework.  (As a consequence, the concept of current name space is
+    now subsystem dependent.)
+    
+
+=== Version 0.1.6 ===
+
+  * Continued with meeting GPL licence requirements.  Now prints appropriate
+    banner in interactive mode.  However, the ACME servlet licence is not
+    properly met - as this is not actually used (yet) this is not an urgent 
+    issue.
+    
+  * Yet more configuration machinery.  The system now looks for its system
+    wide configuration file, remembers its installation directory, and 
+    complains properly if it cannot figure out the context.
+  
+=== Version 0.1.5 ===
+
+  * More configuration machinery added.  The multi-language loader (SuperLoader)
+    being pushed into all the right places.
+
+=== Version 0.1.4 ===
+
+  * Added copyright notices to all source files.
+ 
+  * Added configuration machinery, not yet complete
+      * For JSpice system-wide
+      * For Inventories (package collections)
+      * So that importing will autoload packages
+      * And so that file autoloading can be implemented
+      
+  * Added super-loader in preparation for multiple languages
+  
+  * Now checks that the version numbers are in agreement
+      
+=== Version 0.1.3, 1st May 2004 ===
+
+  * Fixed bug #16 "NPE after = expression" 
+  
+  * Turned this file into Wiki format.  Its just a thought at this stage.
+
+=== Version 0.1.2 ===
+
+  * JSpice interpreter now announces version number.
+
+  * Created convenience scripts. 
+      * jspice-make-inventory
+      * jspice-make-package
+
+
+=== Version 0.1.1 ===
+
+  * Added the bin directory
+
+
+=== Version 0.1.0 ===
+
+  * Initial release
+
+#############################################################################
+

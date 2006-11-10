@@ -1,0 +1,1 @@
+Main-Class: org.openspice.jspice.main.MainWithJLine

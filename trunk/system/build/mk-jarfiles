@@ -1,0 +1,15 @@
+#!/bin/sh
+
+#jar cmf manifest.mf jarfiles/org.openspice.jspice.jar -C ../Core/classes org
+jar cf jarfiles/org.openspice.jspice.jar -C ../Core/classes org
+jar cf jarfiles/org.openspice.tools.jar -C ../Tools/classes org
+jar cf jarfiles/bfi.jar -C ../BFI/classes BFI
+jar cf jarfiles/tads2.jar -C ../TADS2/classes tads2
+jar cf jarfiles/jline.jar -C ../JLine/classes jline
+
+jar i \
+jarfiles/org.openspice.jspice.jar \
+jarfiles/org.openspice.tools.jar \
+jarfiles/jline.jar \
+jarfiles/BFI.jar \
+jarfiles/tads2.jar
