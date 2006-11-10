@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>system</name>
+	<comment></comment>
+	<projects>
+		<project>Alert</project>
+		<project>BFI</project>
+		<project>Core</project>
+		<project>JLine</project>
+		<project>Main</project>
+		<project>Office</project>
+		<project>TADS2</project>
+		<project>Tools</project>
+		<project>VFS</project>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+</projectDescription>
