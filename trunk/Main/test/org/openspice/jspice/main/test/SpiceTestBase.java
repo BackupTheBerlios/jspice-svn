@@ -27,28 +27,29 @@ import org.openspice.jspice.main.StringInterpreter;
 
 public class SpiceTestBase extends TestCase {
 
-	public static final List one( final Object x ) {
-		final List list = new ArrayList();
+	public static final List< Object > one( final Object x ) {
+		final List< Object > list = new ArrayList< Object >();
 		list.add( x );
 		return list;
 	}
 
-	public static final List two( final Object x, final Object y ) {
-		final List list = new ArrayList();
+	public static final List< Object > two( final Object x, final Object y ) {
+		final List< Object > list = new ArrayList< Object >();
 		list.add( x );
 		list.add( y );
 		return list;
 	}
 
-	public static final List three( final Object x, final Object y , final Object z ) {
-		final List list = new ArrayList();
+	public static final List< Object > three( final Object x, final Object y , final Object z ) {
+		final List< Object > list = new ArrayList< Object >();
 		list.add( x );
 		list.add( y );
 		list.add( z );
 		return list;
 	}
 
-	public static final List interpret( final String s ) {
+	public static final List< Object > interpret( final String s ) {
+		System.setProperty( "org.openspice.jspice.home", "../system/test" );
 		return new StringInterpreter().interpret( s );
 	}
 

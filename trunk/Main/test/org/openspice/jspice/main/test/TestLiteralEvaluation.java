@@ -19,6 +19,9 @@
 package org.openspice.jspice.main.test;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import org.openspice.jspice.arithmetic.IntegerNum;
 import org.openspice.tools.IntegerTools;
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -37,11 +40,17 @@ public class TestLiteralEvaluation extends SpiceTestBase {
 	}
 
 	public void testJustZero() {
-		assertEquals( one( IntegerTools.ZERO ), interpret( "0" ) );
+		final List< Object > list = interpret( "0" );
+		assertSame( 1, list.size() );
+		final Number num = (Number)list.get( 0 );
+		assertTrue( num.longValue() == 0 );
 	}
 
 	public void testJustOne() {
-		assertEquals( one( IntegerTools.ONE ), interpret( "1" ) );
+		final List< Object > list = interpret( "1" );
+		assertSame( 1, list.size() );
+		final Number num = (Number)list.get( 0 );
+		assertTrue( num.longValue() == 1 );
 	}
 
 	public void testJustLiteralString() {
