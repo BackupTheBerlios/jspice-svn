@@ -18,16 +18,6 @@
  */
 package org.openspice.vfs.test;
 
-import org.openspice.vfs.VFolder;
-import org.openspice.vfs.VFile;
-import org.openspice.vfs.VVolume;
-import org.openspice.vfs.zip.ZipVVolume;
-import org.openspice.vfs.file.FileVFolder;
-import org.openspice.vfs.file.FileVVolume;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.zip.ZipFile;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
@@ -63,12 +53,5 @@ public class VFSTest extends TestCase {
 //		scan( folder );
 //	}
 
-	public void testZipVFS() throws IOException {
-		assertTrue( "check zip file exists", new File( "jspice.zip").exists() );
-		final VVolume vvol = new ZipVVolume( new ZipFile( "jspice.zip" ) );
-		final VFile vfile = vvol.getVFileFromPath( ".jspice/jspice.conf" );
-		assertTrue( "vfile not null", vfile != null );
-		assertEquals( "check nam", vfile.getNam(), "jspice" );
-		assertEquals( "check ext", vfile.getExt(), "conf" );
-	}
+
 }
