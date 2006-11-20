@@ -35,11 +35,11 @@ public class FtpVFile extends PathAbsVFile implements VFile {
 		return FileNameCodec.FILE_NAME_CODEC;
 	}
 
-	protected String getPath() {
+	public String getPath() {
 		return this.path;
 	}
 
-	protected String getName() {
+	public String getName() {
 		return FtpTools.getName( this.path );
 	}
 

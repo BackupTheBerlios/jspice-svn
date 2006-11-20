@@ -36,11 +36,11 @@ public class FileVFolder extends PathAbsVFolder implements VFolder {
 		return FolderNameCodec.FOLDER_NAME_CODEC;
 	}
 
-	protected String getPath() {
+	public String getPath() {
 		return this.file.getPath();
 	}
 
-	protected String getName() {
+	public String getName() {
 		return this.file.getName();
 	}
 

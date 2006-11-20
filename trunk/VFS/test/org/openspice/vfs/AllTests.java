@@ -1,5 +1,6 @@
 package org.openspice.vfs;
 
+import org.openspice.vfs.file.FileVVolumeTest;
 import org.openspice.vfs.zip.ZipVVolumeTest;
 
 import junit.framework.Test;
@@ -10,6 +11,7 @@ public class AllTests {
 	public static Test suite() {
 		final TestSuite suite = new TestSuite( "Test for org.openspice.vfs" );
 		suite.addTestSuite( ZipVVolumeTest.class );
+		suite.addTestSuite( FileVVolumeTest.class );
 		//$JUnit-BEGIN$
 
 		//$JUnit-END$

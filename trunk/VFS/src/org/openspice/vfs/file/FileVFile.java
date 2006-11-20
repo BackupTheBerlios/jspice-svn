@@ -33,11 +33,11 @@ public class FileVFile extends PathAbsVFile implements VFile {
 		return FileNameCodec.FILE_NAME_CODEC;
 	}
 
-	protected String getPath() {
+	public String getPath() {
 		return this.file.getPath();
 	}
 
-	protected String getName() {
+	public String getName() {
 		return this.file.getName();
 	}
 

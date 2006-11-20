@@ -23,8 +23,8 @@ import org.openspice.vfs.codec.Codec;
 public abstract class PathAbsVFile extends AbsVFile implements VFile {
 
 	abstract protected Codec codec();
-	abstract protected String getPath();
-	abstract protected String getName();
+	abstract public String getPath();
+	abstract public String getName();
 	abstract protected String getParentPath();
 
 	public String getNam() {
