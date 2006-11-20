@@ -19,17 +19,15 @@
 
 package org.openspice.jspice.datatypes.elements;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 import org.openspice.jspice.datatypes.*;
 import org.openspice.jspice.built_in.inspect.FieldAdder;
 
-import javax.xml.parsers.SAXParserFactory;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.ParserConfigurationException;
-import java.util.*;
-import java.io.InputStream;
-import java.io.IOException;
 
-import org.xml.sax.*;
 import org.openspice.tools.EmptyMap;
 
 public final class SemiCompactXmlElement extends ArrayKidsXmlElement {

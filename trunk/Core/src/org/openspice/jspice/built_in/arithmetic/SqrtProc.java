@@ -19,9 +19,6 @@
 package org.openspice.jspice.built_in.arithmetic;
 
 import org.openspice.jspice.datatypes.proc.Unary1InvokeProc;
-import org.openspice.jspice.lib.CastLib;
-import org.openspice.jspice.arithmetic.ComplexNum;
-import org.openspice.tools.IntegerTools;
 import org.openspice.jspice.arithmetic.Sqrt;
 
 public final class SqrtProc extends Unary1InvokeProc {

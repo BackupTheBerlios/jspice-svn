@@ -18,8 +18,6 @@
  */
 package org.openspice.jspice.arithmetic;
 
-import java.math.BigInteger;
-import java.math.BigDecimal;
 
 public final class Div extends BinaryArithmeticOperator {
 
