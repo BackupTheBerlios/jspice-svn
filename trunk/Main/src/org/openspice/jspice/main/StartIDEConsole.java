@@ -18,9 +18,7 @@
  */
 package org.openspice.jspice.main;
 
-import java.util.Arrays;
-
-public class StartIDEA {
+public class StartIDEConsole {
 
 	public static void main( final String[] args ) {
 		final String[] new_args = new String[ args.length + 1 ];
