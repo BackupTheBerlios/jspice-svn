@@ -1,0 +1,1 @@
+define dup( x ) => x, x enddefine

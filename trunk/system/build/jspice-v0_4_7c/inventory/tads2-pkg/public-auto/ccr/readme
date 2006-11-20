@@ -1,0 +1,193 @@
+
+
+		       Colossal Cave Revisited
+		A TADS game with complete source code
+
+		 Copyright (C) 1993 David M. Baggett
+
+	  See the file readme.1st for terms of distribution
+		       and use of this software
+
+
+What Have We Here?
+
+   This game is a remake of the first major adventure game ever written:
+Colossal Cave, otherwise known as "Adventure."  The original Adventure
+was written in FORTRAN by Willie Crowther and Don Woods, and had only
+a simple two word command parser.  Its descriptions were so vivid,
+however, that it captivated a generation of computer enthusiasts and
+quickly became part of the "hacker lore."  References to Adventure
+crop up even today in games and other software.
+
+   Adventure was such a significant event in computerdom that it
+spawned a whole genre of games, made even more popular by Infocom
+in the 1980's.  The MIT hackers who formed Infocom took the Adventure
+concept and added some powerful new technology to it: sentence parsing.
+Their first game, Zork, was clearly very much inspired by Crowther and
+Woods' original, but seemed more intelligent and was easier to play
+because it could accept simple sentences instead of just two-word
+directives.
+
+   Eventually affordable computers got to be powerful enough to support
+general text adventure authoring packagaes, and by 1992 there were already
+nearly a dozen systems for would-be adventure authors to choose from.
+This remake of Crowther and Woods' original was written with TADS,
+one such adventure writing system, and is intended to be a tutorial
+example for TADS authors to learn from.  For this reason, great care
+has been taken to keep the code easy to read and understand.
+
+   Colossal Cave Revisited (CCR) is also meant to give a new
+generation of computer gamers an opportunity to play the game that
+started it all, in a format they will feel more comfortable with.
+Today's text adventurers have been "spoiled" by the nice sentence
+parsing that most games have these days, and it is the author's hope
+that this reimplementation will make the original Adventure -- a
+classic that still shines today -- accessable to a wider audience.
+
+
+Implementation Details and Philosophy
+
+   I have tried to be as faithful to the original game as possible
+throughout the project.  To start off on the right foot, I went back
+to Donald Ekman's excellent PC port of what seemed to be the original
+DEC-10 FORTRAN source code.  Don tells me he typed a significant
+portion of that source in from a paper listing -- now that's
+devotion!  In any case, few changes had to be made to get the game
+running under DOS, so the source I used to make CCR is largely
+"untainted."
+
+   Retrofitting such an old game onto a more sophisicated game engine
+created a few philosophical problems.  Games these days are expected
+to have "decorations;" little bits of scenery mentioned in the room
+descriptions that you can't actually do anything with, but make
+the setting feel more real.  The original Adventure didn't have many
+decorations, and the two-word parser prevented players from trying
+things like "look under y2 rock," "put the rod in the stream," etc.
+
+   The approach I took was to add decorations every reasonable place
+without writing much new prose.  Where prose exists in the original
+game, I used it, even to the extent of making bits of room
+descriptions serve double duty.  In a number of places I wrote
+entirely new text.  In these cases, I either wrote something
+innocuous or tried my best to mimic the style of the original.
+
+   The new sentence parser created similar problems for game play.
+Whereas in the original you had to say "throw axe" to attack
+something, you can now do things like "attack bear with lamp."  There
+is no analogue to this in the original source; "throw lamp" would be
+interpreted as a request to drop the object.  Here again, I used
+response text whenever available and strived to stay consistent with
+the overall tone of the original when crafting new prose.  From the
+beginning I wanted walkthroughs for the original to still work in
+CCR; this is largely true now, though there are surely a few
+exceptions.
+
+
+Hints to Programmers Who Want to Modify Colossal Cave Revisited
+
+   Colossal Cave Revisited isn't meant to be an unchanging mass of
+archival source code.  On the contrary, I hope that people will add
+new features, objects and locations.  If you do add things, please
+let me know so I can incorporate the changes into the official
+distribution.
+
+   Modifying any large program is daunting at first.  CCR is about
+13,000 lines of source, and that's a lot of code to read through.
+Fortunately, you shouldn't have to pay much attention to the grungy
+details of most of it, since I've tried my best to make it easy to
+modify.
+
+   With this is mind, here are a few tips to make building and
+changing CCR simpler:
+
+   * Have a suitable compiler.  You need a compiler for TADS 2.0.13
+     or higher.  Earlier versions of the compiler won't understand
+     some of the constructs used in the CCR source code.  Similarly,
+     you will need a version 2.0.13 or later run-time system to run it.
+
+   * Use (or at least follow) the makefile.  Some of the options 
+     in the makefile are crucial, and if you don't specify them when
+     compiling ccr.t, you will get mystifying error messages.  In
+     particular, be sure to compile with the -mp option set large
+     enough, and make sure you make the cache small enough (with the
+     -m option) if you're running under MS-DOS.
+
+   * Make extensions optional.  The easiest way to do this is to
+     add flags to the "global" object in ccr-std.t that enable or
+     disable your new code.
+
+   * Use the existing classes whenever possible.  Classes are already
+     defined to make your life easy.  In addition to the basic TADS
+     classes, make sure you understand the definitions and use of the
+     following:
+
+     ccr-item.t:
+
+	class CCR_treasure_item
+
+     ccr-npc.t:
+
+	class NPC
+
+     ccr-room.t:
+
+	class CCR_room
+	class CCR_alike_maze_room
+	class NoNPC
+	class CCR_dead_end_room
+	class lightroom
+	class Outside
+	class NotFarIn
+	class CCR_decoration
+
+	class floatingdecoration
+	class rfd (room feature decoration)
+
+   * Set global.debug to true to get extra information about room 
+     connections and NPC movement at run-time.  The game will check
+     its connections to make sure everything's OK at run-time.
+
+     Add new debugging code enabled by this flag for your own
+     extensions.
+
+   * When defining new classes or puzzles, copy an existing similar
+     implementation and then modify it to suit your needs.  Starting
+     from scratch is always harder than updating already-working code.  
+
+
+Some Ideas
+
+   Here are a few things that I considered doing myself, but decided
+to leave as exercises.  (Yeah, that's the ticket.)  They range from
+fairly trivial to incredibly time-consuming:
+
+   * Add hints.  The original gave you hints at various times, but
+     would deduct points if the player took them.  Get Don Ekman's
+     PC port of the FORTRAN source and use the original hint text.
+
+   * Make the NPC code more faithful to the original.  In particular,
+     dwarves don't block your way in CCR, while they did in the original.
+
+   * Make the NPC movement code faster.
+
+   * Make the descriptions of treasures sound more "excited."  The game
+     currently treats treasure like all other items when it tells you
+     about them:
+
+	You see a rock here.
+	You see a platinum pyramid here, 12 inches on a side.
+
+     Change ccr-adv.t so that it lists treasures separately, and
+     puts an exclamation point at the end.
+
+   * Implement one of the "extended" versions of the games; e.g., the
+     550 point version with the sword in the stone.  Make sure you
+     update scoring so that your extensions fit in seamlessly.
+
+   * Add your own NPC's, puzzles, or locations.
+
+   * Port TADS to new machines so that CCR has a wider audience. (Contact
+     Mike Roberts at High Energy Software for more info.)
+
+Whatever you do, please send me your changes!
+

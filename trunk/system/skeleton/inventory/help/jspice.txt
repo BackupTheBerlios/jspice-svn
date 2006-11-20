@@ -1,0 +1,69 @@
+HELP JSPICE                                     Steve Leach, Aug 04
+
+This is a preliminary help file for JSpice when used on the command 
+line.  It is invoked by the --help command-line option so keep this
+in mind when editing the text.
+
+I need to think about turning this into Wiki text and writing a 
+set of Wiki text conversion routines.
+
+The most important idea is that the jspice interpreter starts up in a
+variety of modes which are either interactive or non-interactive.  If
+the mode is interactive then the personal, interactive inventory is
+loaded.  By default this will be the ~/.jspice/inventory/ folder.
+
+
+Usage:
+	jspice [<mode>] <options>* [<inventory>]
+	
+Inventory:
+	If the inventory is omitted the current directory is assumed.
+
+Mode options (planned)
+	If there is no mode option, --dev is used as the default.  
+	
++----------+------------+------------------------------------------------------+
+|   mode   |interactive?|                     description                      |
+|  option  |            |                                                      |
++----------+------------+------------------------------------------------------+
+|  --app   |     no     |runs in background with GUI interaction               |
++----------+------------+------------------------------------------------------+
+|  --dev   |    yes     |interactive command-line interpreter                  |
++----------+------------+------------------------------------------------------+
+|  --cgi   |     no     |runs as CGI script                                    |
++----------+------------+------------------------------------------------------+
+| --filter |     no     |runs as unix filter with stdin/out/err set            |
++----------+------------+------------------------------------------------------+
+| --server |     no     |runs as daemon                                        |
++----------+------------+------------------------------------------------------+
+
+
+
+
+Other Options
+
++----------+----------+-----------+--------------+-----------------------------+
+|          |  values  |interactive|noninteractive|         description         |
+|          |          |  default  |   default    |                             |
++----------+----------+-----------+--------------+-----------------------------+
+| --banner |  on|off  |    on     |     off      |prints the startup banner    |
++----------+----------+-----------+--------------+-----------------------------+
+|  --help  |  on|off  |    off    |     off      |prints an initial help file  |
++----------+----------+-----------+--------------+-----------------------------+
+| --jline  |  on|off  |    on     |     off      |enables interactive          |
+|          |          |           |              |command-line editing         |
++----------+----------+-----------+--------------+-----------------------------+
+|--personal|  on|off  |    on     |     off      |  loads personal inventory   |
++----------+----------+-----------+--------------+-----------------------------+
+| --prompt |   ARG    |   null    |      ""      |sets the prompt to ARG       |
++----------+----------+-----------+--------------+-----------------------------+
+| --splash |  on|off  |    off    |     off      |displays a 'splash' image at |
+|          |          |           |              |start up                     |
++----------+----------+-----------+--------------+-----------------------------+
+|--version |  on|off  |    off    |     off      |reports version then quits   |
++----------+----------+-----------+--------------+-----------------------------+
+
+    
+    
+Also there probably needs to be a copyright message appended to the 
+text.  Maybe this should be done automatically by the Manual class.

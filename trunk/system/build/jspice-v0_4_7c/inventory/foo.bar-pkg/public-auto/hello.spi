@@ -1,0 +1,3 @@
+define hello() =>
+    println( "Hello, boys" )
+enddefine;

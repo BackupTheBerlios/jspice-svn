@@ -1,0 +1,37 @@
+#!/bin/sh
+
+if [ ! -e .jspice_build ]; then 
+        echo "Wrong directory (no .jspice_build)"
+        exit 1
+fi
+
+echo "RPM build started..."
+tmpdir='rpm_tmpdir'
+
+echo "Cloning RPM skeleton to create emphemeral copy ..."
+( cd ..; tar cf - rpm_skeleton ) | ( cd ${tmpdir};  tar xf - )
+mv ${tmpdir}/rpm_skeleton ${tmpdir}/rpm_emphemeral
+
+# Modify the emphemeral jspice.spec file to get the right Version and Release.
+
+echo "Setting version and release in spec file ..."
+export rpm_version=`jspice-version "%1p"`
+export rpm_release=`jspice-version "%2p.%3p"`  # Not sure of this format...
+mv \
+	${tmpdir}/rpm_emphemeral/jspice.spec \
+	${tmpdir}/rpm_emphemeral/jspice.spec.orig
+sed \
+	-e "s/^Version:.*$/Version: ${rpm_version}" \
+	-e "s/^Release:.*$/Release: ${rpm_release}" \
+	< ${tmpdir}/rpm_emphemeral/jspice.spec.orig \
+	> ${tmpdir}/rpm_emphemeral/jspice.spec
+
+# Execute the rpmbuild from the correct directory.
+echo "Execute the build ..."
+
+( \
+	cd ${tmpdir}/rpm_emphemeral/jspice.spec; \
+	rpmbuild -ba --target=noarch jspice.spec \
+)
+
+echo "RPM build completed"
