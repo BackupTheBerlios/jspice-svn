@@ -18,6 +18,8 @@
  */
 package org.openspice.jspice.main.test;
 
+import java.util.List;
+
 import org.openspice.tools.IntegerTools;
 import junit.framework.TestSuite;
 
@@ -33,7 +35,10 @@ public class TestSimpleArithmetic extends SpiceTestBase {
 	
 
 	public void testZeroPlusZero() {
-		assertEquals( one( IntegerTools.ZERO ), interpret( "0+0" ) );
+		final List list = interpret( "0+0" );
+		assertEquals( list.size(), 1 );
+		final Number num = (Number)list.get( 0 );
+		assertTrue( num.longValue() == 0 );
 	}
 
 }
