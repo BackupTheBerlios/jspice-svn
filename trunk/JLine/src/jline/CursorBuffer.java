@@ -18,8 +18,6 @@
  */
 package jline;
 
-import java.io.*;
-import java.util.*;
 
 /**
  * A CursorBuffer is a holder for a {@link StringBuffer} that
