@@ -23,15 +23,10 @@ import org.openspice.jspice.office.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Node;
-
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.io.StringReader;
-
 
 public class PoplogExample {
 

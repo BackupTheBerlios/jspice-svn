@@ -18,8 +18,6 @@
  */
 package org.openspice.jspice.office;
 
-import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  * The OfficeIntf is a <i>scaffolding</i> interface that has no useful meaning
