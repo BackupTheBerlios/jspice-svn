@@ -33,6 +33,13 @@ import java.util.LinkedList;
 public final class PrintProcs {
 
 	static final class PrintlnProc extends PrintTools.SpicePrintStdOutProc {
+		{
+			setDescription(
+					"println",
+					"%p( a1, ..., aN ) -> ()",
+					"prints its arguments to the standard output followed by a newline and returns no results"
+				);
+		}
 		public void gap( final boolean first, final boolean last, final Consumer cuchar ) {
 			if ( last ) cuchar.ln();
 		}
@@ -40,6 +47,13 @@ public final class PrintProcs {
 	public static final Proc printlnProc = new PrintlnProc();
 
 	static final class PrintlnToProc extends PrintTools.SpicePrintToProc {
+		{
+			setDescription(
+					"printlnTo",
+					"%p( <stream>, a1, ..., aN ) -> ()",
+					"prints its arguments a1 to aN to the stream followed by a newline and returns no results"
+				);
+		}		
 		public void gap( final boolean first, final boolean last, final Consumer cuchar ) {
 			if ( last ) cuchar.ln();
 		}
@@ -47,12 +61,26 @@ public final class PrintProcs {
 	public static final Proc printlnToProc = new PrintlnToProc();
 
 	static  final class PrintProc extends PrintTools.SpicePrintStdOutProc {
+		{
+			setDescription(
+					"print",
+					"%p( a1, ..., aN ) -> ()",
+					"prints its arguments to the standard output and returns no results"
+				);
+		}
 		public void gap( final boolean first, final boolean last, final Consumer cuchar ) {
 		}
 	}
 	public static final Proc printProc = new PrintProc();
 
 	static  final class PrintToProc extends PrintTools.SpicePrintToProc {
+		{
+			setDescription(
+					"printTo",
+					"%p( <stream>, a1, ..., aN ) -> ()",
+					"prints its arguments a1 to aN to the stream and returns no results"
+				);
+		}
 		public void gap( final boolean first, final boolean last, final Consumer cuchar ) {
 		}
 	}
@@ -63,9 +91,15 @@ public final class PrintProcs {
 		final boolean to_flag;
 		final boolean ln_flag;
 
-		public FormattedPrintProc( boolean to_flag, boolean ln_flag ) {
+		public FormattedPrintProc( final String name, boolean to_flag, boolean ln_flag ) {
 			this.to_flag = to_flag;
 			this.ln_flag = ln_flag;
+			final String sig_to = to_flag ? "<stream>, " : "";
+			final String sig = "%p( " + sig_to + "a1, ..., aN ) -> ()";
+			final String help_to = to_flag ? "to the stream " : "";
+			final String help_ln = ln_flag ? "followed by a newline " : "";
+			final String help = "prints its arguments a1 to aN " + help_to + help_ln + "and returns no results";
+			setDescription( name, sig, help );
 		}
 
 		public Object fastCall( final Object tos, final VM vm, final int nargs ) {
@@ -91,10 +125,10 @@ public final class PrintProcs {
 
 	}
 
-	public static final Proc FPRINT_PROC = new FormattedPrintProc( false, false );
-	public static final Proc FPRINTLN_PROC = new FormattedPrintProc( false, true );
-	public static final Proc FPRINT_TO_PROC = new FormattedPrintProc( true, false );
-	public static final Proc FPRINTLN_TO_PROC = new FormattedPrintProc( true, true );
+	public static final Proc FPRINT_PROC = new FormattedPrintProc( "fprint", false, false );
+	public static final Proc FPRINTLN_PROC = new FormattedPrintProc( "fprintln", false, true );
+	public static final Proc FPRINT_TO_PROC = new FormattedPrintProc( "fprintTo", true, false );
+	public static final Proc FPRINTLN_TO_PROC = new FormattedPrintProc( "fprintlnTo", true, true );
 
 
 }

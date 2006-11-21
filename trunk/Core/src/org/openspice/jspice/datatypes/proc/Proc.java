@@ -40,7 +40,7 @@ public abstract class Proc extends SpiceObjectNonMap implements ProcIntf {
 	}
 
 
-	private Description description = null;
+	private Description description = new Description( null, null, null );
 
 	public Description getDescription() {
 		return description;
