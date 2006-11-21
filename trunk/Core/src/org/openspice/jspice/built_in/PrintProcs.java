@@ -104,7 +104,7 @@ public final class PrintProcs {
 
 		public Object fastCall( final Object tos, final VM vm, final int nargs ) {
 			vm.push( tos );
-			final LinkedList list = new LinkedList();
+			final LinkedList< Object > list = new LinkedList< Object >();
 			for ( int i = 0; i < nargs; i++ ) {
 				list.addFirst( vm.pop() );
 			}
