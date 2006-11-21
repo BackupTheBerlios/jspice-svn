@@ -19,6 +19,7 @@
 package org.openspice.jspice.tools;
 
 import org.openspice.jspice.tools.SysAlert;
+import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.datatypes.SpiceObject;
 
 import java.util.*;
@@ -192,7 +193,7 @@ public final class PrintTools {
 		public abstract void renderTo( final Consumer cuchar, final Object obj );
 		public abstract void gap( final boolean first, final boolean last, final Consumer cuchar );
 
-		void applyHelper( final Consumer cuchar, final org.openspice.jspice.vm_and_compiler.VM vm, final int nargs, final int orig_nargs ) {
+		final void applyHelper( final Consumer cuchar, final VM vm, final int nargs, final int orig_nargs ) {
 			if ( nargs <= 1 ) this.gap( true, orig_nargs == 0, cuchar );
 			//this.renderTo( cuchar, vm_and_compiler.pop() );
 			if ( nargs >= 1 ) {
@@ -206,14 +207,14 @@ public final class PrintTools {
 			} 
 		}
 
-		Object getFirstArg( final org.openspice.jspice.vm_and_compiler.VM vm, int nargs ) {
+		final Object getFirstArg( final org.openspice.jspice.vm_and_compiler.VM vm, int nargs ) {
 			assert nargs >= 1;
 			return vm.getFromTop1Index( nargs );
 		}
 	}
 	
 	static abstract class SpiceRenderStdOutProc extends SpiceRenderProc {
-		public Object call( Object tos, final org.openspice.jspice.vm_and_compiler.VM vm, int nargs ) {
+		public Object call( Object tos, final VM vm, int nargs ) {
 			vm.push( tos );		//	Normalize data stack.
 			this.applyHelper( StdOutConsumer.OUT, vm, nargs, nargs );
 			return vm.pop();	//	Expand data stack.

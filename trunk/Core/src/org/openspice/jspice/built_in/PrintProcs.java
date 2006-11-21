@@ -22,7 +22,6 @@ import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.tools.Consumer;
 import org.openspice.jspice.tools.StdOutConsumer;
 import org.openspice.jspice.datatypes.proc.Proc;
-import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.datatypes.proc.FastProc;
 import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.vm_and_compiler.VM;

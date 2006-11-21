@@ -122,14 +122,14 @@ public final class VM {
 			Arrays.fill( this.data, null );
 		}
 
-		void copyNvalsToList( final int nvals, final List list ) {
+		void copyNvalsToList( final int nvals, final List< Object > list ) {
 			final int t = this.top;
 			for ( int i = t - nvals; i < t; i++ ) {
 				list.add( this.data[ i ] );
 			}
 		}
 
-		void moveNvalsTo( final int nvals, final List list ) {
+		void moveNvalsTo( final int nvals, final List< Object > list ) {
 			final int t = this.top;
 			for ( int i = t - nvals; i < t; i++ ) {
 				list.add( this.data[ i ] );
@@ -313,7 +313,7 @@ public final class VM {
 	private List saved_results = ImmutableList.EMPTY_LIST;
 	
 	public void saveAllResults() {
-		final List list = new ArrayList();
+		final List< Object > list = new ArrayList< Object >();
 		final int count = this.stack.size();
 		for ( int i = 1; i < count; i++ ) {
 			list.add( this.stack.getFromBase( i ) );
@@ -342,11 +342,11 @@ public final class VM {
 	 * Ditch the extra null caused by invoking "run" that way.  Not
 	 * very efficient - but it doesn't need to be.
 	 */
-	public void copyTo( final List list ) {
+	public void copyTo( final List< Object > list ) {
 		this.stack.copyNvalsToList( this.stack.size() - 1, list );
 	}
 
-	public void moveNvalsTo( final int nvals, final List dst ) {
+	public void moveNvalsTo( final int nvals, final List< Object > dst ) {
 		this.stack.moveNvalsTo( nvals, dst );
 	}
 
