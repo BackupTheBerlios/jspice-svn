@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 import org.openspice.jspice.main.StringInterpreter;
 
-public class SpiceTestBase extends TestCase {
+public abstract class SpiceTestBase extends TestCase {
 
 	public static final List< Object > one( final Object x ) {
 		final List< Object > list = new ArrayList< Object >();
