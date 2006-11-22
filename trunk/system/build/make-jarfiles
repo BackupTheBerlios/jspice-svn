@@ -1,0 +1,31 @@
+#!/bin/sh
+
+if [ -z $1 ]; then
+	echo "Missing target directory for jarfiles"
+	exit 1
+fi
+
+
+jarfiles=$1
+
+#jar cmf manifest.mf jarfiles/org.openspice.jspice.jar -C ../Core/bin org
+jar cf ${jarfiles}/org.openspice.jspice.alert.jar -C ../../Alert/bin org
+jar cf ${jarfiles}/org.steelypip.bfi.jar -C ../../BFI/bin org
+jar cf ${jarfiles}/org.openspice.jspice.core.jar -C ../../Core/bin org
+jar cf ${jarfiles}/jline.jar -C ../../JLine/bin jline
+jar cf ${jarfiles}/org.openspice.main.jar -C ../../Main/bin org
+jar cf ${jarfiles}/org.openspice.office.jar -C ../../Office/bin org
+jar cf ${jarfiles}/org.openspice.tools.jar -C ../../Tools/bin org
+jar cf ${jarfiles}/tads2.jar -C ../../TADS2/bin tads2
+jar cf ${jarfiles}/org.openspice.jspice.vfs.jar -C ../../VFS/bin org
+
+jar i \
+${jarfiles}/org.openspice.jspice.alert.jar \
+${jarfiles}/org.steelypip.bfi.jar \
+${jarfiles}/org.openspice.jspice.core.jar \
+${jarfiles}/jline.jar \
+${jarfiles}/org.openspice.main.jar \
+${jarfiles}/org.openspice.office.jar \
+${jarfiles}/org.openspice.tools.jar \
+${jarfiles}/tads2.jar \
+${jarfiles}/org.openspice.jspice.vfs.jar
