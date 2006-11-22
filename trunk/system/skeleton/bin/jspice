@@ -5,10 +5,14 @@ jspice_home="${0%/*}"/..
 # Now canonize.
 jspice_home=`( cd $jspice_home ; pwd )`
 exec java -cp \
-${jspice_home}/jarfiles/org.openspice.jspice.jar:\
+${jspice_home}/jarfiles/org.openspice.jspice.alert.jar:\
+${jspice_home}/jarfiles/org.openspice.jspice.core.jar:\
+${jspice_home}/jarfiles/org.openspice.jspice.vfs.jar:\
+${jspice_home}/jarfiles/org.openspice.main.jar:\
+${jspice_home}/jarfiles/org.openspice.office.jar:\
 ${jspice_home}/jarfiles/org.openspice.tools.jar:\
+${jspice_home}/jarfiles/org.steelypip.bfi.jar:\
 ${jspice_home}/jarfiles/jline.jar:\
-${jspice_home}/jarfiles/bfi.jar:\
 ${jspice_home}/jarfiles/tads2.jar:\
 ${jspice_home}/jarfiles/regexp.jar:\
 ${jspice_home}/jarfiles/javax.servlet.jar:\
