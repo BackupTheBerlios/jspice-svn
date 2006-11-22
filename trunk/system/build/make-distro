@@ -1,0 +1,67 @@
+#!/bin/sh
+
+if [ ! -e .jspice_build ]; then 
+	echo "Wrong directory (no .jspice_build)"
+	exit 1
+fi
+
+if [ -z $2 ]; then
+	echo "Missing version argument"
+	exit 1
+fi
+
+if [ -z $1 ]; then
+	echo "Missing target directory"
+	exit 1
+fi
+
+# Set up the parameters.
+targetdir=$1
+version=$2
+
+calcversion=`./bin/build-version`
+if [ $version != ${calcversion} ]; then
+	echo "Version mismatch ($version != $calcversion)"
+	exit 1
+fi
+
+# Set up the useful file names.
+prefix=jspice-v
+tmpdirname=${prefix}${version}
+tmpdir=${targetdir}/${tmpdirname}
+
+if [ -e $tmpdir ]; then
+	echo "Build directory already exists: $tmpdir"
+	exit 1
+fi
+
+gzname=${tmpdirname}.gz
+gznamefull=${targetdir}/${tmpdirname}.tar.gz
+
+if [ -e $gznamefull ]; then
+	echo "Build tarball already exists: $gznamefull"
+	exit 1
+fi
+
+
+# Now to create the appropriate distribution directory.
+echo "Creating build directory ($tmpdir) ..."
+mkdir ${tmpdir}
+
+# Copy the skeleton files across.
+( cd ../skeleton; tar cf - . ) | ( cd ${tmpdir}; tar xf - )
+
+# Create the jar file.
+echo "Bringing the jar files up to date (${tmpdir}/jarfiles) ..."
+./make-jarfiles ${tmpdir}/jarfiles
+
+
+# Add the jarfiles, javadocs and source code
+#echo 'Adding the javadocs and source code directories ...'
+#(cd ../.. ; tar cf - BFI/src Core/src JLine/src Office/src TADS2/src Tools/src javadocs) | ( cd ${tmpdir}; tar xf - )
+
+# Then create the tarball(s). 
+echo "Make the gzip full tarball ($gznamefull) ..."
+( cd ${targetdir}; tar cf - ${tmpdirname} | gzip > ${gzname} )
+
+echo "Done"
