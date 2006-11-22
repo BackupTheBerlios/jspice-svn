@@ -1,4 +1,4 @@
 #!/bin/sh
 java -Dorg.openspice.jspice.home=$PWD \
--cp ../Core/classes \
+-cp ../../Main/bin:../../Core/bin:../../Alert/bin \
 org.openspice.jspice.main.StartVersion $*
