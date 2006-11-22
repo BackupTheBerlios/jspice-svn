@@ -35,8 +35,8 @@ if [ -e $tmpdir ]; then
 	exit 1
 fi
 
-gzname=${tmpdirname}.gz
-gznamefull=${targetdir}/${tmpdirname}.tar.gz
+gzname=${tmpdirname}.tar.gz
+gznamefull=${targetdir}/${tmpdirname}
 
 if [ -e $gznamefull ]; then
 	echo "Build tarball already exists: $gznamefull"
