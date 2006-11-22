@@ -23,7 +23,7 @@ import org.openspice.jspice.main.gestalt.Gestalt;
 public class JSpiceGestaltVersion extends Gestalt.MultiPartGestaltVersion {
 
 	public int[] parts() {
-		return new int[] { 0, 4, 19 };
+		return new int[] { 0, 5, 0 };
 	}
 
 	public String title() {

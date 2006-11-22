@@ -81,8 +81,8 @@ public class Gestalt {
 	}
 
 	//	List< Version >
-	public static final List versions() {
-		final List list = new ArrayList();
+	public static final List< GestaltVersion > versions() {
+		final List< GestaltVersion > list = new ArrayList< GestaltVersion >();
 		list.add( JSpiceGestaltVersion.VERSION );
 		list.add( JettyGestaltVersion.VERSION );
 		list.add( BFIGestaltVersion.VERSION );
