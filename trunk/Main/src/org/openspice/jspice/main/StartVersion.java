@@ -18,15 +18,12 @@
  */
 package org.openspice.jspice.main;
 
-import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.conf.JSpiceGestaltVersion;
-import org.openspice.jspice.tools.PrintTools;
-import org.openspice.jspice.tools.StdOutConsumer;
 
 public class StartVersion {
 
 	public static final void printVersion( final String control_string ) {
-		System.out.println( JSpiceGestaltVersion.VERSION.format( control_string ) );
+		System.out.println( JSpiceGestaltVersion.VERSION.formatVersion( control_string ) );
 	}
 
 	public static final void main( final String[] args ) {
