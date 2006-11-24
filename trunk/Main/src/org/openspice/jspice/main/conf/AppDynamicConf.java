@@ -415,14 +415,16 @@ public final class AppDynamicConf implements DynamicConf {
 //		this.jspice_home = UrlVFolderRef.make( "ftp://heather:lucy@127.0.0.1" + home() + "/" ).getVFolder( ImmutableSetOfBoolean.ONLY_TRUE,  false );
 		final File h = home();
 		if ( h == null ) {
-			new Alert( "Cannot determine JSpice home directory" ).mishap();
+			final String key = StaticConf.getPropertyName( "home" ) ;
+			final String val = System.getProperty( key );
+			new Alert( "Cannot determine JSpice home directory" ).culprit( key, val ).mishap();
 		}
 		this.jspice_home = new FileVVolume( home() ).getRootVFolderRef().getVFolder( ImmutableSetOfBoolean.ONLY_TRUE, false );
 		if ( this.jspice_home == null ) {
 			new Alert( "Cannot locate JSpice home directory" ).warning();
 		}
 		this.jspice_conf_vfile = this.jspice_home.getVFile( StaticConf.JSPICE_CONF_NAM, StaticConf.CONF_EXT );
-		if ( this.jspice_home == null ) {
+		if ( this.jspice_conf_vfile == null ) {
 			new Alert( "Cannot locate JSpice startup file (jspice.conf)" ).mishap();
 		}
 
