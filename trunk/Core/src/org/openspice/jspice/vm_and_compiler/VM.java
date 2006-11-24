@@ -20,6 +20,8 @@ package org.openspice.jspice.vm_and_compiler;
 
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.datatypes.ImmutableList;
+import org.openspice.jspice.boxes.StdStdio;
+import org.openspice.jspice.boxes.Stdio;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.tools.SysAlert;
 import org.openspice.tools.StackOfInt;
@@ -165,6 +167,7 @@ public final class VM {
 	int n_args;			//	How many arguments are waiting on the stack.
 	int v_args;			//	How many values are waiting on the stack.
 
+	private Stdio stdio = new StdStdio();
 
 	private final DynamicConf dyn_conf;
 
