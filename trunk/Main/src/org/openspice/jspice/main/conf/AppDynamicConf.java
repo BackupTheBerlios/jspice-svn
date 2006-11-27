@@ -237,10 +237,12 @@ public final class AppDynamicConf implements DynamicConf {
 
 	private static File home() {
 		final String jhomef = System.getProperty( StaticConf.getPropertyName( "home" ) );
-		if ( jhomef == null ) return null;
-		final File jhome = new File( jhomef );
-		if ( jhome.canRead() ) return jhome;
-		return null;
+		if ( jhomef == null ) {
+			return null;
+		} else {
+			final File jhome = new File( jhomef );
+			return jhome.canRead() ? jhome : null;
+		}
 	}
 
 	/* (non-Javadoc)

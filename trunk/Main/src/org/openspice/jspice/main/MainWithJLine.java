@@ -18,7 +18,6 @@
  */
 package org.openspice.jspice.main;
 
-
 import java.io.File;
 import java.io.IOException;
 
@@ -31,11 +30,10 @@ import jline.MultiCompletor;
 import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.main.jline_stuff.PragmaCompletor;
 import org.openspice.jspice.main.jline_stuff.SmartCompletor;
-import org.openspice.jspice.class_builder.NameGenerator;
 
 public class MainWithJLine extends Main {
 
-	protected void startUp( final CmdLineOptions cmd ) {
+	protected void interpret( final CmdLineOptions cmd ) {
 		this.init( cmd );
 		try {
 			// Setup the input stream.

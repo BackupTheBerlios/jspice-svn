@@ -20,8 +20,16 @@ package org.openspice.jspice.main;
 
 import org.openspice.jspice.main.conf.AppDynamicConf;
 import org.openspice.jspice.main.pragmas.RegisterPragmas;
+import org.openspice.jspice.tools.Hooks;
 
 public abstract class AbsMain {
+	
+	abstract void init( CmdLineOptions cmd );
+	abstract void interpret( CmdLineOptions cmd );
+	
+	protected void shutdown() {
+		Hooks.SHUTDOWN.ping();
+	}
 
 	public final void perform( final String[] args ) {
 		final CmdLineOptions cmd = new CmdLineOptions();
@@ -39,7 +47,11 @@ public abstract class AbsMain {
 		}
 	}
 
-	protected abstract void startUp( final CmdLineOptions cmd );
+	final void startUp( final CmdLineOptions cmd ) {
+		this.init( cmd );
+		this.interpret( cmd );
+		this.shutdown();
+	}
 	
 	static {
 		//	Bind all pragmas.

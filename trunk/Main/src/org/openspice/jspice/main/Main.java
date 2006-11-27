@@ -23,7 +23,6 @@ import org.openspice.alert.Alert;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.main.conf.AppDynamicConf;
-import org.openspice.jspice.tools.Hooks;
 import org.openspice.tools.ImmutableSetOfBoolean;
 import org.openspice.tools.Print;
 import org.openspice.vfs.VFolder;
@@ -35,12 +34,8 @@ public class Main extends AbsMain {
 	DynamicConf jspice_conf;
 	SuperLoader super_loader;
 	Interpreter interpreter;
-
-	protected void shutdown() {
-		Hooks.SHUTDOWN.ping();
-	}
-
-	protected void init( final CmdLineOptions cmd ) {
+	
+	protected void initConf( final CmdLineOptions cmd ) {
 		this.jspice_conf = new AppDynamicConf();
 		if ( cmd.personal ) {
 			//todo: substitute standard strings.
@@ -59,15 +54,25 @@ public class Main extends AbsMain {
 			}
 		}
 		Print.current_mode |= this.jspice_conf.isDebugging() ? Print.DEBUGGING : 0;
+	}
+	
+	protected void initShowBanner( final CmdLineOptions cmd ) {
 		if ( cmd.banner ) StaticConf.printBanner();
+	}
+	
+	protected void initInterpreter( final CmdLineOptions cmd ) {
 		this.super_loader = new SuperLoader( this.jspice_conf );
-		this.interpreter = new Interpreter( this.super_loader.getNameSpace( "spice.interactive_mode" ) );
+		this.interpreter = new Interpreter( this.super_loader.getNameSpace( "spice.interactive_mode" ) );		
+	}
+	
+	protected void init( final CmdLineOptions cmd ) {
+		this.initConf( cmd );
+		this.initShowBanner( cmd );
+		this.initInterpreter( cmd );
 	}
 
-	protected void startUp( final CmdLineOptions cmd ) {
-		this.init( cmd );
+	protected void interpret( final CmdLineOptions cmd ) {
 		this.interpreter.interpret( cmd.prompt != null ? cmd.prompt : this.jspice_conf.getPrompt() );
-		this.shutdown();
 	}
 	
 }
