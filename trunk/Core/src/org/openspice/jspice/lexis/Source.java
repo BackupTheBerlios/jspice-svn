@@ -48,6 +48,7 @@ public class Source extends SourceCore implements SourceIntf, org.openspice.jspi
 
 	public int readInt() {
 		final int ich = this.count == 0 ? this.rawReadInt() : this.buffer[ --this.count ];
+		System.err.println( (char)ich );
 		return ich;
 	}
 

@@ -168,6 +168,14 @@ public final class VM {
 	int v_args;			//	How many values are waiting on the stack.
 
 	private Stdio stdio = new StdStdio();
+	
+	public Stdio getStdio() {
+		return this.stdio;
+	}
+
+	public void setStdio( final Stdio stdio ) {
+		this.stdio = stdio;
+	}
 
 	private final DynamicConf dyn_conf;
 
@@ -363,5 +371,6 @@ public final class VM {
 			s.println( "[" + i + "] " + this.stack.getFromBase( i ) );
 		}
 	}
+
 
 }
