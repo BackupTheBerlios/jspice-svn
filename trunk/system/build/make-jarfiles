@@ -10,6 +10,7 @@ jarfiles=$1
 
 #jar cmf manifest.mf jarfiles/org.openspice.jspice.jar -C ../Core/bin org
 jar cf ${jarfiles}/org.openspice.jspice.alert.jar -C ../../Alert/bin org
+jar cf ${jarfiles}/bsh.jar -C ../../BeanShell/bin bsh
 jar cf ${jarfiles}/org.steelypip.bfi.jar -C ../../BFI/bin org
 jar cf ${jarfiles}/org.openspice.jspice.core.jar -C ../../Core/bin org
 jar cf ${jarfiles}/jline.jar -C ../../JLine/bin jline
@@ -21,6 +22,7 @@ jar cf ${jarfiles}/org.openspice.jspice.vfs.jar -C ../../VFS/bin org
 
 jar i \
 ${jarfiles}/org.openspice.jspice.alert.jar \
+${jarfiles}/bsh.jar \
 ${jarfiles}/org.steelypip.bfi.jar \
 ${jarfiles}/org.openspice.jspice.core.jar \
 ${jarfiles}/jline.jar \
