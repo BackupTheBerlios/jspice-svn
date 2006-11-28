@@ -36,7 +36,7 @@ public class InterpreterThread extends WorldThread {
 	private PrintWriter ERR = null;
 
 	@Override
-	PrintWriter getErr() {
+	public PrintWriter getErr() {
 		if ( this.ERR == null ) {
 			this.ERR = new PrintWriter( System.err );
 		}
@@ -46,7 +46,7 @@ public class InterpreterThread extends WorldThread {
 	private LineReader IN = null;
 	
 	@Override
-	LineReader getIn() {
+	public LineReader getIn() {
 		if ( this.IN == null ) {
 			this.IN = new ReaderLineReader( new InputStreamReader( System.in ) );
 		}
@@ -56,7 +56,7 @@ public class InterpreterThread extends WorldThread {
 	private PrintWriter OUT = null;
 
 	@Override
-	PrintWriter getOut() {
+	public PrintWriter getOut() {
 		if ( this.OUT == null ) {
 			this.OUT = new PrintWriter( System.out );
 		}
@@ -64,20 +64,17 @@ public class InterpreterThread extends WorldThread {
 	}
 
 	@Override
-	public
-	void setErr( final PrintWriter pw ) {
+	public void setErr( final PrintWriter pw ) {
 		this.ERR = pw;
 	}
 
 	@Override
-	public
-	void setIn( final LineReader r ) {
+	public void setIn( final LineReader r ) {
 		this.IN = r;
 	}
 
 	@Override
-	public
-	void setOut( final PrintWriter pw ) {
+	public void setOut( final PrintWriter pw ) {
 		this.OUT = pw;
 	}
 

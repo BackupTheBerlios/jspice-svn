@@ -32,6 +32,7 @@ import org.openspice.jspice.vm_and_compiler.VM;
 import org.openspice.jspice.namespace.NameSpace;
 import org.openspice.jspice.namespace.Var;
 import org.openspice.jspice.namespace.FacetSet;
+import org.openspice.jspice.lexis.Prompt;
 import org.openspice.jspice.lift.Lift;
 import org.openspice.jspice.loader.Loader;
 import org.openspice.vfs.VItem;
@@ -51,7 +52,7 @@ public final class Interpreter extends Loader {
 		return this.getDynamicConf().isDebugging();
 	}
 
-	public void interpret( final String prompt ) {
+	public void interpret( final Prompt prompt ) {
 		this.interpret( "stdin", new InputStreamReader( System.in ), prompt );
 	}
 		
@@ -141,7 +142,7 @@ public final class Interpreter extends Loader {
 		}		
 	}
 
-	public void interpret( final String origin, final Reader reader, final String prompt ) {
+	public void interpret( final String origin, final Reader reader, final Prompt prompt ) {
 		final Petrifier petrifier = new Petrifier();
 		SpiceParser parser = new SpiceParser( this, origin, reader, prompt );
 		Hooks.READY.ping();
@@ -174,7 +175,7 @@ public final class Interpreter extends Loader {
 		}
 	}
 
-	public void evaluate( final List list, final String origin, final Reader reader, final String prompt ) {
+	public void evaluate( final List list, final String origin, final Reader reader, final Prompt prompt ) {
 		final VM saved = this.getVM();
 		this.setVM( new VM( saved.getDynamicConf() ) );
 		final Petrifier petrifier = new Petrifier();

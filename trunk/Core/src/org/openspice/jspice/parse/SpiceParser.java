@@ -18,6 +18,7 @@
  */
 package org.openspice.jspice.parse;
 
+import org.openspice.jspice.lexis.Prompt;
 import org.openspice.jspice.run.Interpreter;
 
 import java.io.Reader;
@@ -27,7 +28,7 @@ final public class SpiceParser extends ParserImpl {
 
 //	private static final TokenParser spice_token_parser = new SpiceTokenParser();
 	
-	public SpiceParser( final Interpreter interpreter, final String origin, final Reader r, final String prompt ) {
+	public SpiceParser( final Interpreter interpreter, final String origin, final Reader r, final Prompt prompt ) {
 		super( interpreter, new SpiceTokenParser( interpreter ), origin, r, prompt );
 	}
 

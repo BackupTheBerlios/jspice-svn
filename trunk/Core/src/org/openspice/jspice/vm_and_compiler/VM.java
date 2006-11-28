@@ -20,6 +20,7 @@ package org.openspice.jspice.vm_and_compiler;
 
 import org.openspice.jspice.run.StdStdio;
 import org.openspice.jspice.run.Stdio;
+import org.openspice.jspice.run.WorldThread;
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.datatypes.ImmutableList;
 import org.openspice.jspice.conf.DynamicConf;
@@ -317,7 +318,7 @@ public final class VM {
 		final int count = this.stack.size();
 		for ( int i = 1; i < count; i++ ) {
 			final Object obj = this.stack.getFromBase( i );
-			PrintTools.showlnFlushTo( this.getStdio().getOut(), obj );
+			PrintTools.showlnFlushTo( WorldThread.current().getOut(), obj );
 //			PrintTools.showln( obj );
 		}
 	}

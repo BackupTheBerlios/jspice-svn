@@ -29,7 +29,7 @@ import org.openspice.jspice.expr.cases.NameExpr;
 import org.openspice.jspice.expr.cases.SkipExpr;
 import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.conf.DynamicConf;
-import org.openspice.jspice.main.Interpreter;
+import org.openspice.jspice.run.Interpreter;
 
 import java.io.*;
 
@@ -43,7 +43,7 @@ public class ParserImpl extends Parser {
 	public ParserImpl( final Interpreter interpreter, final TokenParser _token_parser, final String origin, final Reader r, final Prompt prompt ) {
 		this.interpreter = interpreter;
 		this.token_parser = _token_parser;
-        this.tokens = new PushableTokenizerImpl( interpreter, prompt, r, origin );
+        this.tokens = new PushableTokenizerImpl( interpreter, origin, r, prompt );
 		this.comma_prec = _token_parser.getPrec( "," );
     }
 
