@@ -28,6 +28,7 @@ import jline.History;
 import jline.MultiCompletor;
 
 import org.openspice.jspice.conf.StaticConf;
+import org.openspice.jspice.lexis.Prompt;
 import org.openspice.jspice.run.jline_stuff.PragmaCompletor;
 import org.openspice.jspice.run.jline_stuff.SmartCompletor;
 
@@ -49,7 +50,7 @@ public class MainWithJLine extends Main {
 			);
 			ConsoleReaderInputStream.setIn( reader, cmd.prompt != null ? cmd.prompt : this.jspice_conf.getPrompt() );
 
-			this.interpreter.interpret( "" );
+			this.interpreter.interpret( new Prompt.StdOutPrompt( "" ) );
 			this.shutdown();
 		} catch ( IOException e ) {
 			throw new RuntimeException( e );
