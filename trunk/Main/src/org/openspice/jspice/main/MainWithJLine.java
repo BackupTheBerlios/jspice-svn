@@ -34,8 +34,16 @@ import org.openspice.jspice.run.jline_stuff.SmartCompletor;
 
 public class MainWithJLine extends Main {
 
-	protected void interpret( final CmdLineOptions cmd ) {
-		this.init( cmd );
+	public MainWithJLine(CmdLineOptions cmd) {
+		super(cmd);
+	}
+
+	public MainWithJLine(String[] args) {
+		super(args);
+	}
+
+	protected void interpret() {
+		this.init();
 		try {
 			// Setup the input stream.
 			final ConsoleReader reader = new ConsoleReader();
@@ -48,7 +56,8 @@ public class MainWithJLine extends Main {
 					}
 				)
 			);
-			ConsoleReaderInputStream.setIn( reader, cmd.prompt != null ? cmd.prompt : this.jspice_conf.getPrompt() );
+			final String p = this.getCommandLineOptions().prompt;
+			ConsoleReaderInputStream.setIn( reader, p != null ? p : this.jspice_conf.getPrompt() );
 
 			this.interpreter.interpret( new Prompt.StdOutPrompt( "" ) );
 			this.shutdown();

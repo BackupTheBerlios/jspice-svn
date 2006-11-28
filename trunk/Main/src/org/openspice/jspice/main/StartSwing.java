@@ -5,9 +5,7 @@ import java.io.Reader;
 
 import javax.swing.JFrame;
 
-import org.openspice.jspice.run.AbsStdio;
 import org.openspice.jspice.run.InterpreterThread;
-import org.openspice.jspice.run.Stdio;
 import org.openspice.tools.ReaderLineReader;
 
 import bsh.util.JConsole;
@@ -17,6 +15,10 @@ public class StartSwing {
 	
 	static final class SwingMain extends Main {
 		
+		public SwingMain( final CmdLineOptions cmd ) {
+			super( cmd );
+		}
+
 		private JConsole jconsole;
 		private JFrame jframe;
 
@@ -29,14 +31,14 @@ public class StartSwing {
 		}
 
 		@Override
-		protected void init( final CmdLineOptions cmd ) {
-			super.init( cmd );
+		protected void init() {
+			super.init();
 //			this.interpreter.getDynamicConf().setIsDebugging( true );
 			this.initJConsole();
 		}
 		
 		@Override
-		protected void interpret( final CmdLineOptions cmd ) {
+		protected void interpret() {
 			final Reader r = jconsole.getIn();
 			final PrintWriter pout = new PrintWriter( jconsole.getOut() );
 			final PrintWriter perr = new PrintWriter( jconsole.getErr() );
@@ -58,8 +60,8 @@ public class StartSwing {
 	}
 
 	public static final void main( final CmdLineOptions cmd ) {
-		final Main main = new SwingMain();
-		main.perform( cmd );		
+		final Main main = new SwingMain( cmd );
+		main.start();		
 	}
 	
 }

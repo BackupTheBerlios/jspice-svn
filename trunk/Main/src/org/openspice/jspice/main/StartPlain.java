@@ -14,7 +14,7 @@ public class StartPlain {
 		System.arraycopy( args, 0, new_args, 2, args.length );
 		new_args[ 0 ] = "--banner=off";
 		new_args[ 1 ] = "--prompt=";
-        new Main().perform( new_args );
+        new Main( new_args ).start();
     }
 
 }

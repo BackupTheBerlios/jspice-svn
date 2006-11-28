@@ -27,8 +27,8 @@ public class StartWithJLine {
 	}
 
 	public static final void main( final CmdLineOptions cmd ) {
-		final AbsMain main = cmd.jline ? new MainWithJLine() : new Main();
-		main.perform( cmd );		
+		final AbsMain main = cmd.jline ? new MainWithJLine( cmd ) : new Main( cmd );
+		main.start();		
 	}
 
 }

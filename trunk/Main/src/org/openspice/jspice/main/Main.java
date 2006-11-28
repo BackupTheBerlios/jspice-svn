@@ -34,48 +34,59 @@ import org.openspice.vfs.tools.UrlVFolderRef;
 
 public class Main extends AbsMain {
 
-	DynamicConf jspice_conf;
-	SuperLoader super_loader;
-	Interpreter interpreter;
+	protected DynamicConf jspice_conf;
+	private SuperLoader super_loader;
+	protected Interpreter interpreter;
 	
-	protected void initConf( final CmdLineOptions cmd ) {
+	public Main( final String[] args ) {
+		super( args );
+	}
+	
+	public Main(CmdLineOptions cmd) {
+		super(cmd);
+	}
+
+
+
+	protected void initConf() {
 		this.jspice_conf = new AppDynamicConf();
-		if ( cmd.personal ) {
+		if ( this.getCommandLineOptions().personal ) {
 			//todo: substitute standard strings.
 			final VFolderRef personal_inv = this.jspice_conf.getUserHome().getVFolderRef().getVFolderRefFromPath( ".jspice/inventory/" );
 			if ( personal_inv.exists() ) {
 				this.jspice_conf.installInventoryConf( personal_inv.getVFolder( ImmutableSetOfBoolean.ONLY_TRUE, false ) );
 			}
 		}
-		if ( cmd.inventory != null ) {
-			final VFolder vfolder = UrlVFolderRef.make( cmd.inventory ).getVFolder( ImmutableSetOfBoolean.EITHER, false );
+		if ( this.getCommandLineOptions().inventory != null ) {
+			final VFolder vfolder = UrlVFolderRef.make( this.getCommandLineOptions().inventory ).getVFolder( ImmutableSetOfBoolean.EITHER, false );
 			if ( vfolder != null ) {
 				this.jspice_conf.installInventoryConf( vfolder );
 			} else {
-				if ( Print.wouldPrint( Print.VFS ) ) Print.println( "Installing inventory: path = " + cmd.inventory.getPath() + "; query = " + cmd.inventory.getQuery() );
-				new Alert( "Cannot find inventory specified on command-line" ).culprit( "inventory path", cmd.inventory ).warning();
+				if ( Print.wouldPrint( Print.VFS ) ) Print.println( "Installing inventory: path = " + this.getCommandLineOptions().inventory.getPath() + "; query = " + this.getCommandLineOptions().inventory.getQuery() );
+				new Alert( "Cannot find inventory specified on command-line" ).culprit( "inventory path", this.getCommandLineOptions().inventory ).warning();
 			}
 		}
 		Print.current_mode |= this.jspice_conf.isDebugging() ? Print.DEBUGGING : 0;
 	}
 	
-	protected void initShowBanner( final CmdLineOptions cmd ) {
-		if ( cmd.banner ) StaticConf.printBanner();
+	protected void initShowBanner() {
+		if ( this.getCommandLineOptions().banner ) StaticConf.printBanner();
 	}
 	
-	protected void initInterpreter( final CmdLineOptions cmd ) {
+	protected void initInterpreter() {
 		this.super_loader = new SuperLoader( this.jspice_conf );
 		this.interpreter = new Interpreter( this.super_loader.getNameSpace( "spice.interactive_mode" ) );		
 	}
 	
-	protected void init( final CmdLineOptions cmd ) {
-		this.initConf( cmd );
-		this.initShowBanner( cmd );
-		this.initInterpreter( cmd );
+	protected void init( ) {
+		this.initConf();
+		this.initShowBanner();
+		this.initInterpreter();
 	}
 
-	protected void interpret( final CmdLineOptions cmd ) {
-		this.interpreter.interpret( new Prompt.StdOutPrompt( cmd.prompt != null ? cmd.prompt : this.jspice_conf.getPrompt() ) );
+	protected void interpret() {
+		final String prompt =  this.getCommandLineOptions().prompt;
+		this.interpreter.interpret( new Prompt.StdOutPrompt( prompt != null ? prompt : this.jspice_conf.getPrompt() ) );
 	}
 	
 }

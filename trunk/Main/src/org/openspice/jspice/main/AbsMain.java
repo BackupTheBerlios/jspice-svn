@@ -21,36 +21,50 @@ package org.openspice.jspice.main;
 import org.openspice.jspice.main.conf.AppDynamicConf;
 import org.openspice.jspice.main.pragmas.RegisterPragmas;
 import org.openspice.jspice.run.Pragma;
+import org.openspice.jspice.run.WorldThread;
 import org.openspice.jspice.tools.Hooks;
 
-public abstract class AbsMain {
+public abstract class AbsMain extends WorldThread {
 	
-	abstract void init( CmdLineOptions cmd );
-	abstract void interpret( CmdLineOptions cmd );
+	private final CmdLineOptions commandLineOptions;
+	
+	public AbsMain( final CmdLineOptions cmd ) {
+		this.commandLineOptions = cmd;
+	}
+	
+	public AbsMain( final String[] args ) {
+		final CmdLineOptions cmd = new CmdLineOptions();
+		cmd.process( args );
+		this.commandLineOptions = cmd;
+	}
+	
+	
+	
+	public CmdLineOptions getCommandLineOptions() {
+		return this.commandLineOptions;
+	}
+
+	abstract void init();
+	abstract void interpret();
 	
 	protected void shutdown() {
 		Hooks.SHUTDOWN.ping();
 	}
+	
 
-	public final void perform( final String[] args ) {
-		final CmdLineOptions cmd = new CmdLineOptions();
-		cmd.process( args );
-		this.perform( cmd );
-	}
-
-	public final void perform( final CmdLineOptions cmd ) {
-		if ( cmd.version ) {
+	public final void run() {
+		if ( this.getCommandLineOptions().version ) {
 			StartVersion.printVersion( "JSpice Version %p.%p.%p" );
-		} else if ( cmd.help ) {
+		} else if ( this.getCommandLineOptions().help ) {
 			new Pragma( new AppDynamicConf(), "help jspice" ).perform();
 		} else {
-			this.startUp( cmd );
+			this.startUp();
 		}
 	}
 
-	final void startUp( final CmdLineOptions cmd ) {
-		this.init( cmd );
-		this.interpret( cmd );
+	final void startUp() {
+		this.init();
+		this.interpret();
 		this.shutdown();
 	}
 	

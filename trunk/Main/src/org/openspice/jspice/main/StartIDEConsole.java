@@ -24,7 +24,7 @@ public class StartIDEConsole {
 		final String[] new_args = new String[ args.length + 1 ];
 		System.arraycopy( args, 0, new_args, 1, args.length );
 		new_args[ 0 ] = "--banner=on";
-		new Main().perform( new_args );
+		new Main( new_args ).start();
 	}
 
 }
