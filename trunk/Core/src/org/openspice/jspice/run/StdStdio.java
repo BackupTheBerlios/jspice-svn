@@ -1,4 +1,4 @@
-package org.openspice.jspice.boxes;
+package org.openspice.jspice.run;
 
 import java.io.InputStreamReader;
 import java.io.PrintWriter;

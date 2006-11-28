@@ -47,7 +47,7 @@ public final class SuperLoader {
 	final NameSpaceManager name_space_manager;
 	VM vm;
 
-	SuperLoader( final DynamicConf _jconf ) {
+	public SuperLoader( final DynamicConf _jconf ) {
 		this.dyn_conf = _jconf;
 		this.name_space_manager = new NameSpaceManager( this );
 		this.vm = new VM( _jconf );
