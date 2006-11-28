@@ -317,7 +317,8 @@ public final class VM {
 		final int count = this.stack.size();
 		for ( int i = 1; i < count; i++ ) {
 			final Object obj = this.stack.getFromBase( i );
-			PrintTools.showln( obj );
+			PrintTools.showlnFlushTo( this.getStdio().getOut(), obj );
+//			PrintTools.showln( obj );
 		}
 	}
 
