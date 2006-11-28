@@ -1,6 +1,6 @@
 /**
  *	JSpice, an Open Spice interpreter and library.
- *	Copyright (C) 2003, Stephen F. K. Leach
+ *	Copyright (C) 2005, Stephen F. K. Leach
  *
  * 	This program is free software; you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by
@@ -16,12 +16,22 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.main.manual;
+package org.openspice.jspice.run.gestalt;
 
-public interface SearchResult {
+public class JLineGestaltVersion extends Gestalt.MultiPartGestaltVersion {
 
-	SearchPhrase searchHint();
+	public String comment() {
+		return "extensively modified";
+	}
 
-	ManualPage manualPage();
+	public int[] parts() {
+		return new int[] { 0, 8, 1 };
+	}
+
+	public String title() {
+		return "JLine";
+	}
+
+	public static final JLineGestaltVersion VERSION = new JLineGestaltVersion();
 
 }

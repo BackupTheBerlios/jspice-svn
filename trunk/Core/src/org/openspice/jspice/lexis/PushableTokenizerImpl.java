@@ -19,10 +19,10 @@
 
 package org.openspice.jspice.lexis;
 
+import org.openspice.jspice.run.Interpreter;
 import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.tokens.Token;
 import org.openspice.jspice.tokens.NameToken;
-import org.openspice.jspice.main.Interpreter;
 import org.openspice.jspice.conf.StaticConf;
 
 import java.util.Stack;

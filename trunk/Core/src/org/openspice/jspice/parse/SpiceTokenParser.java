@@ -18,6 +18,7 @@
  */
 package org.openspice.jspice.parse;
 
+import org.openspice.jspice.run.Interpreter;
 import org.openspice.jspice.tokens.NameToken;
 import org.openspice.jspice.tokens.QuotedToken;
 import org.openspice.jspice.tokens.NumberToken;
@@ -35,7 +36,6 @@ import org.openspice.jspice.built_in.symbols.NewSymbolProc;
 import org.openspice.jspice.built_in.strings.FormatProc;
 import org.openspice.jspice.built_in.lists.NewImmutableListProc;
 import org.openspice.jspice.built_in.lists.InvListProc;
-import org.openspice.jspice.main.Interpreter;
 import org.openspice.jspice.lib.CastLib;
 
 import java.util.regex.Pattern;

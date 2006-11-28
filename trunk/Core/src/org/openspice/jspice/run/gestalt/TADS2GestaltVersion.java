@@ -1,6 +1,6 @@
 /**
  *	JSpice, an Open Spice interpreter and library.
- *	Copyright (C) 2003, Stephen F. K. Leach
+ *	Copyright (C) 2005, Stephen F. K. Leach
  *
  * 	This program is free software; you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by
@@ -16,12 +16,22 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.main.manual;
+package org.openspice.jspice.run.gestalt;
 
-public abstract interface ManualPage {
+public class TADS2GestaltVersion extends Gestalt.MultiPartGestaltVersion {
 
-	public abstract String getOneLineSummary();
+	public String comment() {
+		return "slightly modified";
+	}
 
-	public abstract String getContentsAsString();
+	public int[] parts() {
+		return new int[] { 1, 2, 1 };
+	}
+
+	public String title() {
+		return "TADS2";
+	}
+
+	public static final TADS2GestaltVersion VERSION = new TADS2GestaltVersion();
 
 }

@@ -19,13 +19,14 @@
 
 package org.openspice.jspice.lexis;
 
+import org.openspice.jspice.run.Interpreter;
+import org.openspice.jspice.run.Pragma;
 import org.openspice.jspice.tokens.Token;
 import org.openspice.jspice.tokens.NameToken;
 import org.openspice.jspice.tokens.QuotedToken;
 import org.openspice.jspice.tokens.NumberToken;
 
 import org.openspice.jspice.tools.SysAlert;
-import org.openspice.jspice.main.Interpreter;
 import org.openspice.jspice.tools.StyleWarning;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.tools.AbsIteratorOfChar;
@@ -37,7 +38,6 @@ import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.regex.Pattern;
 
-import org.openspice.jspice.main.Pragma;
 
 abstract class TokenizerImplMixinBuffer extends ParseEscape {
 

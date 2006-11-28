@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.openspice.jspice.class_builder.JSpiceClassLoader;
-import org.openspice.jspice.main.jline_stuff.PrefixFilterAccumulator;
-import org.openspice.jspice.main.manual.Manual;
+import org.openspice.jspice.run.jline_stuff.PrefixFilterAccumulator;
+import org.openspice.jspice.run.manual.Manual;
 import org.openspice.vfs.VFile;
 import org.openspice.vfs.VFolder;
 

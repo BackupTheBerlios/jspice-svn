@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.conf;
 
-import org.openspice.jspice.main.gestalt.Gestalt;
+import org.openspice.jspice.run.gestalt.Gestalt;
 
 public class JSpiceGestaltVersion extends Gestalt.MultiPartGestaltVersion {
 

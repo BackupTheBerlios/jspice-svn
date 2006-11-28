@@ -20,8 +20,8 @@ package org.openspice.jspice.built_in;
 
 
 import org.openspice.jspice.datatypes.proc.Nullary0FastProc;
+import org.openspice.jspice.run.ServerMain;
 import org.openspice.jspice.vm_and_compiler.VM;
-import org.openspice.jspice.main.ServerMain;
 
 public class StartServerProc extends Nullary0FastProc {
 

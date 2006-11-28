@@ -16,10 +16,10 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.main.jline_stuff;
+package org.openspice.jspice.run.jline_stuff;
 
 import org.openspice.jspice.conf.DynamicConf;
-import org.openspice.jspice.main.Pragma;
+import org.openspice.jspice.run.Pragma;
 
 
 import java.util.List;

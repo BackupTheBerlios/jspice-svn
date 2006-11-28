@@ -18,11 +18,11 @@
  */
 package org.openspice.jspice.namespace;
 
+import org.openspice.jspice.run.SuperLoader;
 import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.conf.LoadConf;
 import org.openspice.jspice.conf.StaticConf;
-import org.openspice.jspice.main.SuperLoader;
 import org.openspice.tools.Print;
 import org.openspice.vfs.VFolder;
 import org.openspice.vfs.VFile;

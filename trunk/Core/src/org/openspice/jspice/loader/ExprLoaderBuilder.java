@@ -19,8 +19,8 @@
 package org.openspice.jspice.loader;
 
 import org.openspice.jspice.namespace.NameSpace;
+import org.openspice.jspice.run.Interpreter;
 import org.openspice.jspice.tools.SysAlert;
-import org.openspice.jspice.main.Interpreter;
 import org.openspice.vfs.VFile;
 
 import java.util.ArrayList;

@@ -16,22 +16,20 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.main.gestalt;
+package org.openspice.jspice.run.gestalt;
 
-public class JLineGestaltVersion extends Gestalt.MultiPartGestaltVersion {
+import org.mortbay.http.Version;
 
-	public String comment() {
-		return "extensively modified";
-	}
-
-	public int[] parts() {
-		return new int[] { 0, 8, 1 };
-	}
+public class JettyGestaltVersion extends Gestalt.GestaltVersion {
 
 	public String title() {
-		return "JLine";
+		return "Jetty";
 	}
 
-	public static final JLineGestaltVersion VERSION = new JLineGestaltVersion();
+	public String version() {
+		return Version.__Version;
+	}
+
+	public static final JettyGestaltVersion VERSION = new JettyGestaltVersion();
 
 }

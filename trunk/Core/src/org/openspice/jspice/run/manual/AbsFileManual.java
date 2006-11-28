@@ -1,4 +1,4 @@
-package org.openspice.jspice.main.manual;
+package org.openspice.jspice.run.manual;
 
 /**
  *	JSpice, an Open Spice interpreter and library.

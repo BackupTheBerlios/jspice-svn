@@ -16,34 +16,10 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.main.jline_stuff;
+package org.openspice.jspice.run.manual;
 
 import java.util.List;
-import java.util.Iterator;
-import java.util.Collection;
 
-public class PrefixFilterAccumulator {
-
-	final String prefix;
-	final List acc_list;
-
-	public PrefixFilterAccumulator( final String prefix, final List acc_list ) {
-		this.prefix = prefix;
-		this.acc_list = acc_list;
-	}
-
-	public void add( final String candidate ) {
-//		System.err.println( "does '" + candidate + "' start with '" + this.prefix + "' = " +  candidate.startsWith( this.prefix ) );
-		if ( candidate.startsWith( this.prefix ) ) {
-			this.acc_list.add( candidate );
-		}
-	}
-
-	public void addAll( final Collection collection ) {
-		for ( Iterator it = collection.iterator(); it.hasNext(); ) {
-			final String c = (String)it.next();
-			this.add( c );
-		}
-	}
-
+public interface Manual {
+	public List search( SearchPhrase topic );
 }

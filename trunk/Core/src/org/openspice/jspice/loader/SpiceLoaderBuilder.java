@@ -19,7 +19,7 @@
 package org.openspice.jspice.loader;
 
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.jspice.main.Interpreter;
+import org.openspice.jspice.run.Interpreter;
 
 public class SpiceLoaderBuilder extends LoaderBuilder {
 

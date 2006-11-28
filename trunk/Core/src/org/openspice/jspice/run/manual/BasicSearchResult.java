@@ -16,10 +16,24 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.main.manual;
+package org.openspice.jspice.run.manual;
 
-import java.util.List;
+public class BasicSearchResult implements SearchResult {
 
-public interface Manual {
-	public List search( SearchPhrase topic );
+	final SearchPhrase term;
+	final ManualPage page;
+
+	public SearchPhrase searchHint() {
+		return term;
+	}
+
+	public ManualPage manualPage() {
+		return page;
+	}
+
+	public BasicSearchResult( SearchPhrase term, ManualPage page ) {
+		this.term = term;
+		this.page = page;
+	}
+
 }

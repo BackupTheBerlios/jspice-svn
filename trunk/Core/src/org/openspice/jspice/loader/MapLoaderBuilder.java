@@ -19,7 +19,7 @@
 package org.openspice.jspice.loader;
 
 import org.openspice.jspice.namespace.NameSpace;
-import org.openspice.jspice.main.SuperLoader;
+import org.openspice.jspice.run.SuperLoader;
 import org.openspice.jspice.conf.StaticConf;
 import org.openspice.vfs.VFolder;
 import org.openspice.vfs.VItem;

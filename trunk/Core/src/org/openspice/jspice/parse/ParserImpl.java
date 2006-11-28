@@ -19,6 +19,7 @@
 
 package org.openspice.jspice.parse;
 
+import org.openspice.jspice.run.Interpreter;
 import org.openspice.jspice.tokens.Token;
 import org.openspice.jspice.tokens.NameToken;
 import org.openspice.jspice.lexis.PushableTokenizerImpl;
@@ -28,7 +29,6 @@ import org.openspice.jspice.expr.cases.NameExpr;
 import org.openspice.jspice.expr.cases.SkipExpr;
 import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.conf.DynamicConf;
-import org.openspice.jspice.main.Interpreter;
 
 import java.io.*;
 

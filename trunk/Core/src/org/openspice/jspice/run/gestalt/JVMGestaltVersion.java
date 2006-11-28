@@ -16,20 +16,18 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.main.gestalt;
+package org.openspice.jspice.run.gestalt;
 
-import org.steelypip.bfi.BFIVersion;
-
-public class BFIGestaltVersion extends Gestalt.MultiPartGestaltVersion {
+public class JVMGestaltVersion extends Gestalt.GestaltVersion {
 
 	public String title() {
-		return "BFI";
+		return "JVM";
 	}
 
-	public int[] parts() {
-		return BFIVersion.VERSION;
+	public String version() {
+		return System.getProperty( "java.vm.version" );
 	}
 
-	public static final BFIGestaltVersion VERSION = new BFIGestaltVersion();
+	public static final JVMGestaltVersion VERSION = new JVMGestaltVersion();
 
 }

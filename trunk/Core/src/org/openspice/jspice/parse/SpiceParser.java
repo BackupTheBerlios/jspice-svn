@@ -18,7 +18,7 @@
  */
 package org.openspice.jspice.parse;
 
-import org.openspice.jspice.main.Interpreter;
+import org.openspice.jspice.run.Interpreter;
 
 import java.io.Reader;
 

@@ -16,11 +16,11 @@
  * 	along with this program; if not, write to the Free Software
  *	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-package org.openspice.jspice.main;
+package org.openspice.jspice.run;
 
+import org.openspice.jspice.run.jline_stuff.PrefixFilterAccumulator;
 import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.conf.DynamicConf;
-import org.openspice.jspice.main.jline_stuff.PrefixFilterAccumulator;
 import org.openspice.jspice.namespace.NameSpaceManager;
 import org.openspice.jspice.namespace.NameSpace;
 

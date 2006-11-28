@@ -25,8 +25,8 @@ import org.openspice.jspice.expr.*;
 import org.openspice.jspice.expr.iterators.ExprIterator;
 import org.openspice.jspice.expr.cases.*;
 import org.openspice.jspice.namespace.*;
+import org.openspice.jspice.run.SuperLoader;
 import org.openspice.jspice.tools.SysAlert;
-import org.openspice.jspice.main.SuperLoader;
 import org.openspice.vfs.VFolder;
 
 

@@ -1,4 +1,4 @@
-package org.openspice.jspice.main;
+package org.openspice.jspice.run;
 
 public abstract class PragmaActionFactory {
 

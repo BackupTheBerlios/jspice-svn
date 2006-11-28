@@ -1,4 +1,4 @@
-package org.openspice.jspice.main;
+package org.openspice.jspice.run;
 
 
 import org.mortbay.http.*;
