@@ -20,6 +20,7 @@ package org.openspice.jspice.tools;
 
 import org.openspice.jspice.tools.SysAlert;
 import org.openspice.jspice.vm_and_compiler.VM;
+import org.openspice.jspice.conf.StaticConf;
 import org.openspice.jspice.datatypes.SpiceObject;
 
 import java.util.*;
@@ -180,6 +181,16 @@ public final class PrintTools {
 		return (String)sbc.close();
 	}
 
+	public static void showlnTo( final Consumer cuchar, final Object obj ) {
+		showTo( cuchar, obj );
+		cuchar.outCharSequence( StaticConf.LINE_SEPARATOR );
+	}
+	
+	public static void showlnFlushTo( final PrintWriter pw, final Object obj ) {	
+		showlnTo( new PrintWriterConsumer( pw ), obj );
+		pw.flush();
+	}
+	
 	
 	public static void showln( final Object obj ) {
 		show( obj );

@@ -29,7 +29,7 @@ public class Source extends SourceCore implements SourceIntf, org.openspice.jspi
 	private int[] buffer;
 	private int count;
 
-	Source( final String _origin, final Reader _reader, final String _prompt ) {
+	Source( final String _origin, final Reader _reader, final Prompt _prompt ) {
 		super( _origin, _reader, _prompt );
 		this.buffer = new int[ 0 ];
 		this.count = 0;
@@ -48,7 +48,7 @@ public class Source extends SourceCore implements SourceIntf, org.openspice.jspi
 
 	public int readInt() {
 		final int ich = this.count == 0 ? this.rawReadInt() : this.buffer[ --this.count ];
-		System.err.println( (char)ich );
+//		System.err.println( (char)ich );
 		return ich;
 	}
 

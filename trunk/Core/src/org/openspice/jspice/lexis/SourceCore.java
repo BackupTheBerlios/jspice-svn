@@ -28,10 +28,10 @@ import java.io.IOException;
 public class SourceCore {
     private int last_char_read = '\n';
     private String print_name;
-    private String prompt;
+    private Prompt prompt;
     private LineNumberReader reader;
 
-    SourceCore( final String _origin, final Reader _reader, final String _prompt ) {
+    SourceCore( final String _origin, final Reader _reader, final Prompt _prompt ) {
         this.print_name = _origin;
         this.reader = new LineNumberReader( _reader );
         this.prompt = _prompt;
@@ -46,16 +46,11 @@ public class SourceCore {
     }
 
     private void forcePrompt() {
-        if ( prompt != null ) {
-            System.out.print( prompt );
-            System.out.flush();
-        }
+    	this.prompt.forcePrompt();
     }
 
 	private void clearPrompt() {
-		if ( prompt != null ) {
-			System.out.println( "" );
-		}
+		this.prompt.clearPrompt();
 	}
 
     public int rawReadInt() {

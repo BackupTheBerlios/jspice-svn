@@ -27,6 +27,7 @@ import java.io.UnsupportedEncodingException;
 
 public abstract class StaticConf {
 
+	public static final String LINE_SEPARATOR = System.getProperty( "line.separator" );
 //
 	public static final String STD_LIB = "org.openspice.stdlib";
 
@@ -48,7 +49,7 @@ public abstract class StaticConf {
 	static public final String JSPICE_CONF_NAM = "jspice";
 	static public final String INVENTORY_NAM = "inventory";
 	static public final String std_inventory_name = INVENTORY_NAM;
-
+	
 	public static final char VFILE_SEPARATOR = '.';
 	public static final char VFOLDER_LOGICAL_SEPARATOR = '.';
 	public static final char VFOLDER_TERMINATOR = '/';
