@@ -18,11 +18,11 @@
  */
 package org.openspice.jspice.main.pragmas.java_loader;
 
-import org.openspice.jspice.main.Interpreter;
 import org.openspice.jspice.datatypes.proc.Proc;
 import org.openspice.jspice.namespace.NameSpace;
 import org.openspice.jspice.namespace.Var;
 import org.openspice.jspice.namespace.Location;
+import org.openspice.jspice.run.Interpreter;
 
 import java.util.List;
 import java.lang.reflect.Method;

@@ -25,12 +25,12 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import org.openspice.jspice.main.Pragma;
-import org.openspice.jspice.main.PragmaAction;
-import org.openspice.jspice.main.manual.Manual;
-import org.openspice.jspice.main.manual.ManualPage;
-import org.openspice.jspice.main.manual.SearchPhrase;
-import org.openspice.jspice.main.manual.SearchResult;
+import org.openspice.jspice.run.Pragma;
+import org.openspice.jspice.run.PragmaAction;
+import org.openspice.jspice.run.manual.Manual;
+import org.openspice.jspice.run.manual.ManualPage;
+import org.openspice.jspice.run.manual.SearchPhrase;
+import org.openspice.jspice.run.manual.SearchResult;
 
 public class ManualPragma implements PragmaAction {
 

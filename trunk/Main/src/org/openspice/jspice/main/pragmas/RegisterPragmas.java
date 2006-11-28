@@ -1,6 +1,6 @@
 package org.openspice.jspice.main.pragmas;
 
-import org.openspice.jspice.main.Pragma;
+import org.openspice.jspice.run.Pragma;
 
 public final class RegisterPragmas {
 

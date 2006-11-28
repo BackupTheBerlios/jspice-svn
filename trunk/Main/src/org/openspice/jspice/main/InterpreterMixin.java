@@ -18,6 +18,8 @@
  */
 package org.openspice.jspice.main;
 
+import org.openspice.jspice.run.Interpreter;
+
 public class InterpreterMixin {
 
 	final Interpreter interpreter;

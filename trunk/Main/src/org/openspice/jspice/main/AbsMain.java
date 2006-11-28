@@ -20,6 +20,7 @@ package org.openspice.jspice.main;
 
 import org.openspice.jspice.main.conf.AppDynamicConf;
 import org.openspice.jspice.main.pragmas.RegisterPragmas;
+import org.openspice.jspice.run.Pragma;
 import org.openspice.jspice.tools.Hooks;
 
 public abstract class AbsMain {

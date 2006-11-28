@@ -1,37 +1,19 @@
 package org.openspice.jspice.main;
 
-import java.awt.BorderLayout;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 
 import javax.swing.JFrame;
 
-import org.openspice.jspice.boxes.AbsStdio;
-import org.openspice.jspice.boxes.Stdio;
+import org.openspice.jspice.run.AbsStdio;
+import org.openspice.jspice.run.InterpreterThread;
+import org.openspice.jspice.run.Stdio;
 import org.openspice.tools.ReaderLineReader;
 
 import bsh.util.JConsole;
 
 
 public class StartSwing {
-	
-	static final class InterpreterThread extends Thread {
-		
-		final Interpreter interpreter;
-		final Reader reader;
-		
-		public InterpreterThread( final Interpreter interpreter, final Reader reader) {
-			this.interpreter = interpreter;
-			this.reader = reader;
-		}
-
-		public synchronized void start() {
-			this.interpreter.interpret( "jconsole", this.reader ); 
-		}
-		
-	}
 	
 	static final class SwingMain extends Main {
 		
@@ -58,9 +40,13 @@ public class StartSwing {
 			final Reader r = jconsole.getIn();
 			final PrintWriter pout = new PrintWriter( jconsole.getOut() );
 			final PrintWriter perr = new PrintWriter( jconsole.getErr() );
-			final Stdio stdio = new AbsStdio( new ReaderLineReader( r ), pout, perr );
-			this.interpreter.getVM().setStdio( stdio );
-			new InterpreterThread( this.interpreter, r ).start();
+//			final Stdio stdio = new AbsStdio( new ReaderLineReader( r ), pout, perr );
+//			this.interpreter.getVM().setStdio( stdio );
+			final InterpreterThread t = new InterpreterThread( this.interpreter, r );
+			t.setIn( new ReaderLineReader( jconsole.getIn() ) );
+			t.setOut( pout );
+			t.setErr( perr );
+			t.start();
 		}
 		
 	}

@@ -28,8 +28,8 @@ import jline.History;
 import jline.MultiCompletor;
 
 import org.openspice.jspice.conf.StaticConf;
-import org.openspice.jspice.main.jline_stuff.PragmaCompletor;
-import org.openspice.jspice.main.jline_stuff.SmartCompletor;
+import org.openspice.jspice.run.jline_stuff.PragmaCompletor;
+import org.openspice.jspice.run.jline_stuff.SmartCompletor;
 
 public class MainWithJLine extends Main {
 

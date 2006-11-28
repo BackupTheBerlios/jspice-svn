@@ -19,12 +19,12 @@
 package org.openspice.jspice.main.pragmas;
 
 import org.openspice.alert.Alert;
-import org.openspice.jspice.main.Pragma;
-import org.openspice.jspice.main.PragmaAction;
 import org.openspice.jspice.namespace.NameSpace;
 import org.openspice.jspice.namespace.Var;
 import org.openspice.jspice.namespace.Location;
 import org.openspice.jspice.datatypes.SpiceObject;
+import org.openspice.jspice.run.Pragma;
+import org.openspice.jspice.run.PragmaAction;
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.conf.StaticConf;
 import java.util.*;

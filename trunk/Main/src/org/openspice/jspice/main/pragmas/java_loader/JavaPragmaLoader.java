@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.openspice.alert.Alert;
-import org.openspice.jspice.main.Interpreter;
 import org.openspice.jspice.main.InterpreterMixin;
+import org.openspice.jspice.run.Interpreter;
 
 public class JavaPragmaLoader extends InterpreterMixin {
 	

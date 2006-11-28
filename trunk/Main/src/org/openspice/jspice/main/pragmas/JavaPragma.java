@@ -18,9 +18,9 @@
  */
 package org.openspice.jspice.main.pragmas;
 
-import org.openspice.jspice.main.Pragma;
-import org.openspice.jspice.main.PragmaAction;
 import org.openspice.jspice.main.pragmas.java_loader.JavaPragmaLoader;
+import org.openspice.jspice.run.Pragma;
+import org.openspice.jspice.run.PragmaAction;
 
 public class JavaPragma implements PragmaAction {
 		

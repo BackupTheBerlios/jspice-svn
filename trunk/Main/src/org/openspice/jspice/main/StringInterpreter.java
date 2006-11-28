@@ -20,6 +20,8 @@ package org.openspice.jspice.main;
 
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.main.conf.AppDynamicConf;
+import org.openspice.jspice.run.Interpreter;
+import org.openspice.jspice.run.SuperLoader;
 import org.openspice.jspice.vm_and_compiler.VM;
 
 import java.io.StringReader;
