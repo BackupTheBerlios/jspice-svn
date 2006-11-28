@@ -419,7 +419,8 @@ public final class AppDynamicConf implements DynamicConf {
 		if ( h == null ) {
 			final String key = StaticConf.getPropertyName( "home" ) ;
 			final String val = System.getProperty( key );
-			new Alert( "Cannot determine JSpice home directory" ).culprit( key, val ).mishap();
+			final String path = new File( val ).getAbsolutePath();
+			new Alert( "Cannot determine JSpice home directory" ).culprit( key, path ).mishap();
 		}
 		this.jspice_home = new FileVVolume( home() ).getRootVFolderRef().getVFolder( ImmutableSetOfBoolean.ONLY_TRUE, false );
 		if ( this.jspice_home == null ) {

@@ -22,6 +22,7 @@ package org.openspice.jspice.main;
 import org.openspice.alert.Alert;
 import org.openspice.jspice.conf.DynamicConf;
 import org.openspice.jspice.conf.StaticConf;
+import org.openspice.jspice.lexis.Prompt;
 import org.openspice.jspice.main.conf.AppDynamicConf;
 import org.openspice.jspice.run.Interpreter;
 import org.openspice.jspice.run.SuperLoader;
@@ -74,7 +75,7 @@ public class Main extends AbsMain {
 	}
 
 	protected void interpret( final CmdLineOptions cmd ) {
-		this.interpreter.interpret( cmd.prompt != null ? cmd.prompt : this.jspice_conf.getPrompt() );
+		this.interpreter.interpret( new Prompt.StdOutPrompt( cmd.prompt != null ? cmd.prompt : this.jspice_conf.getPrompt() ) );
 	}
 	
 }
