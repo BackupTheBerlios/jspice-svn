@@ -38,7 +38,7 @@ public class PushableTokenizerImpl implements PushableTokenizer {
 		this.stack = new Stack< Token >();
 	}
 
-    public PushableTokenizerImpl( final Interpreter interpreter, final String _printName, final Reader _reader, final String _prompt ) {
+    public PushableTokenizerImpl( final Interpreter interpreter, final String _printName, final Reader _reader, final Prompt _prompt ) {
         this( new TokenizerImpl( interpreter, _printName, _reader, _prompt ) );
     }
 
