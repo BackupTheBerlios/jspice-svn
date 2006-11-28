@@ -73,7 +73,7 @@ public final class Interpreter extends Loader {
 	}
 
 	public void interpret( final String origin, final Reader reader ) {
-		this.interpret( origin, reader, null );
+		this.interpret( origin, reader, Prompt.NULL_PROMPT );
 	}
 
 	private Pebble makePebble( Expr e, final SpiceParser parser, final Petrifier petrifier ) {

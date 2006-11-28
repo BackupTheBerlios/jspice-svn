@@ -18,8 +18,6 @@
  */
 package org.openspice.jspice.vm_and_compiler;
 
-import org.openspice.jspice.run.StdStdio;
-import org.openspice.jspice.run.Stdio;
 import org.openspice.jspice.run.WorldThread;
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.datatypes.ImmutableList;

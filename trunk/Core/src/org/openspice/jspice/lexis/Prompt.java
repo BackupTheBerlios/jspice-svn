@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 public abstract class Prompt {
     
+
 	abstract void forcePrompt();
 
 	abstract void clearPrompt();
@@ -41,5 +42,20 @@ public abstract class Prompt {
 			super( prompt, new PrintWriter( System.out ) );
 		}		
 	}
+	
+	public static final Prompt NULL_PROMPT = (
+		new Prompt() {
+
+			@Override
+			void clearPrompt() {
+			}
+
+			@Override
+			void forcePrompt() {
+			}
+			
+		}
+	);
+
 
 }
