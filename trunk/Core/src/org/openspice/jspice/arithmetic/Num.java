@@ -1,5 +1,7 @@
 package org.openspice.jspice.arithmetic;
 
+import org.openspice.jspice.tools.Consumer;
+import org.openspice.jspice.tools.Printable;
 import org.openspice.jspice.tools.Showable;
 import org.openspice.jspice.tools.SysAlert;
 
@@ -35,7 +37,11 @@ import java.math.BigDecimal;
  * interface, this constrains Num to being a non-interface
  * too.
  */
-public abstract class Num extends Number implements Showable {
+public abstract class Num extends Number implements Showable, Printable {
+	
+	public void printTo( final Consumer cuchar ) {
+		this.showTo( cuchar );
+	}
 
 	public static final Num toNum( final Number x ) {
 		if ( x instanceof Integer ) {

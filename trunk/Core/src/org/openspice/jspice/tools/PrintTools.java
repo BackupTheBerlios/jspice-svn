@@ -122,9 +122,10 @@ public final class PrintTools {
 			cuchar.outObject( obj );
 		} else if ( obj instanceof Map.Entry ) {
 			printTo( cuchar, ((Map.Entry)obj).getValue() );
-		} else if ( obj instanceof SpiceObject ) {
-			((SpiceObject)obj).printTo( cuchar );
-
+		} else if ( obj instanceof Printable ) {
+				((Printable)obj).printTo( cuchar );		
+//		} else if ( obj instanceof SpiceObject ) {
+//			((SpiceObject)obj).printTo( cuchar );
 		} else {
 			cuchar.outObject( obj );
 		}

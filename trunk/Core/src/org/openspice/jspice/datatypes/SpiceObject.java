@@ -19,6 +19,7 @@
 package org.openspice.jspice.datatypes;
 
 import org.openspice.jspice.tools.Consumer;
+import org.openspice.jspice.tools.Printable;
 import org.openspice.jspice.tools.StringBufferConsumer;
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.tools.Showable;
@@ -28,7 +29,7 @@ import org.openspice.jspice.datatypes.proc.Proc;
 
 import java.util.*;
 
-public abstract class SpiceObject implements Showable {
+public abstract class SpiceObject implements Showable, Printable {
 
 	public abstract void showTo( final Consumer cuchar );
 	public abstract void printTo( final Consumer cuchar );

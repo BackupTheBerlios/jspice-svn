@@ -21,7 +21,6 @@ package org.openspice.jspice.built_in;
 import org.openspice.jspice.tools.PrintTools;
 import org.openspice.jspice.tools.Consumer;
 import org.openspice.jspice.datatypes.proc.Proc;
-import org.openspice.jspice.datatypes.proc.Proc;
 
 public final class ShowProcs {
 
