@@ -36,9 +36,7 @@ public abstract class AbsMain extends WorldThread {
 		final CmdLineOptions cmd = new CmdLineOptions();
 		cmd.process( args );
 		this.commandLineOptions = cmd;
-	}
-	
-	
+	}	
 	
 	public CmdLineOptions getCommandLineOptions() {
 		return this.commandLineOptions;
@@ -46,28 +44,25 @@ public abstract class AbsMain extends WorldThread {
 
 	abstract void init();
 	abstract void interpret();
-	
-	protected void shutdown() {
-		Hooks.SHUTDOWN.ping();
+		
+	static class ShutdownHook extends Thread {
+		public final void run() {
+			Hooks.SHUTDOWN.ping();
+		}
 	}
 	
-
 	public final void run() {
+		Runtime.getRuntime().addShutdownHook( new ShutdownHook() );
 		if ( this.getCommandLineOptions().version ) {
 			StartVersion.printVersion( "JSpice Version %p.%p.%p" );
 		} else if ( this.getCommandLineOptions().help ) {
 			new Pragma( new AppDynamicConf(), "help jspice" ).perform();
 		} else {
-			this.startUp();
+			this.init();
+			this.interpret();
 		}
 	}
 
-	final void startUp() {
-		this.init();
-		this.interpret();
-		this.shutdown();
-	}
-	
 	static {
 		//	Bind all pragmas.
 		RegisterPragmas.register();

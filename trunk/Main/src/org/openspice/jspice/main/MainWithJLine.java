@@ -60,7 +60,6 @@ public class MainWithJLine extends Main {
 			ConsoleReaderInputStream.setIn( reader, p != null ? p : this.jspice_conf.getPrompt() );
 
 			this.interpreter.interpret( new Prompt.StdOutPrompt( "" ) );
-			this.shutdown();
 		} catch ( IOException e ) {
 			throw new RuntimeException( e );
 		}
