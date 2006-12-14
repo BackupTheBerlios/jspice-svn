@@ -24,11 +24,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public final class FileTools {
+	
+	public static void close( final Reader r ) {
+		try {
+			if ( r != null ) r.close();
+		} catch ( IOException _ ) {
+			//	do nothing.
+		}
+	}
 
 	public static final String fileAsString( final File file ) {
+		Reader rdr = null;
 		try {
 			final StringBuffer b = new StringBuffer();
-			final Reader rdr = new SelfCloseFileReader( file );
+			rdr = new FileReader( file );
 			final char[] cbuff = new char[ 1024 ];		//	just a random guess.
 			for (;;) {
 				final int n = rdr.read( cbuff );
@@ -40,13 +49,16 @@ public final class FileTools {
 			throw new RuntimeException( ex );
 		} catch ( final IOException ex ) {
 			throw new RuntimeException( ex );
+		} finally {
+			FileTools.close( rdr );
 		}
 	}
 	
 	public static final List fileAsCSV( final File file, final String regexp_delimiter ) {
+		BufferedReader r = null;
 		try {
-			final BufferedReader r = new BufferedReader( new SelfCloseFileReader( file ) );
-			final List list = new ArrayList();
+			r = new BufferedReader( new FileReader( file ) );
+			final List< List< String > > list = new ArrayList< List< String > >();
 			for(;;) {
 				final String s = r.readLine();
 				if ( s == null ) break;
@@ -55,8 +67,9 @@ public final class FileTools {
 			return list;
 		} catch ( IOException e ) {
 			throw new RuntimeException( e );
+		} finally {
+			close( r );
 		}
-
 	}
 
 	
