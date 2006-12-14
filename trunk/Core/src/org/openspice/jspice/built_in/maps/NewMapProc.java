@@ -21,9 +21,7 @@ package org.openspice.jspice.built_in.maps;
 import org.openspice.jspice.datatypes.proc.FastProc;
 import org.openspice.jspice.datatypes.Arity;
 import org.openspice.jspice.datatypes.Deferred;
-import org.openspice.jspice.datatypes.SpiceObject;
 import org.openspice.jspice.vm_and_compiler.VM;
-import org.openspice.jspice.built_in.lists.NewListProc;
 import org.openspice.jspice.tools.MapTools;
 
 import java.util.*;

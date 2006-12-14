@@ -20,7 +20,6 @@ package org.openspice.jspice.built_in.arithmetic;
 
 import org.openspice.jspice.arithmetic.Div;
 import org.openspice.jspice.datatypes.proc.Binary1InvokeProc;
-import org.openspice.jspice.datatypes.proc.Binary1InvokeProc;
 import org.openspice.jspice.lib.CastLib;
 
 public final class DivProc extends Binary1InvokeProc {
