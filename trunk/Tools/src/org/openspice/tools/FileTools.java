@@ -45,7 +45,7 @@ public final class FileTools {
 	
 	public static final List fileAsCSV( final File file, final String regexp_delimiter ) {
 		try {
-			final SelfCloseBufferedReader r = new SelfCloseBufferedReader( new FileReader( file ) );
+			final BufferedReader r = new BufferedReader( new SelfCloseFileReader( file ) );
 			final List list = new ArrayList();
 			for(;;) {
 				final String s = r.readLine();
