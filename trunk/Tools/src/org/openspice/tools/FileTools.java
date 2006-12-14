@@ -28,7 +28,7 @@ public final class FileTools {
 	public static final String fileAsString( final File file ) {
 		try {
 			final StringBuffer b = new StringBuffer();
-			final Reader rdr = new FileReader( file );
+			final Reader rdr = new SelfCloseFileReader( file );
 			final char[] cbuff = new char[ 1024 ];		//	just a random guess.
 			for (;;) {
 				final int n = rdr.read( cbuff );
@@ -42,11 +42,11 @@ public final class FileTools {
 			throw new RuntimeException( ex );
 		}
 	}
-
+	
 	public static final List fileAsCSV( final File file, final String regexp_delimiter ) {
 		try {
+			final SelfCloseBufferedReader r = new SelfCloseBufferedReader( new FileReader( file ) );
 			final List list = new ArrayList();
-			final BufferedReader r = new BufferedReader( new FileReader( file ) );
 			for(;;) {
 				final String s = r.readLine();
 				if ( s == null ) break;

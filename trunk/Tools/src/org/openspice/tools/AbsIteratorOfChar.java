@@ -21,7 +21,7 @@ package org.openspice.tools;
 public abstract class AbsIteratorOfChar implements IteratorOfChar {
 
 	public Object next() {
-		return new Character( this.nextChar() );
+		return Character.valueOf( this.nextChar() );
 	}
 
 	public void remove() {

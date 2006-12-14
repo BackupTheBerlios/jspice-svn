@@ -20,9 +20,9 @@ package org.openspice.tools;
 
 public abstract class IntegerTools {
 
-	final static public Integer MINUS_ONE = new Integer( -1 );
-	final static public Integer ZERO = new Integer( 0 );
-	final static public Integer ONE = new Integer( 1 );
+	final static public Integer MINUS_ONE = Integer.valueOf( -1 );
+	final static public Integer ZERO = Integer.valueOf( 0 );
+	final static public Integer ONE = Integer.valueOf( 1 );
 
 	//  Literal integers from (say) -32 to 31 are shared.
     final static int width = 32;
@@ -30,14 +30,14 @@ public abstract class IntegerTools {
 
     static {
         for ( int i = 0-width; i < width; i++ ) {
-            integers[ i + width ] = new Integer( i );
+            integers[ i + width ] = Integer.valueOf( i );
         }
     }
 
     public static Integer make( final int n ) {
         return (
             -width <= n && n < width ? integers[ width + n ] :
-            new Integer( n )
+            	Integer.valueOf( n )
         );
     }
 
