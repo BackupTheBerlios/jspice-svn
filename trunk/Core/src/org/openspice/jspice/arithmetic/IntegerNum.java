@@ -9,6 +9,10 @@ public class IntegerNum extends IntegralNum {
 	public IntegerNum( final int value ) {
 		this.value = value;
 	}
+	
+	public String toString() {
+		return this.value + "";
+	}
 
 	//  Literal integers from (say) -32 to 31 are shared.
     private final static int width = 32;
@@ -150,7 +154,7 @@ public class IntegerNum extends IntegralNum {
 
 	}
 
-	public Num divide( Num num ) {
+	public Num divide( final Num num ) {
 		if ( num instanceof IntegerNum ) {
 			return RatioNum.make( this.value, ((IntegerNum)num).value );
 		} else {
@@ -158,16 +162,23 @@ public class IntegerNum extends IntegralNum {
 		}
 	}
 
-	public Num mul( Num num ) {
+	public Num mul( final Num num ) {
+//		System.err.println();
+//		System.err.println( this + " * " + num );
 		if ( num instanceof IntegerNum ) {
+//			System.err.println( num + " is integral" );
 			final long r = this.longValue() * num.longValue();
+//			System.err.println( "result = " + r );
+//			System.err.println( Integer.MIN_VALUE + " <= " + r + " <= " + Integer.MAX_VALUE + " = " + (Integer.MIN_VALUE <= r && r <= Integer.MAX_VALUE) );
 			if ( Integer.MIN_VALUE <= r && r <= Integer.MAX_VALUE ) {
+//				System.err.println( "return IntegerNum = " + new IntegerNum( (int)r ) );
 				return new IntegerNum( (int)r );
 			} else {
+//				System.err.println( "return BigIntegerNum = " + new BigIntegerNum( r ) );
 				return new BigIntegerNum( r );
 			}
 		} else {
-			return this.addThenCanonize( num );
+			return this.mulThenCanonize( num );
 		}
 
 	}

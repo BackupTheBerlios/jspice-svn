@@ -30,7 +30,7 @@ import java.io.PrintStream;
 
 public final class VM {
 
-	static class StackImpl {
+	static abstract class StackImpl {
 
 		protected Object[] data = new Object[ 0 ];
 		protected int top = 0;
