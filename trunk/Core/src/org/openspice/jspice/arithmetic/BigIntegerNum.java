@@ -22,6 +22,10 @@ public class BigIntegerNum extends IntegralNum {
 	public BigIntegerNum( final String s ) {
 		this.bigInteger = new BigInteger( s );
 	}
+	
+	public String toString() {
+		return this.bigInteger.toString();
+	}
 
 	public BigInteger getBigInteger() {
 		return this.bigInteger;

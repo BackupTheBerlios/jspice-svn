@@ -77,7 +77,10 @@ public class IntegerNum extends IntegralNum {
 
 	public Num add( final Num num ) {
 		if ( num instanceof IntegerNum ) {
-			final long r = this.longValue() + num.longValue();
+//			System.err.println( "this.longValue() = " + this.longValue() );
+//			System.err.println( "num.longValue()  = " + num.longValue() );
+			final long r = (long)this.longValue() + (long)num.longValue();
+//			System.err.println( "r = " + r );
 			if ( Integer.MIN_VALUE <= r && r <= Integer.MAX_VALUE ) {
 				return new IntegerNum( (int)r );
 			} else {
